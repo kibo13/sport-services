@@ -23,4 +23,13 @@ DB_PORT=3306
 DB_DATABASE=database_name
 DB_USERNAME=database_username
 DB_PASSWORD=database_password
+
+# email configuration
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.email_service
+MAIL_PORT=465
+MAIL_USERNAME=email_username
+MAIL_PASSWORD=email_password
+MAIL_ENCRYPTION=ssl
+MAIL_FROM_ADDRESS=email_username
 ```
