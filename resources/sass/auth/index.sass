@@ -1,0 +1,29 @@
+@import '../global'
+
+.auth
+    position: relative
+    display: flex
+    justify-content: center
+    align-items: center
+    height: 100vh
+    background: linear-gradient(90deg, #3F2B96 0%, #A8C0FF 100%)
+
+    &-alert
+        position: absolute
+        top: 20px
+        left: 50%
+        transform: translateX(-50%)
+
+    &-container
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-items: center
+        gap: 30px
+
+    &-form
+        width: 100%
+        min-width: 250px
+        display: flex
+        flex-direction: column
+        justify-content: center
