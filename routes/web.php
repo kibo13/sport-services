@@ -20,6 +20,6 @@ Route::view('/mai', 'mai.index')->name('mai');
 Route::middleware('auth')->group(function () {
 
 
-    Route::get('/', [HomeController::class, 'index']);
+    Route::get('/', [HomeController::class, 'index'])->name('home');
 
 });
