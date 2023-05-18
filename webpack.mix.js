@@ -1,5 +1,9 @@
 const mix = require('laravel-mix');
 
+// mai
+mix .sass('resources/sass/mai/index.sass', 'public/css/mai.css')
+    .version()
+
 // auth
 mix .sass('resources/sass/auth/index.sass', 'public/css/auth.css')
     .version()
