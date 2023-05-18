@@ -1,0 +1,84 @@
+.sidebar
+    min-width: 250px
+    max-width: 250px
+    border-right: $border-gray
+
+    &--active
+        min-width: 70px
+        max-width: 70px
+        text-align: center
+        .sidebar-logo__icon
+            display: block
+        .sidebar-logo__text,
+        .sidebar-list__text
+            display: none
+        .sidebar-list__icon
+            font-size: 18px
+        .sidebar-list__link
+            justify-content: center
+
+    &-header
+        display: flex
+        justify-content: center
+        align-items: center
+        height: 80px
+        border-bottom: $border-gray
+
+    &-logo
+        display: flex
+        justify-content: center
+        align-items: center
+        overflow: hidden
+        &__link
+            text-align: center
+        &__icon
+            display: none
+            width: 50px
+        &__text
+            position: relative
+            display: block
+            text-transform: uppercase
+            font-size: $text-lg
+            &::after
+                content: ''
+                position: absolute
+                bottom: 0
+                left: 0
+                width: 100%
+                height: 1px
+                background-color: $gray
+
+    &-list
+        &__item
+            display: flex
+            height: 50px
+            transition: all .25s
+            border-bottom: $border-gray
+            overflow: hidden
+            &--active,
+            &:hover
+                background-color: $dark
+                .sidebar-list__link
+                    color: $light
+        &__link
+            padding: 0 15px
+            display: flex
+            align-items: center
+            grid-gap: 10px
+            width: 100%
+
+@media (max-width: $width-md)
+    .sidebar
+        min-width: 70px
+        max-width: 70px
+        margin-left: -70px
+        &--active
+            margin-left: 0
+            .sidebar-list__link
+                justify-content: center
+            .sidebar-logo__icon
+                display: block
+            .sidebar-logo__text,
+            .sidebar-list__text
+                display: none
+

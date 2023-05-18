@@ -4,42 +4,31 @@
     <title>@yield('title-admin') | {{ config('app.name') }} </title>
 
     <!-- vendors -->
-{{--    <link rel="stylesheet" href="{{ asset('css/fullcalendar.min.css') }}">--}}
-{{--    <script src="{{ asset('js/vendors/jquery.min.js') }}" defer></script>--}}
+    <link rel="stylesheet" href="{{ mix('css/vendors/bootstrap.min.css') }}">
+    <script src="{{ asset('js/vendors/jquery.min.js') }}" defer></script>
+    <script src="{{ asset('js/vendors/bootstrap.min.js') }}" defer></script>
+    {{--    <link rel="stylesheet" href="{{ asset('css/fullcalendar.min.css') }}">--}}
 {{--    <script src="{{ asset('js/vendors/popper.min.js') }}" defer></script>--}}
-{{--    <script src="{{ asset('js/vendors/bootstrap.min.js') }}" defer></script>--}}
 {{--    <script src="{{ asset('js/vendors/jquery.dataTables.min.js') }}" defer></script>--}}
 {{--    <script src="{{ asset('js/vendors/chart.min.js') }}" defer></script>--}}
 {{--    <script src="{{ asset('js/vendors/moment.min.js') }}" defer></script>--}}
 {{--    <script src="{{ asset('js/vendors/fullcalendar.min.js') }}" defer></script>--}}
 
     <!-- custom -->
-{{--    <link rel="stylesheet" href="{{ mix('css/admin.css') }}">--}}
-{{--    <script src="{{ mix('js/admin.js') }}" defer></script>--}}
+    <link rel="stylesheet" href="{{ mix('css/admin.css') }}">
+    <script src="{{ mix('js/admin.js') }}" defer></script>
 @endsection
 
 @section('content-body')
-    <h2>
-        welcome to admin page
-    </h2>
-
-    @yield('content-admin')
-
-    <form action="{{ route('logout') }}" method="POST">
-        @csrf
-        <button class="btn btn-primary">
-            Выйти
-        </button>
-    </form>
-{{--    <div class="admin">--}}
-{{--        @include('admin.partials.sidebar')--}}
-{{--        <div class="admin-wrapper">--}}
-{{--            <div class="admin-content">--}}
-{{--                @include('admin.partials.navbar')--}}
-{{--                @yield('content-admin')--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
+    <div class="admin">
+        @include('admin.partials.sidebar')
+        <div class="admin-wrapper">
+            <div class="admin-content">
+                @include('admin.partials.navbar')
+                @yield('content-admin')
+            </div>
+        </div>
+    </div>
 {{--    @include('components.modals.delete')--}}
 {{--    @include('components.modals.confirm')--}}
 {{--    @include('components.modals.event')--}}

@@ -1,0 +1,56 @@
+// vendors
+//@import '../vendors/google-fonts'
+//@import '../vendors/bootstrap'
+//@import '../vendors/font-awesome'
+//@import '../vendors/fullcalendar'
+
+// custom
+@import '../variables'
+@import '../global'
+
+// components
+//@import '../components/datatable'
+//@import '../components/width'
+//@import '../components/scrollbar'
+//@import '../components/form'
+//@import '../components/field'
+//@import '../components/validation'
+//@import '../components/button'
+//@import '../components/callout'
+//@import '../components/tab'
+//@import '../components/chart'
+//@import '../components/modal'
+//@import '../components/tooltip'
+//@import '../components/grid'
+
+// basic
+//@import 'admin'
+
+// partials
+@import 'partials/sidebar'
+@import 'partials/navbar'
+
+// pages
+//@import 'pages/places'
+//@import 'pages/visits'
+//@import 'pages/timetables'
+
+.admin
+    display: flex
+    align-items: stretch
+    height: 100vh
+
+    &-wrapper
+        display: flex
+        justify-content: center
+        width: 100%
+        overflow: hidden
+
+    &-content
+        padding: 5px
+        display: grid
+        grid-template-rows: auto 1fr
+        grid-gap: 10px
+        width: 100%
+        max-width: 98%
+        overflow: auto
