@@ -16,11 +16,13 @@
         @endif
         @endforeach
         <div class="auth-container">
-{{--            <div class="auth-header">--}}
-{{--                <img class="auth-logo" src="{{ asset('images/logo.svg') }}" alt="logo">--}}
-{{--            </div>--}}
             <h4>@yield('title-auth')</h4>
             @yield('content-auth')
+        </div>
+        <div class="auth-mai">
+            <a class="auth-mai__link" href="{{ route('mai') }}">
+                Автоматизированная информационная система организации спортивно-оздоровительных услуг
+            </a>
         </div>
     </div>
 @endsection
