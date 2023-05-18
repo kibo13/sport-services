@@ -13,6 +13,9 @@ Auth::routes([
     'verify'   => false,
 ]);
 
+// mai
+Route::view('/mai', 'mai.index')->name('mai');
+
 // admin
 Route::middleware('auth')->group(function () {
 
