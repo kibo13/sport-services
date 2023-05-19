@@ -5,19 +5,32 @@
 @section('content-auth')
     <form class="auth-form" action="{{ route('register') }}" method="POST">
         @csrf
-{{--        <div class="form-group">--}}
-{{--            <input type="text"--}}
-{{--                   class="form-control @error('name') is-invalid @enderror"--}}
-{{--                   id="name"--}}
-{{--                   name="name"--}}
-{{--                   placeholder="Имя"--}}
-{{--                   required>--}}
-{{--            @error('name')--}}
-{{--            <span class="invalid-feedback" role="alert">--}}
-{{--                <strong>{{ $message }}</strong>--}}
-{{--            </span>--}}
-{{--            @enderror--}}
-{{--        </div>--}}
+        <div class="form-group">
+            <input type="text"
+                   class="form-control @error('surname') is-invalid @enderror"
+                   id="surname"
+                   name="surname"
+                   placeholder="Фамилия"
+                   required>
+            @error('surname')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+        </div>
+        <div class="form-group">
+            <input type="text"
+                   class="form-control @error('name') is-invalid @enderror"
+                   id="name"
+                   name="name"
+                   placeholder="Имя"
+                   required>
+            @error('name')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+        </div>
         <div class="form-group">
             <input type="email"
                    class="form-control @error('email') is-invalid @enderror"
@@ -44,15 +57,6 @@
             </span>
             @enderror
         </div>
-{{--        <div class="form-group">--}}
-{{--            <input type="password"--}}
-{{--                   class="form-control"--}}
-{{--                   id="password-confirm"--}}
-{{--                   name="password_confirmation"--}}
-{{--                   placeholder="Повторите пароль"--}}
-{{--                   autocomplete="new-password"--}}
-{{--                   required>--}}
-{{--        </div>--}}
         <button type="submit" class="btn btn-primary">
             Регистрация
         </button>
