@@ -4,6 +4,7 @@ namespace App\Models;
 
 
 use App\Enums\Role as RoleEnum;
+use Carbon\Carbon;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -20,7 +21,12 @@ class User extends Authenticatable
     protected $fillable = [
         'role_id',
         'name',
+        'surname',
+        'patronymic',
+        'birthday',
+        'phone',
         'email',
+        'photo',
         'password',
     ];
 
@@ -42,8 +48,42 @@ class User extends Authenticatable
         parent::boot();
 
         static::creating(function ($user) {
-            $user->role_id = RoleEnum::CLIENT;
+            $user->role_id      = $user->role_id ?? RoleEnum::CLIENT;
+            $user->photo        = $user->photo ?? 'anonymous.svg';
+            $user->age          = $user->birthday ? $user->calculateAge($user->birthday) : null;
+            $user->short_name   = $user->getShortName($user);
+            $user->full_name    = "$user->surname $user->name $user->patronymic";
+            $user->surname_name = "$user->surname $user->name";
         });
+    }
+
+    protected function setNameAttribute($value)
+    {
+        $this->attributes['name'] = ucfirst($value);
+    }
+
+    protected function setSurnameAttribute($value)
+    {
+        $this->attributes['surname'] = ucfirst($value);
+    }
+
+    protected function calculateAge(string $birthday): int
+    {
+        $parsedBirthday = Carbon::parse($birthday);
+        $currentDate    = Carbon::now();
+
+        return $currentDate->diffInYears($parsedBirthday);
+    }
+
+    protected function getShortName(User $user): string
+    {
+        if ($user->patronymic) {
+            $shortName = $user->surname . ' ' . mb_substr($user->name, 0, 1) . '.' . mb_substr($user->patronymic, 0, 1) . '.';
+        } else {
+            $shortName = $user->surname . ' ' . mb_substr($user->name, 0, 1) . '.';
+        }
+
+        return $shortName;
     }
 
     public function role(): BelongsTo
