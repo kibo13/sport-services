@@ -2,7 +2,7 @@
 
 @section('content-head')
     <title>МАИ | {{ config('app.name') }} </title>
-    <link rel="stylesheet" href="{{ mix('css/vendors/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/vendors/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ mix('css/mai.css') }}">
 @endsection
 
