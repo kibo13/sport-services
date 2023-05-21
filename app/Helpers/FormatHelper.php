@@ -9,8 +9,12 @@ function format_phone_number_for_storage(?string $phoneNumber): ?string
     return preg_replace('/[^0-9]/', '', str_replace('+7', '', $phoneNumber));
 }
 
-function format_phone_number_for_display(string $phoneNumber): string
+function format_phone_number_for_display(?string $phoneNumber): ?string
 {
+    if (is_null($phoneNumber)) {
+        return null;
+    }
+
     // Удаление всех символов, кроме цифр
     $phoneNumber = preg_replace('/\D/', '', $phoneNumber);
 
