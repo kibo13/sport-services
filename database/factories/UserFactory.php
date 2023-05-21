@@ -24,7 +24,7 @@ class UserFactory extends Factory
             'phone'             => $this->faker->unique()->numerify('771#######'),
             'email'             => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'password'          => Hash::make('tyler13'),
+            'password'          => Hash::make('secret'),
             'remember_token'    => Str::random(10),
         ];
     }
