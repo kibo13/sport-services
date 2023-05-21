@@ -13,7 +13,7 @@
         </div>
     </div>
     <ul class="sidebar-list">
-        <li class="sidebar-list__item {{ @is_active('home', 'sidebar-list__item--active') }}">
+        <li class="sidebar-list__item {{ is_active('home', 'sidebar-list__item--active') }}">
             <a class="sidebar-list__link"
                href="{{ route('home') }}"
                title="{{ __('_section.home') }}">

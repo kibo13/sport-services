@@ -14,13 +14,13 @@
 
         <div class="collapse navbar-collapse" id="navbar-content">
             <ul class="navbar-nav d-flex justify-content-end w-100">
-{{--                @if(@is_access('user_read'))--}}
-{{--                <li class="nav-item">--}}
-{{--                    <a class="nav-link" href="{{ route('admin.users.index') }}">--}}
-{{--                        {{ __('_section.users') }}--}}
-{{--                    </a>--}}
-{{--                </li>--}}
-{{--                @endif--}}
+                @if(auth()->user()->isAdmin())
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('users.index') }}">
+                        {{ __('_section.users') }}
+                    </a>
+                </li>
+                @endif
 
 {{--                @if(@is_setting('1'))--}}
 {{--                <li class="nav-item dropdown">--}}
@@ -79,7 +79,7 @@
 
                 <li class="nav-item dropdown">
                     <a class="nav-link pr-3" href="#" data-toggle="dropdown">
-                        {{ auth()->user()->email }}
+                        {{ auth()->user()->surname_name }}
                     </a>
                     <form class="navbar-dropdown-menu dropdown-menu"
                           action="{{ route('logout') }}"
