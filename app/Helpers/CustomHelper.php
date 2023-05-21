@@ -2,10 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
-use App\Models\Worker;
-use App\Models\Member;
-use App\Models\Rep;
-use App\Models\Visit;
+use Illuminate\Support\Facades\Route;
 
 function bk_rand($type, $param = null, $length = 13)
 {
@@ -48,14 +45,7 @@ function bk_code($group, $date, $time)
 
 function is_active($route, $class)
 {
-    echo Route::currentRouteNamed($route) ? $class : '';
-}
-
-function is_update($param, $route)
-{
-    echo $param ?? null
-            ? route($route . '.update', $param)
-            : route($route . '.store');
+    return Route::currentRouteNamed($route) ? $class : '';
 }
 
 function is_access($permission)
@@ -83,11 +73,6 @@ function form_title($param)
     echo $param ?? null ? __('_record.edit') : __('_record.new');
 }
 
-function mandatory()
-{
-    echo '<span class="bk-field bk-field--mandatory">*</i>';
-}
-
 function tip($message)
 {
     echo '<span class="bk-field bk-field--tip">' . $message .'</span>';
@@ -105,35 +90,3 @@ function status($param)
         : '<strong class="text-success">' . __('_action.completed') .'</strong>';
 }
 
-function full_fio($type, $id)
-{
-    switch ($type)
-    {
-        case 'member':
-            $result = Member::where('id', $id)->first();
-            break;
-
-        case 'rep':
-            $result = Rep::where('id', $id)->first();
-            break;
-
-        case 'worker':
-            $result = Worker::where('id', $id)->first();
-            break;
-
-        default:
-            $result = User::where('id', $id)->first();
-            break;
-    }
-
-    $last_name   = ucfirst($result->last_name);
-    $first_name  = substr($result->first_name, 0, 2) . '.';
-    $middle_name = isset($result->middle_name) ? substr($result->middle_name, 0, 2) . '.' : null;
-
-    echo '<span title="' . $result->last_name . ' '. $result->first_name . ' ' . $result->middle_name .'">' . $last_name . ' ' . $first_name . $middle_name . '</span>';
-}
-
-function checkVisit($member, $lesson)
-{
-    return Visit::where('member_id', $member->id)->where('timetable_id', $lesson->id)->first();
-}
