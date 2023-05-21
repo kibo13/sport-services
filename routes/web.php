@@ -22,4 +22,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/', [HomeController::class, 'index'])->name('home');
 
+    // Подключаем файл маршрутов users.php
+    include_once __DIR__ . '/admin/users.php';
+
 });
