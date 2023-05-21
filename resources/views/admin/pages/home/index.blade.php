@@ -1,9 +1,9 @@
 @extends('admin.index')
 
-@section('title-admin', 'Главная')
+@section('title-admin', __('_section.home'))
 
 @section('content-admin')
-    <section id="home-index" class="overflow-auto">
-        <h3>Главная</h3>
+    <section id="home-index" class="bk-overflow-hidden">
+        <h3>{{ __('_section.home') }}</h3>
     </section>
 @endsection

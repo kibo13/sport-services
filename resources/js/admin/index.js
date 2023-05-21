@@ -16,6 +16,7 @@ require('./components/tooltip')
 // pages
 // require('./pages/home')
 require('./pages/users')
+require('./pages/profile')
 // require('./pages/groups')
 // require('./pages/members')
 // require('./pages/events')
