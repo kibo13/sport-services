@@ -1,9 +1,17 @@
 {
-    "/js/admin.js": "/js/admin.js?id=ea9afb6aeeb1e98a77e955bc6d6bd493",
-    "/css/admin.css": "/css/admin.css?id=659e7e22d0b8701fa23f3b39e338738f",
-    "/css/auth.css": "/css/auth.css?id=f1f16e9a642f00ff45c9387c6ffc0cc2",
+    "/js/admin.js": "/js/admin.js?id=b88620462ccbd21eda846ed1a4689bdf",
+    "/css/admin.css": "/css/admin.css?id=86e6a94147c5b0b5ea0ae807245a1725",
+    "/css/auth.css": "/css/auth.css?id=e2f6da9343e896d7a3c7e78a9d55362c",
     "/css/mai.css": "/css/mai.css?id=944776efdaf68236c122c6ded40c04c3",
+    "/css/vendors/font-awesome.min.css": "/css/vendors/font-awesome.min.css?id=269550530cc127b6aa5a35925a7de6ce",
     "/css/vendors/bootstrap.min.css": "/css/vendors/bootstrap.min.css?id=450fc463b8b1a349df717056fbb3e078",
+    "/css/vendors/fullcalendar.min.css": "/css/vendors/fullcalendar.min.css?id=ae5cf8df244badf6dca1734e9fb7f8e4",
+    "/js/vendors/bootstrap.min.js": "/js/vendors/bootstrap.min.js?id=14d449eb8876fa55e1ef3c2cc52b0c17",
     "/js/vendors/jquery.min.js": "/js/vendors/jquery.min.js?id=c9f5aeeca3ad37bf2aa006139b935f0a",
-    "/js/vendors/bootstrap.min.js": "/js/vendors/bootstrap.min.js?id=14d449eb8876fa55e1ef3c2cc52b0c17"
+    "/js/vendors/jquery.dataTables.min.js": "/js/vendors/jquery.dataTables.min.js?id=15d7433673dfbf9b4aaaea221a3927a7",
+    "/js/vendors/popper.min.js": "/js/vendors/popper.min.js?id=70d3fda195602fe8b75e0097eed74dde",
+    "/js/vendors/moment.min.js": "/js/vendors/moment.min.js?id=86a47979cd4df3b266798987a12cd519",
+    "/js/vendors/fullcalendar.min.js": "/js/vendors/fullcalendar.min.js?id=da7e88923236a32b29fb590930c44f05",
+    "/js/vendors/chart.min.js": "/js/vendors/chart.min.js?id=88dde32eb30aaf84ccf49f22ff35270d",
+    "/js/vendors/inputmask.min.js": "/js/vendors/inputmask.min.js?id=b5a16f50cec90db212765b76e97958cd"
 }
