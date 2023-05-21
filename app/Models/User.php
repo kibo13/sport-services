@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -48,12 +49,17 @@ class User extends Authenticatable
         parent::boot();
 
         static::creating(function ($user) {
-            $user->role_id      = $user->role_id ?? RoleEnum::CLIENT;
-            $user->photo        = $user->photo ?? 'anonymous.svg';
-            $user->age          = $user->birthday ? $user->calculateAge($user->birthday) : null;
+            $user->role_id  = $user->role_id ?? RoleEnum::CLIENT;
+            $user->photo    = $user->photo ?? 'anonymous.svg';
+            $user->password = Hash::make('secret');
+        });
+
+        static::saving(function ($user) {
             $user->short_name   = $user->getShortName($user);
             $user->full_name    = "$user->surname $user->name $user->patronymic";
             $user->surname_name = "$user->surname $user->name";
+            $user->phone        = format_phone_number_for_storage($user->phone);
+            $user->age          = $user->birthday ? $user->calculateAge($user->birthday) : null;
         });
     }
 
