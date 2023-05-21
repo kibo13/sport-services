@@ -21,62 +21,16 @@
                     </a>
                 </li>
                 @endif
-
-{{--                @if(@is_setting('1'))--}}
-{{--                <li class="nav-item dropdown">--}}
-{{--                    <a class="nav-link" href="#" data-toggle="dropdown">--}}
-{{--                        {{ __('_section.settings') }}--}}
-{{--                    </a>--}}
-{{--                    <div class="navbar-dropdown-menu dropdown-menu">--}}
-{{--                        @if(@is_access('worker_read'))--}}
-{{--                        <a class="dropdown-item" href="{{ route('admin.workers.index') }}">--}}
-{{--                            {{ __('_section.workers') }}--}}
-{{--                        </a>--}}
-{{--                        @endif--}}
-{{--                        @if(@is_access('group_read'))--}}
-{{--                        <a class="dropdown-item" href="{{ route('admin.groups.index') }}">--}}
-{{--                            {{ __('_section.groups') }}--}}
-{{--                        </a>--}}
-{{--                        @endif--}}
-{{--                        @if(@is_access('specialty_read'))--}}
-{{--                        <a class="dropdown-item" href="{{ route('admin.specialties.index') }}">--}}
-{{--                            {{ __('_section.specialties') }}--}}
-{{--                        </a>--}}
-{{--                        @endif--}}
-{{--                        @if(@is_access('room_read'))--}}
-{{--                        <a class="dropdown-item" href="{{ route('admin.rooms.index') }}">--}}
-{{--                            {{ __('_section.rooms') }}--}}
-{{--                        </a>--}}
-{{--                        @endif--}}
-{{--                        @if(@is_access('discount_read'))--}}
-{{--                        <a class="dropdown-item" href="{{ route('admin.discounts.index') }}">--}}
-{{--                            {{ __('_section.privileges') }}--}}
-{{--                        </a>--}}
-{{--                        @endif--}}
-{{--                        @if(@is_access('orgkomitet_read'))--}}
-{{--                        <a class="dropdown-item" href="{{ route('admin.orgkomitets.index') }}">--}}
-{{--                            {{ __('_section.orgkomitets') }}--}}
-{{--                        </a>--}}
-{{--                        @endif--}}
-{{--                        @if(@is_access('load_read'))--}}
-{{--                        <a class="dropdown-item" href="{{ route('admin.loads.index') }}">--}}
-{{--                            {{ __('_section.loads') }}--}}
-{{--                        </a>--}}
-{{--                        @endif--}}
-{{--                        @if(@is_access('method_read'))--}}
-{{--                        <a class="dropdown-item" href="{{ route('admin.methods.index') }}">--}}
-{{--                            {{ __('_section.methods') }}--}}
-{{--                        </a>--}}
-{{--                        @endif--}}
-{{--                        @if(@is_access('rep_read'))--}}
-{{--                        <a class="dropdown-item" href="{{ route('admin.reps.index') }}">--}}
-{{--                            {{ __('_section.reps') }}--}}
-{{--                        </a>--}}
-{{--                        @endif--}}
-{{--                    </div>--}}
-{{--                </li>--}}
-{{--                @endif--}}
-
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="#" data-toggle="dropdown">
+                        {{ __('_section.catalog') }}
+                    </a>
+                    <div class="navbar-dropdown-menu dropdown-menu">
+                        <a class="dropdown-item" href="{{ route('services.index') }}">
+                            {{ __('_section.services') }}
+                        </a>
+                    </div>
+                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link pr-3" href="#" data-toggle="dropdown">
                         {{ auth()->user()->surname_name }}

@@ -14,12 +14,26 @@
     </div>
     <ul class="sidebar-list">
         <li class="sidebar-list__item {{ is_active('home', 'sidebar-list__item--active') }}">
-            <a class="sidebar-list__link"
-               href="{{ route('home') }}"
-               title="{{ __('_section.home') }}">
-                {{ @fa('fa-home sidebar-list__icon') }}
+            <a class="sidebar-list__link" href="{{ route('home') }}" title="{{ __('_section.home') }}">
+                <i class="fa fa-home sidebar-list__icon"></i>
                 <span class="sidebar-list__text">
                     {{ __('_section.home') }}
+                </span>
+            </a>
+        </li>
+        <li class="sidebar-list__item {{ is_active('profile', 'sidebar-list__item--active') }}">
+            <a class="sidebar-list__link" href="{{ route('profile') }}" title="{{ __('_section.profile') }}">
+                <i class="fa fa-user-circle-o sidebar-list__icon"></i>
+                <span class="sidebar-list__text">
+                    {{ __('_section.profile') }}
+                </span>
+            </a>
+        </li>
+        <li class="sidebar-list__item {{ is_active('rules', 'sidebar-list__item--active') }}">
+            <a class="sidebar-list__link" href="{{ route('rules') }}" title="{{ __('_section.rules') }}">
+                <i class="fa fa-file-text-o sidebar-list__icon"></i>
+                <span class="sidebar-list__text">
+                    {{ __('_section.rules') }}
                 </span>
             </a>
         </li>
