@@ -2,6 +2,7 @@
 
 @section('content-head')
     <title>@yield('title-auth') | {{ config('app.name') }} </title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
     <link rel="stylesheet" href="{{ asset('css/vendors/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ mix('css/auth.css') }}">
 @endsection

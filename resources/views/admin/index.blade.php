@@ -4,12 +4,15 @@
     <title>@yield('title-admin') | {{ config('app.name') }} </title>
 
     <!-- vendors -->
-    <link rel="stylesheet" href="{{ mix('css/vendors/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+    <link rel="stylesheet" href="{{ asset('css/vendors/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/vendors/font-awesome.min.css') }}">
     <script src="{{ asset('js/vendors/jquery.min.js') }}" defer></script>
     <script src="{{ asset('js/vendors/bootstrap.min.js') }}" defer></script>
+    <script src="{{ asset('js/vendors/jquery.dataTables.min.js') }}" defer></script>
+    <script src="{{ asset('js/vendors/inputmask.min.js') }}" defer></script>
     {{--    <link rel="stylesheet" href="{{ asset('css/fullcalendar.min.css') }}">--}}
 {{--    <script src="{{ asset('js/vendors/popper.min.js') }}" defer></script>--}}
-{{--    <script src="{{ asset('js/vendors/jquery.dataTables.min.js') }}" defer></script>--}}
 {{--    <script src="{{ asset('js/vendors/chart.min.js') }}" defer></script>--}}
 {{--    <script src="{{ asset('js/vendors/moment.min.js') }}" defer></script>--}}
 {{--    <script src="{{ asset('js/vendors/fullcalendar.min.js') }}" defer></script>--}}

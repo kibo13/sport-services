@@ -1,12 +1,12 @@
 // components
 require('./components/sidebar')
-// require('./components/datatable')
-// require('./components/modal-delete')
-// require('./components/modal-check')
-// require('./components/alert')
-// require('./components/button')
-// require('./components/image')
-// require('./components/tooltip')
+require('./components/datatable')
+require('./components/modal-delete')
+require('./components/modal-check')
+require('./components/alert')
+require('./components/button')
+require('./components/image')
+require('./components/tooltip')
 
 // custom
 // require('./custom/validation')
@@ -15,7 +15,7 @@ require('./components/sidebar')
 
 // pages
 // require('./pages/home')
-// require('./pages/users')
+require('./pages/users')
 // require('./pages/groups')
 // require('./pages/members')
 // require('./pages/events')
