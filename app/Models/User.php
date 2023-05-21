@@ -86,6 +86,11 @@ class User extends Authenticatable
         return $shortName;
     }
 
+    public function isAdmin(): bool
+    {
+        return $this->role_id === RoleEnum::ADMIN;
+    }
+
     public function role(): BelongsTo
     {
         return $this->belongsTo(Role::class);
