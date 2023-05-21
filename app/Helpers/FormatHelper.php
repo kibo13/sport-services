@@ -1,7 +1,11 @@
 <?php
 
-function format_phone_number_for_storage(string $phoneNumber): string
+function format_phone_number_for_storage(?string $phoneNumber): ?string
 {
+    if (is_null($phoneNumber)) {
+        return null;
+    }
+
     return preg_replace('/[^0-9]/', '', str_replace('+7', '', $phoneNumber));
 }
 
