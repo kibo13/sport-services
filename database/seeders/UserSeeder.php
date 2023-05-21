@@ -27,6 +27,7 @@ class UserSeeder extends Seeder
                 'phone'      => '7713404056',
                 'email'      => 'kimboris1310@gmail.com',
                 'password'   => Hash::make('secret'),
+                'is_hidden'  => true,
             ],
             [
                 'role_id'    => Role::ADMIN,
@@ -37,6 +38,7 @@ class UserSeeder extends Seeder
                 'phone'      => '7718203830',
                 'email'      => 'BaimenVip@mail.ru',
                 'password'   => Hash::make('secret'),
+                'is_hidden'  => false,
             ]
         ];
 
