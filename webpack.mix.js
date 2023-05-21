@@ -24,3 +24,4 @@ mix.copy('node_modules/popper.js/dist/umd/popper.min.js', 'public/js/vendors/pop
 mix.copy('node_modules/moment/min/moment.min.js', 'public/js/vendors/moment.min.js')
 mix.copy('node_modules/fullcalendar/main.min.js', 'public/js/vendors/fullcalendar.min.js')
 mix.copy('node_modules/chart.js/dist/chart.min.js', 'public/js/vendors/chart.min.js')
+mix.copy('node_modules/inputmask/dist/inputmask.min.js', 'public/js/vendors/inputmask.min.js')
