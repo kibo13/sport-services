@@ -1,0 +1,78 @@
+.bk-form
+    position: relative
+    padding: 10px
+    display: flex
+    justify-content: center
+    border: $border-gray
+
+    &__wrapper
+        display: grid
+        grid-gap: 5px
+        width: 100%
+
+    &__field
+        display: grid
+        grid-gap: 5px
+        overflow: hidden
+
+    &__list
+        height: 100%
+        max-height: 200px
+        display: grid
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr))
+        overflow: auto
+
+        &-item
+            display: flex
+            align-items: center
+            grid-gap: 5px
+
+        &-checkbox
+            width: 16px
+            height: 16px
+
+        &-label
+            margin-bottom: 0
+            cursor: pointer
+            user-select: none
+
+    &__label
+        margin: 0
+        width: 100%
+        font-weight: bold
+        border-bottom: $border-gray
+
+    &__input,
+    &__select
+        padding: 0 10px
+        height: 35px
+        border: $border-gray
+        appearance: none
+
+    &__textarea
+        padding: 5px 10px
+        height: 100px
+        border: $border-gray
+
+    &__color
+        width: 100%
+        height: 35px
+        border: transparent
+        outline: transparent
+        cursor: pointer
+
+    &__file
+        position: absolute
+        left: 0
+        bottom: 0
+        opacity: 0
+        cursor: pointer
+
+    &__checkbox
+        width: 20px
+        height: 20px
+        cursor: pointer
+
+    &__text
+        font-weight: bold
+        color: rgba($dark, .5)

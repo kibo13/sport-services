@@ -1,0 +1,65 @@
+.bk-btn
+    &-actions
+        display: flex
+        grid-gap: 5px
+    &-action
+        position: relative
+        width: 25px
+        height: 25px
+        background-repeat: no-repeat
+        background-position: center center
+        background-size: 80%
+        &--archive
+            background-image: url('/assets/icons/archive.svg')
+        &--edit
+            background-image: url('/assets/icons/edit.svg')
+        &--delete
+            background-image: url('/assets/icons/trash.svg')
+        &--info
+            background-image: url('/assets/icons/info.svg')
+        &--agree
+            background-image: url('/assets/icons/agree.svg')
+        &--check
+            background-image: url('/assets/icons/check.svg')
+        &--bill
+            background-image: url('/assets/icons/bill.svg')
+        &::after
+            content: attr(data-tip)
+            position: absolute
+            top: -20px
+            left: -40px
+            padding: 0 5px
+            text-align: center
+            font-size: $text-sm
+            color: $dark
+            background: #ffffff
+            box-shadow: 0 0 2px
+            border-radius: 4px
+            visibility: hidden
+        &:hover
+            &::after
+                visibility: visible
+        &:focus,
+        &:active
+            box-shadow: none !important
+
+    &-info
+        position: relative
+        height: 20px
+        overflow: hidden
+        cursor: pointer
+        user-select: none
+        &--active
+            height: auto
+        &--fa
+            position: absolute
+            top: 0
+            right: 0
+            width: 15px
+            height: 15px
+
+@media (max-width: $width-md)
+    .btn-group
+        display: flex
+        flex-direction: column
+        grid-gap: 5px
