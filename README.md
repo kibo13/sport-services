@@ -32,4 +32,7 @@ MAIL_USERNAME=email_username
 MAIL_PASSWORD=email_password
 MAIL_ENCRYPTION=ssl
 MAIL_FROM_ADDRESS=email_username
+
+# filesystems configuration
+php artisan storage:link
 ```
