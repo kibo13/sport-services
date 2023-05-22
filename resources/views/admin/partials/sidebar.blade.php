@@ -22,7 +22,7 @@
             </a>
         </li>
         <li class="sidebar-list__item {{ is_active('profile', 'sidebar-list__item--active') }}">
-            <a class="sidebar-list__link" href="{{ route('profile') }}" title="{{ __('_section.profile') }}">
+            <a class="sidebar-list__link" href="{{ route('profile.index') }}" title="{{ __('_section.profile') }}">
                 <i class="fa fa-user-circle-o sidebar-list__icon"></i>
                 <span class="sidebar-list__text">
                     {{ __('_section.profile') }}

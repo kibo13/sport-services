@@ -3,7 +3,7 @@
 @section('title-admin', __('_section.profile'))
 
 @section('content-admin')
-    <section id="profile-form" class="bk-overflow-hidden">
+    <section id="profile-form">
         <h3>{{ __('_section.profile') }}</h3>
 
         @if(session()->has('success') || session()->has('warning'))
@@ -20,6 +20,21 @@
             <div class="bk-form__wrapper">
                 @csrf
                 @method('PUT')
+                <div class="bk-form__field">
+                    <label class="bk-form__label">
+                        {{ __('_field.photo') }}
+                    </label>
+                    <a href="{{ $user->photo ? asset('/storage/' . $user->photo) : asset('/assets/icons/anonymous.svg') }}" target="_blank">
+                        <img class="bk-form__photo"
+                             id="photo"
+                             src="{{ $user->photo ? asset('/storage/' . $user->photo) : asset('/assets/icons/anonymous.svg') }}"
+                             alt="{{ $user->full_name }}">
+                    </a>
+                    <label class="btn btn-outline-primary bk-max-w-250" for="profile-photo">
+                        {{ __('_action.set') }}
+                    </label>
+                    <input class="d-none" type="file" id="profile-photo" accept="image/*">
+                </div>
                 <div class="bk-form__field">
                     <label class="bk-form__label">
                         {{ __('_field.last_name') }}
@@ -62,20 +77,41 @@
                         {{ __('_field.phone') }}
                     </label>
                     <input type="tel"
-                           class="bk-form__input bk-max-w-250"
+                           class="bk-form__input bk-max-w-250 @error('phone') border border-danger @enderror"
                            id="phone"
                            name="phone"
                            value="{{ $user->phone }}">
+                    @error('phone')
+                    <small class="bk-validation">
+                        {{ $message }}
+                    </small>
+                    @enderror
+                    <div class="form-check">
+                        <input type="hidden" name="is_notify" value="0">
+                        <input type="checkbox"
+                               class="form-check-input"
+                               id="is_notify"
+                               name="is_notify"
+                               value="1" {{ $user->is_notify ? 'checked' : '' }}>
+                        <label class="form-check-label" for="is_notify">
+                            Получать SMS-уведомления
+                        </label>
+                    </div>
                 </div>
                 <div class="bk-form__field">
                     <label class="bk-form__label" for="email">
                         {{ __('_field.email') }}
                     </label>
                     <input type="email"
-                           class="bk-form__input bk-max-w-250"
+                           class="bk-form__input bk-max-w-250 @error('email') border border-danger @enderror"
                            id="email"
                            name="email"
                            value="{{ $user->email }}">
+                    @error('email')
+                    <small class="bk-validation">
+                        {{ $message }}
+                    </small>
+                    @enderror
                 </div>
                 <div class="bk-form__field">
                     <label class="bk-form__label" for="">
@@ -86,11 +122,13 @@
                            type="password"
                            name="password"
                            placeholder="Новый пароль"
+                           minlength="8"
                            autocomplete="off"/>
                     <input class="bk-form__input bk-max-w-250 @error('password') border border-danger @enderror"
                            type="password"
                            name="password_confirmation"
                            placeholder="Повторите пароль"
+                           minlength="8"
                            autocomplete="off"/>
                     @error('password')
                     <div class="bk-validation">
@@ -99,7 +137,7 @@
                     @enderror
                 </div>
                 <div class="mt-1 mb-0 form-group">
-                    <button class="btn btn-outline-success">
+                    <button class="btn btn-outline-success" type="submit">
                         {{ __('_action.save') }}
                     </button>
                 </div>
