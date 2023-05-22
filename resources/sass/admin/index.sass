@@ -1,7 +1,6 @@
 // custom
 @import '../custom/variables'
 @import '../custom/global'
-@import '../custom/helpers'
 @import '../custom/fullcalendar'
 
 // components
@@ -34,16 +33,17 @@
     height: 100vh
 
     &-wrapper
-        display: flex
-        justify-content: center
         width: 100%
-        overflow: hidden
+        display: flex
+        flex-direction: column
+        align-items: center
+        gap: 10px
 
+    &-navbar,
     &-content
-        padding: 5px
-        display: grid
-        grid-template-rows: auto 1fr
-        grid-gap: 10px
         width: 100%
         max-width: 98%
+
+    &-content
+        padding: 2px
         overflow: auto
