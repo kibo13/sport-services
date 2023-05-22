@@ -29,6 +29,7 @@ class User extends Authenticatable
         'email',
         'photo',
         'password',
+        'is_notify',
     ];
 
     protected $hidden = [
@@ -50,7 +51,6 @@ class User extends Authenticatable
 
         static::creating(function ($user) {
             $user->role_id  = $user->role_id ?? RoleEnum::CLIENT;
-            $user->photo    = $user->photo ?? 'anonymous.svg';
             $user->password = Hash::make('secret');
         });
 
