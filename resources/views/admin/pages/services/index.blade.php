@@ -3,7 +3,7 @@
 @section('title-admin', __('_section.services'))
 
 @section('content-admin')
-    <section id="services-index" class="bk-overflow-hidden">
+    <section id="services-index">
         <h3>{{ __('_section.services') }}</h3>
 
         <div class="my-2 btn-group">

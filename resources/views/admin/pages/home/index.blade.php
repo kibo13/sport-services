@@ -3,7 +3,7 @@
 @section('title-admin', __('_section.home'))
 
 @section('content-admin')
-    <section id="home-index" class="bk-overflow-hidden">
+    <section id="home-index">
         <h3>{{ __('_section.home') }}</h3>
     </section>
 @endsection

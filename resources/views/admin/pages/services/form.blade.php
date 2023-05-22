@@ -3,7 +3,7 @@
 @section('title-admin', __('_section.services'))
 
 @section('content-admin')
-    <section id="services-form" class="bk-overflow-hidden">
+    <section id="services-form">
         <h3>{{ isset($service) ? __('_record.edit') : __('_record.new')  }}</h3>
 
         <form class="bk-form" action="{{ isset($service) ? route('services.update', $service) : route('services.store') }}" method="POST">

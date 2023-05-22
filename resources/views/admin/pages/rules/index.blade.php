@@ -3,7 +3,7 @@
 @section('title-admin', __('_section.rules'))
 
 @section('content-admin')
-    <section id="rules-index" class="bk-overflow-hidden">
+    <section id="rules-index">
         <h3>{{ __('_section.rules') }}</h3>
 
         <ul class="list-group">

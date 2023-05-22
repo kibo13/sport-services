@@ -26,8 +26,10 @@
     <div class="admin">
         @include('admin.partials.sidebar')
         <div class="admin-wrapper">
-            <div class="admin-content">
+            <div class="admin-navbar">
                 @include('admin.partials.navbar')
+            </div>
+            <div class="admin-content">
                 @yield('content-admin')
             </div>
         </div>
