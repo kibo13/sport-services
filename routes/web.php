@@ -22,8 +22,13 @@ Route::view('/mai', 'mai.index')->name('mai');
 Route::middleware('auth')->group(function () {
 
     Route::get('/', [HomeController::class, 'index'])->name('home');
-    Route::get('/me', [ProfileController::class, 'index'])->name('profile');
-    Route::match(['put', 'patch'], 'me/{user}', [ProfileController::class, 'update'])->name('profile.update');
+
+    Route::prefix('profile')->as('profile.')->group(function () {
+        Route::get('/', [ProfileController::class, 'index'])->name('index');
+        Route::match(['put', 'patch'], '/{user}', [ProfileController::class, 'update'])->name('update');
+        Route::post('/photo/update', [ProfileController::class, 'updatePhoto'])->name('update.photo');
+    });
+
     Route::get('/rules', [RuleController::class, 'index'])->name('rules');
 
     // Подключаем файл маршрутов users.php
