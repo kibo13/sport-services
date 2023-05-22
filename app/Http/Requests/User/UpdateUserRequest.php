@@ -54,11 +54,12 @@ class UpdateUserRequest extends FormRequest
     public function attributes(): array
     {
         return [
-            'role_id' => 'Роль',
-            'name'    => 'Имя',
-            'surname' => 'Фамилия',
-            'phone'   => 'Телефон',
-            'email'   => 'E-mail',
+            'role_id'    => 'Роль',
+            'name'       => 'Имя',
+            'surname'    => 'Фамилия',
+            'patronymic' => 'required',
+            'phone'      => 'Телефон',
+            'email'      => 'E-mail',
         ];
     }
 
