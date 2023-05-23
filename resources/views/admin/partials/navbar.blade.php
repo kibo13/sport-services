@@ -29,6 +29,9 @@
                         <a class="dropdown-item" href="{{ route('services.index') }}">
                             {{ __('_section.services') }}
                         </a>
+                        <a class="dropdown-item" href="{{ route('benefits.index') }}">
+                            {{ __('_section.benefits') }}
+                        </a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">

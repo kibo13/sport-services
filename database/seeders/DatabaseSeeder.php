@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             UserSeeder::class,
             ServiceSeeder::class,
+            BenefitSeeder::class,
         ]);
 
         // factories

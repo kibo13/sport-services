@@ -59,7 +59,9 @@
 {{--                                    @endif--}}
 {{--                                    @foreach($user->permissions as $permission)--}}
 {{--                                        @if($permission->name == $section->name)--}}
-{{--                                            {{ @tip($permission->note) }}--}}
+{{--                                            <span class="bk-field bk-field--tip">--}}
+{{--                                            {{ $permission->note }}--}}
+{{--                                            </span>--}}
 {{--                                        @endif--}}
 {{--                                    @endforeach--}}
 {{--                                </li>--}}

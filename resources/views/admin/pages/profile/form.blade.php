@@ -116,7 +116,9 @@
                 <div class="bk-form__field">
                     <label class="bk-form__label" for="">
                         {{ __('_field.password') }}
-                        {{ @tip('мин.длина пароля 8 символов') }}
+                        <span class="bk-field bk-field--tip">
+                            мин.длина пароля 8 символов
+                        </span>
                     </label>
                     <input class="bk-form__input bk-max-w-250 @error('password') border border-danger @enderror"
                            type="password"
