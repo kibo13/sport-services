@@ -21,7 +21,7 @@
                 </span>
             </a>
         </li>
-        <li class="sidebar-list__item {{ is_active('profile', 'sidebar-list__item--active') }}">
+        <li class="sidebar-list__item {{ is_active('profile*', 'sidebar-list__item--active') }}">
             <a class="sidebar-list__link" href="{{ route('profile.index') }}" title="{{ __('_section.profile') }}">
                 <i class="fa fa-user-circle-o sidebar-list__icon"></i>
                 <span class="sidebar-list__text">
@@ -29,6 +29,24 @@
                 </span>
             </a>
         </li>
+        @if(auth()->user()->isAdmin())
+        <li class="sidebar-list__item {{ is_active('clients*', 'sidebar-list__item--active') }}">
+            <a class="sidebar-list__link" href="{{ route('clients.index') }}" title="{{ __('_section.clients') }}">
+                <i class="fa fa-users sidebar-list__icon"></i>
+                <span class="sidebar-list__text">
+                    {{ __('_section.clients') }}
+                </span>
+            </a>
+        </li>
+        <li class="sidebar-list__item {{ is_active('trainers*', 'sidebar-list__item--active') }}">
+            <a class="sidebar-list__link" href="{{ route('trainers.index') }}" title="{{ __('_section.trainers') }}">
+                <i class="fa fa-universal-access sidebar-list__icon"></i>
+                <span class="sidebar-list__text">
+                    {{ __('_section.trainers') }}
+                </span>
+            </a>
+        </li>
+        @endif
         <li class="sidebar-list__item {{ is_active('rules', 'sidebar-list__item--active') }}">
             <a class="sidebar-list__link" href="{{ route('rules') }}" title="{{ __('_section.rules') }}">
                 <i class="fa fa-file-text-o sidebar-list__icon"></i>

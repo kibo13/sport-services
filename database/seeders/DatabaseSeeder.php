@@ -21,9 +21,10 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             ServiceSeeder::class,
             BenefitSeeder::class,
+            TrainerSeeder::class,
         ]);
 
         // factories
-        User::factory(10)->create();
+        User::factory(30)->create();
     }
 }
