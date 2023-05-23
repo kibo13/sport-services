@@ -31,3 +31,14 @@ function format_phone_number_for_display(?string $phoneNumber): ?string
 
     return $phoneNumber;
 }
+
+function format_discount_for_display($discount): string
+{
+    if ($discount == 1.0) {
+        return 'Бесплатно';
+    }
+
+    $discountPercentage = (int)($discount * 100);
+
+    return $discountPercentage . '%';
+}
