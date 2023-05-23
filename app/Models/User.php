@@ -28,6 +28,7 @@ class User extends Authenticatable
         'phone',
         'email',
         'photo',
+        'address',
         'password',
         'is_notify',
     ];

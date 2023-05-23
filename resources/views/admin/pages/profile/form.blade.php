@@ -114,6 +114,16 @@
                     @enderror
                 </div>
                 <div class="bk-form__field">
+                    <label class="bk-form__label" for="address">
+                        {{ __('_field.address') }}
+                    </label>
+                    <input type="text"
+                           class="bk-form__input"
+                           id="address"
+                           name="address"
+                           value="{{ $user->address }}">
+                </div>
+                <div class="bk-form__field">
                     <label class="bk-form__label" for="">
                         {{ __('_field.password') }}
                         <span class="bk-field bk-field--tip">

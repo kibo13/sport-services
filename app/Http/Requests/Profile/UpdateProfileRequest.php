@@ -59,6 +59,7 @@ class UpdateProfileRequest extends FormRequest
             'birthday'   => 'nullable',
             'phone'      => 'required|unique:users,phone,' . auth()->id(),
             'email'      => 'required|unique:users,email,' . auth()->id(),
+            'address'    => 'nullable',
             'password'   => 'nullable|confirmed|min:8',
             'is_notify'  => 'nullable',
         ];
