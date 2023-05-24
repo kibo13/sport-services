@@ -33,7 +33,7 @@ return [
     'sections'              => 'Разделы',
     'settings'              => 'Настройки',
     'services'              => 'Услуги',
-    'specialties'           => 'Специализации',
+    'specializations'       => 'Специализации',
     'stats'                 => 'Статистика',
     'support'               => 'Поддержка',
     'timetable'             => 'Расписание',

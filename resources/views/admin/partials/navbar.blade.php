@@ -26,11 +26,14 @@
                         {{ __('_section.catalog') }}
                     </a>
                     <div class="navbar-dropdown-menu dropdown-menu">
-                        <a class="dropdown-item" href="{{ route('services.index') }}">
-                            {{ __('_section.services') }}
-                        </a>
                         <a class="dropdown-item" href="{{ route('benefits.index') }}">
                             {{ __('_section.benefits') }}
+                        </a>
+                        <a class="dropdown-item" href="{{ route('specializations.index') }}">
+                            {{ __('_section.specializations') }}
+                        </a>
+                        <a class="dropdown-item" href="{{ route('services.index') }}">
+                            {{ __('_section.services') }}
                         </a>
                     </div>
                 </li>

@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             ServiceSeeder::class,
             BenefitSeeder::class,
+            SpecializationSeeder::class,
             TrainerSeeder::class,
         ]);
 
