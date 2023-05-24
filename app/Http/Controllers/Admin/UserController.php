@@ -6,55 +6,82 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\CreateUserRequest;
 use App\Http\Requests\User\UpdateUserRequest;
+use App\Models\Permission;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
+    private function getSectionNames(): Collection
+    {
+        return DB::table('permissions')
+            ->select('name')
+            ->groupBy('name')
+            ->get();
+    }
+
     public function index()
     {
         $users = User::query()->where('is_hidden', false)->get();
 
-        return view('admin.pages.users.index', compact('users'));
+        return view('admin.pages.users.index', [
+            'users'    => $users,
+            'sections' => $this->getSectionNames()
+        ]);
     }
 
     public function create()
     {
-        $roles = Role::all();
+        $roles       = Role::all();
+        $permissions = Permission::all();
 
         return view('admin.pages.users.form', [
-            'roles' => $roles
+            'roles'       => $roles,
+            'permissions' => $permissions,
+            'sections'    => $this->getSectionNames(),
         ]);
     }
 
     public function store(CreateUserRequest $request): RedirectResponse
     {
-        User::query()->create($request->validated());
+        $user = User::query()->create($request->validated());
+
+        if ($request->input('permissions')) {
+            $user->permissions()->attach($request->input('permissions'));
+        }
 
         return redirect()
             ->route('users.index')
             ->with('success', __('_record.added'));
     }
 
-    public function show(User $user)
-    {
-        //
-    }
-
     public function edit(User $user)
     {
-        $roles = Role::all();
+        $roles       = Role::all();
+        $permissions = Permission::all();
 
         return view('admin.pages.users.form', [
-            'user'  => $user,
-            'roles' => $roles
+            'user'        => $user,
+            'roles'       => $roles,
+            'permissions' => $permissions,
+            'sections'    => $this->getSectionNames(),
         ]);
     }
 
     public function update(UpdateUserRequest $request, User $user): RedirectResponse
     {
         $user->update($request->validated());
+
+        $user->permissions()->detach();
+
+        if ($request->input('permissions')) {
+            $user->permissions()->attach($request->input('permissions'));
+        }
+
+        $user->save();
 
         return redirect()
             ->route('users.index')

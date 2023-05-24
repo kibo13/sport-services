@@ -6,11 +6,13 @@
     <section id="specializations-index">
         <h3>{{ __('_section.specializations') }}</h3>
 
+        @if(is_access('specialization_full'))
         <div class="my-2 btn-group">
             <a class="btn btn-primary" href="{{ route('specializations.create') }}">
                 {{ __('_record.new') }}
             </a>
         </div>
+        @endif
 
         @if(session()->has('success'))
             <div class="my-2 alert alert-success" role="alert">
@@ -24,7 +26,9 @@
                     <th>#</th>
                     <th class="w-50 bk-min-w-250">{{ __('_field.name') }}</th>
                     <th class="w-50 bk-min-w-300 no-sort">{{ __('_field.note') }}</th>
+                    @if(is_access('specialization_full'))
                     <th class="no-sort">{{ __('_action.this') }}</th>
+                    @endif
                 </tr>
             </thead>
             <tbody>
@@ -42,6 +46,7 @@
                             @endif
                         </div>
                     </td>
+                    @if(is_access('specialization_full'))
                     <td>
                         <div class="bk-btn-actions">
                             <a class="bk-btn-action bk-btn-action--edit btn btn-warning"
@@ -55,6 +60,7 @@
                                data-tip="{{ __('_action.delete') }}" ></a>
                         </div>
                     </td>
+                    @endif
                 </tr>
             @endforeach
             </tbody>

@@ -52,21 +52,23 @@
                     </td>
                     <td>
                         <ul class="bk-btn-info">
-{{--                            @foreach($sections as $section)--}}
-{{--                                <li>--}}
-{{--                                    @if($user->permissions->where('name', $section->name)->count())--}}
-{{--                                        <strong>{{ $section->name }}</strong>--}}
-{{--                                    @endif--}}
-{{--                                    @foreach($user->permissions as $permission)--}}
-{{--                                        @if($permission->name == $section->name)--}}
-{{--                                            <span class="bk-field bk-field--tip">--}}
-{{--                                            {{ $permission->note }}--}}
-{{--                                            </span>--}}
-{{--                                        @endif--}}
-{{--                                    @endforeach--}}
-{{--                                </li>--}}
-{{--                            @endforeach--}}
-{{--                            {{ $user->permissions->count() ? @fa('fa fa-eye bk-btn-info--fa') : null }}--}}
+                            @foreach($sections as $section)
+                            <li>
+                                @if($user->permissions->where('name', $section->name)->count())
+                                    <strong>{{ $section->name }}</strong>
+                                @endif
+                                @foreach($user->permissions as $permission)
+                                @if($permission->name == $section->name)
+                                    <span class="bk-field bk-field--tip">
+                                    {{ $permission->note }}
+                                    </span>
+                                @endif
+                                @endforeach
+                            </li>
+                            @endforeach
+                            @if($user->permissions->count())
+                            <i class="fa fa-eye bk-btn-info--fa"></i>
+                            @endif
                         </ul>
                     </td>
                     <td>

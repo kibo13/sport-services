@@ -21,22 +21,30 @@
                     </a>
                 </li>
                 @endif
+                @if(is_setting('1'))
                 <li class="nav-item dropdown">
                     <a class="nav-link" href="#" data-toggle="dropdown">
                         {{ __('_section.catalog') }}
                     </a>
                     <div class="navbar-dropdown-menu dropdown-menu">
+                        @if(is_access('benefit_read'))
                         <a class="dropdown-item" href="{{ route('benefits.index') }}">
                             {{ __('_section.benefits') }}
                         </a>
+                        @endif
+                        @if(is_access('specialization_read'))
                         <a class="dropdown-item" href="{{ route('specializations.index') }}">
                             {{ __('_section.specializations') }}
                         </a>
+                        @endif
+                        @if(is_access('service_read'))
                         <a class="dropdown-item" href="{{ route('services.index') }}">
                             {{ __('_section.services') }}
                         </a>
+                        @endif
                     </div>
                 </li>
+                @endif
                 <li class="nav-item dropdown">
                     <a class="nav-link pr-3" href="#" data-toggle="dropdown">
                         {{ auth()->user()->surname_name }}

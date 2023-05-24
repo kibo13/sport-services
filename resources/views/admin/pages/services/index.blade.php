@@ -6,11 +6,13 @@
     <section id="services-index">
         <h3>{{ __('_section.services') }}</h3>
 
+        @if(is_access('service_full'))
         <div class="my-2 btn-group">
             <a class="btn btn-primary" href="{{ route('services.create') }}">
                 {{ __('_record.new') }}
             </a>
         </div>
+        @endif
 
         @if(session()->has('success'))
         <div class="my-2 alert alert-success" role="alert">
@@ -23,7 +25,9 @@
                 <tr>
                     <th>#</th>
                     <th class="w-100 bk-min-w-150">{{ __('_field.name') }}</th>
+                    @if(is_access('service_full'))
                     <th class="no-sort">{{ __('_action.this') }}</th>
+                    @endif
                 </tr>
             </thead>
             <tbody>
@@ -31,6 +35,7 @@
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $service->name }}</td>
+                    @if(is_access('service_full'))
                     <td>
                         <div class="bk-btn-actions">
                             <a class="bk-btn-action bk-btn-action--edit btn btn-warning"
@@ -44,6 +49,7 @@
                                data-tip="{{ __('_action.delete') }}" ></a>
                         </div>
                     </td>
+                    @endif
                 </tr>
             @endforeach
             </tbody>

@@ -105,42 +105,40 @@
                         </tr>
                         </thead>
                         <tbody>
-{{--                        @foreach($sections as $index => $section)--}}
-{{--                            <tr>--}}
-{{--                                <td>{{ ++$index }}</td>--}}
-{{--                                <td>{{ $section->name }}</td>--}}
-{{--                                @if($permissions->where('name', $section->name)->count() == 2)--}}
-{{--                                    @foreach($permissions as $permission)--}}
-{{--                                        @if($permission->name == $section->name)--}}
-{{--                                            <td class="text-center">--}}
-{{--                                                <input class="bk-form__checkbox {{$permission->slug}}"--}}
-{{--                                                       name="permissions[]"--}}
-{{--                                                       type="checkbox"--}}
-{{--                                                       value="{{ $permission->id }}"--}}
-{{--                                                       @isset($user) @if($user->permissions->where('id', $permission->id)->count())--}}
-{{--                                                       checked="checked"--}}
-{{--                                                    @endif @endisset>--}}
-{{--                                            </td>--}}
-{{--                                        @endif--}}
-{{--                                    @endforeach--}}
-{{--                                @else--}}
-{{--                                    @foreach($permissions as $permission)--}}
-{{--                                        @if($permission->name == $section->name)--}}
-{{--                                            <td class="text-center">--}}
-{{--                                                <input class="bk-form__checkbox {{$permission->slug}}"--}}
-{{--                                                       name="permissions[]"--}}
-{{--                                                       type="checkbox"--}}
-{{--                                                       value="{{ $permission->id }}"--}}
-{{--                                                       @isset($user) @if($user->permissions->where('id', $permission->id)->count())--}}
-{{--                                                       checked="checked"--}}
-{{--                                                    @endif @endisset>--}}
-{{--                                            </td>--}}
-{{--                                            <td class="text-center font-weight-bold">-</td>--}}
-{{--                                        @endif--}}
-{{--                                    @endforeach--}}
-{{--                                @endif--}}
-{{--                            </tr>--}}
-{{--                        @endforeach--}}
+                        @foreach($sections as $section)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $section->name }}</td>
+                                @if($permissions->where('name', $section->name)->count() == 2)
+                                @foreach($permissions as $permission)
+                                @if($permission->name == $section->name)
+                                <td class="text-center">
+                                    <input class="bk-form__checkbox {{ $permission->slug }}"
+                                           name="permissions[]"
+                                           type="checkbox"
+                                           value="{{ $permission->id }}"
+                                           @isset($user) @if($user->permissions->where('id', $permission->id)->count()) checked="checked" @endif @endisset>
+                                </td>
+                                @endif
+                                @endforeach
+                                @else
+                                @foreach($permissions as $permission)
+                                @if($permission->name == $section->name)
+                                <td class="text-center">
+                                    <input class="bk-form__checkbox {{ $permission->slug }}"
+                                           name="permissions[]"
+                                           type="checkbox"
+                                           value="{{ $permission->id }}"
+                                           @isset($user) @if($user->permissions->where('id', $permission->id)->count())
+                                           checked="checked"
+                                        @endif @endisset>
+                                </td>
+                                <td class="text-center font-weight-bold">-</td>
+                                @endif
+                                @endforeach
+                                @endif
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
