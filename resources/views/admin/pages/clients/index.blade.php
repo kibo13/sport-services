@@ -7,7 +7,7 @@
         <h3>{{ __('_section.clients') }}</h3>
 
         <div class="my-2 btn-group">
-            <a class="btn btn-success" href="#">
+            <a class="btn btn-success" href="{{ route('clients.export') }}">
                 {{ __('_action.export') }}
             </a>
         </div>

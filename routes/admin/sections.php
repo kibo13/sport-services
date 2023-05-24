@@ -18,13 +18,14 @@ Route::prefix('profile')->as('profile.')->group(function () {
 
 Route::prefix('clients')->as('clients.')->group(function () {
     Route::get('/', [ClientController::class, 'index'])->name('index');
+    Route::get('/export', [ClientController::class, 'export'])->name('export');
     Route::get('/{client}', [ClientController::class, 'show'])->name('show');
 });
 
 Route::prefix('trainers')->as('trainers.')->group(function () {
     Route::get('/', [TrainerController::class, 'index'])->name('index');
+    Route::get('/export', [TrainerController::class, 'export'])->name('export');
     Route::get('/{trainer}', [TrainerController::class, 'show'])->name('show');
-
 });
 
 Route::get('/rules', [RuleController::class, 'index'])->name('rules');

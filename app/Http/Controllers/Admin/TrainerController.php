@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Enums\Role;
+use App\Exports\TrainerExport;
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class TrainerController extends Controller
 {
@@ -17,6 +19,11 @@ class TrainerController extends Controller
             ->get();
 
         return view('admin.pages.trainers.index', compact('trainers'));
+    }
+
+    public function export(): BinaryFileResponse
+    {
+        return Excel::download(new TrainerExport(), 'trainers.xlsx');
     }
 
     public function show(User $trainer)

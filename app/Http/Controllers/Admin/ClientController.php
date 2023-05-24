@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Enums\Role;
+use App\Exports\ClientExport;
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class ClientController extends Controller
 {
@@ -17,6 +19,11 @@ class ClientController extends Controller
             ->get();
 
         return view('admin.pages.clients.index', compact('clients'));
+    }
+
+    public function export(): BinaryFileResponse
+    {
+        return Excel::download(new ClientExport(), 'clients.xlsx');
     }
 
     public function show(User $client)
