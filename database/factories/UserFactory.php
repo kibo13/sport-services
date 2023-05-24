@@ -23,7 +23,7 @@ class UserFactory extends Factory
             'birthday'          => $this->faker->dateTimeBetween('-25 years', '-16 years')->format('Y-m-d'),
             'phone'             => $this->faker->unique()->numerify('771#######'),
             'email'             => $this->faker->unique()->safeEmail(),
-            'address'           => $this->faker->address(),
+            'address'           => $this->faker->streetAddress() . '-' . $this->faker->buildingNumber(),
             'email_verified_at' => now(),
             'password'          => Hash::make('secret'),
             'remember_token'    => Str::random(10),
