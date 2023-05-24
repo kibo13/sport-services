@@ -47,14 +47,24 @@
             </a>
         </li>
         @endif
-        <li class="sidebar-list__item {{ is_active('rules', 'sidebar-list__item--active') }}">
-            <a class="sidebar-list__link" href="{{ route('rules') }}" title="{{ __('_section.rules') }}">
+        <li class="sidebar-list__item {{ is_active('rules*', 'sidebar-list__item--active') }}">
+            <a class="sidebar-list__link" href="{{ route('rules.index') }}" title="{{ __('_section.rules') }}">
                 <i class="fa fa-file-text-o sidebar-list__icon"></i>
                 <span class="sidebar-list__text">
                     {{ __('_section.rules') }}
                 </span>
             </a>
         </li>
+        <li class="sidebar-list__item {{ is_active('report*', 'sidebar-list__item--active') }}">
+            <a class="sidebar-list__link" href="{{ route('reports.index') }}" title="{{ __('_section.reports') }}">
+                <i class="fa fa-file-text-o sidebar-list__icon"></i>
+                <span class="sidebar-list__text">
+                    {{ __('_section.reports') }}
+                </span>
+            </a>
+        </li>
+{{--        @if(auth()->user()->permissions()->pluck('slug')->contains('report_read'))--}}
+{{--        @endif--}}
 {{--        <li class="sidebar-list__item {{ @is_active('profile*', 'sidebar-list__item--active') }}">--}}
 {{--            <a class="sidebar-list__link"--}}
 {{--               href=""--}}
@@ -173,18 +183,7 @@
 {{--            </a>--}}
 {{--        </li>--}}
 {{--        @endif--}}
-{{--        @if(@is_access('report_read'))--}}
-{{--        <li class="sidebar-list__item {{ @is_active('admin.report*', 'sidebar-list__item--active') }}">--}}
-{{--            <a class="sidebar-list__link"--}}
-{{--               href="{{ route('admin.reports.index') }}"--}}
-{{--               title="{{ __('_section.reports') }}">--}}
-{{--                {{ @fa('fa-file-text-o sidebar-list__icon') }}--}}
-{{--                <span class="sidebar-list__text">--}}
-{{--                {{ __('_section.reports') }}--}}
-{{--            </span>--}}
-{{--            </a>--}}
-{{--        </li>--}}
-{{--        @endif--}}
+
 {{--        @if(@is_access('help_read'))--}}
 {{--        <li class="sidebar-list__item {{ @is_active('admin.support*', 'sidebar-list__item--active') }}">--}}
 {{--            <a class="sidebar-list__link"--}}

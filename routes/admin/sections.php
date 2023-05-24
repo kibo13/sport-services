@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\RuleController;
 use App\Http\Controllers\Admin\TrainerController;
 
@@ -28,4 +29,5 @@ Route::prefix('trainers')->as('trainers.')->group(function () {
     Route::get('/{trainer}', [TrainerController::class, 'show'])->name('show');
 });
 
-Route::get('/rules', [RuleController::class, 'index'])->name('rules');
+Route::get('/rules', [RuleController::class, 'index'])->name('rules.index');
+Route::get('/reports', [ReportController::class, 'index'])->name('reports.index');
