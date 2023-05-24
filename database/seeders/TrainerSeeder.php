@@ -31,7 +31,7 @@ class TrainerSeeder extends Seeder
                 'birthday'          => $faker->dateTimeBetween('-35 years', '-25 years')->format('Y-m-d'),
                 'phone'             => $faker->unique()->numerify('771#######'),
                 'email'             => $faker->unique()->safeEmail(),
-                'address'           => $faker->address(),
+                'address'           => $faker->streetAddress() . '-' . $faker->buildingNumber(),
                 'email_verified_at' => now(),
                 'password'          => Hash::make('secret'),
                 'remember_token'    => Str::random(10),
