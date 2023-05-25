@@ -37,11 +37,6 @@
                             {{ __('_section.specializations') }}
                         </a>
                         @endif
-                        @if(is_access('service_read'))
-                        <a class="dropdown-item" href="{{ route('services.index') }}">
-                            {{ __('_section.services') }}
-                        </a>
-                        @endif
                     </div>
                 </li>
                 @endif
