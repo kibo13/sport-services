@@ -64,6 +64,10 @@ return [
     'total'                 => 'Итого',
     'type'                  => 'Тип',
     'type_lesson'           => 'Вид занятия',
+    'unit'                  => 'Единица услуги',
+    'service_kid'           => 'Детский',
+    'service_student'       => 'Студенческий',
+    'service_adult'         => 'Взрослый',
 
     // users
     'username'              => 'Логин',
@@ -86,7 +90,7 @@ return [
     'passport'              => 'Паспорт',
     'address_doc'           => 'Адрес прописки',
     'address_fact'          => 'Адрес проживания',
-    'activity'              => 'Вид деятельности',
+    'activity'              => 'Активность',
 
     // specialties
     'specialty'             => 'Специализация',
