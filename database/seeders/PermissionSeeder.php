@@ -67,13 +67,13 @@ class PermissionSeeder extends Seeder
             [
                 'name'       => 'Услуги',
                 'slug'       => 'service_read',
-                'is_setting' => 1,
+                'is_setting' => 0,
                 'note'       => 'Просмотр',
             ],
             [
                 'name'       => 'Услуги',
                 'slug'       => 'service_full',
-                'is_setting' => 1,
+                'is_setting' => 0,
                 'note'       => 'Редактирование',
             ],
             [
