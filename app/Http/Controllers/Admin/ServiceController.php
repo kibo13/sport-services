@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 
+use App\Enums\Service\ServiceActivity;
+use App\Enums\Service\ServiceCategory;
+use App\Enums\Service\ServiceType;
 use App\Http\Controllers\Controller;
 use App\Models\Service;
 use Illuminate\Http\RedirectResponse;
@@ -12,23 +15,17 @@ class ServiceController extends Controller
 {
     public function index()
     {
-        $services = Service::all();
+        $activities = ServiceActivity::NAMES;
+        $types      = ServiceType::NAMES;
+        $categories = ServiceCategory::NAMES;
+        $services   = Service::all();
 
-        return view('admin.pages.services.index', compact('services'));
-    }
-
-    public function create()
-    {
-        return view('admin.pages.services.form');
-    }
-
-    public function store(Request $request): RedirectResponse
-    {
-        Service::query()->create($request->all());
-
-        return redirect()
-            ->route('services.index')
-            ->with('success', __('_record.added'));
+        return view('admin.pages.services.index', [
+            'activities' => $activities,
+            'types'      => $types,
+            'categories' => $categories,
+            'services'   => $services,
+        ]);
     }
 
     public function edit(Service $service)
@@ -43,14 +40,5 @@ class ServiceController extends Controller
         return redirect()
             ->route('services.index')
             ->with('success', __('_record.updated'));
-    }
-
-    public function destroy(Service $service): RedirectResponse
-    {
-        $service->delete();
-
-        return redirect()
-            ->route('services.index')
-            ->with('success', __('_record.deleted'));
     }
 }
