@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\RuleController;
+use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\TrainerController;
 
 use Illuminate\Support\Facades\Route;
@@ -16,6 +17,16 @@ Route::prefix('profile')->as('profile.')->group(function () {
     Route::get('/', [ProfileController::class, 'index'])->name('index');
     Route::match(['put', 'patch'], '/{user}', [ProfileController::class, 'update'])->name('update');
     Route::post('/photo/update', [ProfileController::class, 'updatePhoto'])->name('update.photo');
+});
+
+Route::prefix('services')->as('services.')->group(function () {
+    Route::middleware('permission:service_read')->group(function () {
+        Route::get('/', [ServiceController::class, 'index'])->name('index');
+    });
+    Route::middleware('permission:service_full')->group(function () {
+        Route::get('/{service}/edit', [ServiceController::class, 'edit'])->name('edit');
+        Route::match(['put', 'patch'], '/{service}', [ServiceController::class, 'update'])->name('update');
+    });
 });
 
 Route::prefix('clients')->as('clients.')->group(function () {
