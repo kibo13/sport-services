@@ -67,6 +67,16 @@
             </a>
         </li>
         @endif
+        @if(is_access('event_read'))
+        <li class="sidebar-list__item {{ is_active('event*', 'sidebar-list__item--active') }}">
+            <a class="sidebar-list__link" href="{{ route('events.index') }}" title="{{ __('_section.events') }}">
+                <i class="fa fa-calendar-o  sidebar-list__icon"></i>
+                <span class="sidebar-list__text">
+                {{ __('_section.events') }}
+            </span>
+            </a>
+        </li>
+        @endif
         @if(is_access('report_read'))
         <li class="sidebar-list__item {{ is_active('report*', 'sidebar-list__item--active') }}">
             <a class="sidebar-list__link" href="{{ route('reports.index') }}" title="{{ __('_section.reports') }}">
