@@ -72,8 +72,8 @@
             <a class="sidebar-list__link" href="{{ route('events.index') }}" title="{{ __('_section.events') }}">
                 <i class="fa fa-calendar-o  sidebar-list__icon"></i>
                 <span class="sidebar-list__text">
-                {{ __('_section.events') }}
-            </span>
+                    {{ __('_section.events') }}
+                </span>
             </a>
         </li>
         @endif
@@ -83,6 +83,16 @@
                 <i class="fa fa-file-text-o sidebar-list__icon"></i>
                 <span class="sidebar-list__text">
                     {{ __('_section.reports') }}
+                </span>
+            </a>
+        </li>
+        @endif
+        @if(is_access('stat_read'))
+        <li class="sidebar-list__item {{ is_active('statistic*', 'sidebar-list__item--active') }}">
+            <a class="sidebar-list__link" href="{{ route('statistics.index') }}" title="{{ __('_section.statistics') }}">
+                <i class="fa fa-bar-chart  sidebar-list__icon"></i>
+                <span class="sidebar-list__text">
+                    {{ __('_section.statistics') }}
                 </span>
             </a>
         </li>

@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\RuleController;
 use App\Http\Controllers\Admin\ServiceController;
+use App\Http\Controllers\Admin\StatisticController;
 use App\Http\Controllers\Admin\TrainerController;
 
 use Illuminate\Support\Facades\Route;
@@ -61,4 +62,8 @@ Route::prefix('events')->as('events.')->group(function () {
 
 Route::middleware('permission:report_read')->group(function () {
     Route::get('/reports', [ReportController::class, 'index'])->name('reports.index');
+});
+
+Route::middleware('permission:stat_read')->group(function () {
+    Route::get('/statistics', [StatisticController::class, 'index'])->name('statistics.index');
 });

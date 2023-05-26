@@ -34,7 +34,7 @@ return [
     'settings'              => 'Настройки',
     'services'              => 'Услуги',
     'specializations'       => 'Специализации',
-    'stats'                 => 'Статистика',
+    'statistics'            => 'Статистика',
     'support'               => 'Поддержка',
     'timetable'             => 'Расписание',
     'titles'                => 'Названия групп',
