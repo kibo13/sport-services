@@ -36,7 +36,7 @@ class BenefitController extends Controller
         return view('admin.pages.benefits.form', compact('benefit'));
     }
 
-    public function update(Request $request, Benefit $benefit)
+    public function update(Request $request, Benefit $benefit): RedirectResponse
     {
         $benefit->update($request->all());
 
