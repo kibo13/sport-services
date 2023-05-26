@@ -39,6 +39,16 @@
             </a>
         </li>
         @endif
+        @if(is_access('pass_read'))
+        <li class="sidebar-list__item {{ is_active('pass*', 'sidebar-list__item--active') }}">
+            <a class="sidebar-list__link" href="{{ route('passes.index') }}" title="{{ __('_section.passes') }}">
+                <i class="fa fa-address-book-o sidebar-list__icon"></i>
+                <span class="sidebar-list__text">
+                    {{ __('_section.passes') }}
+                </span>
+            </a>
+        </li>
+        @endif
         <li class="sidebar-list__item {{ is_active('rules*', 'sidebar-list__item--active') }}">
             <a class="sidebar-list__link" href="{{ route('rules.index') }}" title="{{ __('_section.rules') }}">
                 <i class="fa fa-file-text-o sidebar-list__icon"></i>

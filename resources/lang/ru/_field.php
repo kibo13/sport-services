@@ -65,6 +65,7 @@ return [
     'trainer'               => 'Тренер',
     'type'                  => 'Тип',
     'type_lesson'           => 'Вид занятия',
+    'type_service'          => 'Вид услуги',
     'unit'                  => 'Единица услуги',
     'venue'                 => 'Место проведения',
     'service_kid'           => 'Детский',
