@@ -3,6 +3,10 @@
 namespace Database\Factories;
 
 
+use App\Enums\Service\ServiceType;
+use App\Models\Pass;
+use App\Models\Service;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -42,5 +46,35 @@ class UserFactory extends Factory
                 'email_verified_at' => null,
             ];
         });
+    }
+
+    /**
+     * Define the callback to run after creating a user.
+     *
+     * @return $this
+     */
+    public function configure(): UserFactory
+    {
+        return $this->afterCreating(function (User $user) {
+            Pass::query()->create([
+                'client_id'  => $user->id,
+                'service_id' => $this->getRandomServiceId(),
+            ]);
+        });
+    }
+
+    /**
+     * Generate a random service ID.
+     *
+     * @return int
+     */
+    private function getRandomServiceId(): int
+    {
+        $service = Service::query()
+            ->where('type_id', ServiceType::PASS)
+            ->inRandomOrder()
+            ->first();
+
+        return $service->id;
     }
 }
