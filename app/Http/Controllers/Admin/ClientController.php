@@ -3,20 +3,18 @@
 namespace App\Http\Controllers\Admin;
 
 
-use App\Enums\Role;
 use App\Exports\ClientExport;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Repositories\Client\ClientRepositoryInterface;
 use Maatwebsite\Excel\Facades\Excel;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class ClientController extends Controller
 {
-    public function index()
+    public function index(ClientRepositoryInterface $clientRepository)
     {
-        $clients = User::query()
-            ->where('role_id', Role::CLIENT)
-            ->get();
+        $clients = $clientRepository->getAll();
 
         return view('admin.pages.clients.index', compact('clients'));
     }

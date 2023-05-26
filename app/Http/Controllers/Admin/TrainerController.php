@@ -3,20 +3,18 @@
 namespace App\Http\Controllers\Admin;
 
 
-use App\Enums\Role;
 use App\Exports\TrainerExport;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Repositories\Trainer\TrainerRepositoryInterface;
 use Maatwebsite\Excel\Facades\Excel;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class TrainerController extends Controller
 {
-    public function index()
+    public function index(TrainerRepositoryInterface $trainerRepository)
     {
-        $trainers = User::query()
-            ->where('role_id', Role::INSTRUCTOR)
-            ->get();
+        $trainers = $trainerRepository->getAll();
 
         return view('admin.pages.trainers.index', compact('trainers'));
     }
