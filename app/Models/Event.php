@@ -13,16 +13,32 @@ class Event extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'name',
-        'type_id',
-        'event_date',
-        'venue',
+        'title',
+        'specialization_id',
         'trainer_id',
+        'start',
+        'end',
+        'place',
+        'note',
     ];
 
     protected $dates = [
         'deleted_at'
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::saving(function ($event) {
+            $event->end = $event->start;
+        });
+    }
+
+    public function specialization(): BelongsTo
+    {
+        return $this->belongsTo(Specialization::class);
+    }
 
     public function trainer(): BelongsTo
     {

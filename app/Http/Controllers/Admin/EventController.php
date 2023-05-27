@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 
-use App\Enums\Event\EventType;
 use App\Http\Controllers\Controller;
 use App\Models\Event;
+use App\Models\Specialization;
 use App\Repositories\Trainer\TrainerRepositoryInterface;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -21,11 +21,11 @@ class EventController extends Controller
 
     public function create(TrainerRepositoryInterface $trainerRepository)
     {
-        $types = EventType::NAMES;
+        $specializations = Specialization::all();
         $trainers = $trainerRepository->getAll();
 
         return view('admin.pages.events.form', [
-            'types' => $types,
+            'specializations' => $specializations,
             'trainers' => $trainers
         ]);
     }
@@ -41,12 +41,12 @@ class EventController extends Controller
 
     public function edit(Event $event, TrainerRepositoryInterface $trainerRepository)
     {
-        $types = EventType::NAMES;
-        $trainers = $trainerRepository->getAll();
+        $specializations = Specialization::all();
+        $trainers = $trainerRepository->getTrainersBySpecialization($event->specialization_id);
 
         return view('admin.pages.events.form', [
             'event' => $event,
-            'types' => $types,
+            'specializations' => $specializations,
             'trainers' => $trainers
         ]);
     }

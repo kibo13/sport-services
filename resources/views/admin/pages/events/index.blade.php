@@ -3,7 +3,7 @@
 @section('title-admin', __('_section.events'))
 
 @section('content-admin')
-    <section id="events-index">
+    <section id="event-index">
         <h3>{{ __('_section.events') }}</h3>
 
         @if(is_access('event_full'))
@@ -22,24 +22,24 @@
 
         <table id="is-datatable" class="dataTables table table-bordered table-hover table-responsive">
             <thead class="thead-light">
-            <tr>
-                <th>#</th>
-                <th class="w-25 bk-min-w-250">{{ __('_field.name') }}</th>
-                <th class="w-25 bk-min-w-250">{{ __('_field.type') }}</th>
-                <th class="w-25 bk-min-w-250">{{ __('_field.date') }}</th>
-                <th class="w-25 bk-min-w-250">{{ __('_field.trainer') }}</th>
-                @if(is_access('event_full'))
-                <th class="no-sort">{{ __('_action.this') }}</th>
-                @endif
-            </tr>
+                <tr>
+                    <th>#</th>
+                    <th class="w-25 bk-min-w-250">{{ __('_field.name') }}</th>
+                    <th class="w-25 bk-min-w-250">{{ __('_field.event_type') }}</th>
+                    <th class="w-25 bk-min-w-250">{{ __('_field.event_date') }}</th>
+                    <th class="w-25 bk-min-w-250">{{ __('_field.trainer') }}</th>
+                    @if(is_access('event_full'))
+                    <th class="no-sort">{{ __('_action.this') }}</th>
+                    @endif
+                </tr>
             </thead>
             <tbody>
             @foreach($events as $event)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $event->name }}</td>
-                    <td>{{ \App\Enums\Event\EventType::NAMES[$event->type_id] }}</td>
-                    <td>{{ format_date_for_display($event->event_date) }}</td>
+                    <td>{{ $event->title }}</td>
+                    <td>{{ $event->specialization->name }}</td>
+                    <td>{{ format_date_for_display($event->start) }}</td>
                     <td title="{{ $event->trainer->full_name }}">
                         {{ $event->trainer->short_name }}
                     </td>
