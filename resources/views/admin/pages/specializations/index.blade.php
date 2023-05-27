@@ -41,8 +41,6 @@
                             {{ $specialization->note }}
                             @if($specialization->note)
                             <i class="fa fa-eye bk-btn-info--fa"></i>
-                            @else
-                            null
                             @endif
                         </div>
                     </td>
@@ -51,13 +49,13 @@
                         <div class="bk-btn-actions">
                             <a class="bk-btn-action bk-btn-action--edit btn btn-warning"
                                href="{{ route('specializations.edit', $specialization) }}"
-                               data-tip="{{ __('_action.edit') }}" ></a>
+                               title="{{ __('_action.edit') }}" ></a>
                             <a class="bk-btn-action bk-btn-action--delete btn btn-danger"
                                href="javascript:void(0)"
                                data-id="{{ $specialization->id }}"
                                data-toggle="modal"
                                data-target="#bk-delete-modal"
-                               data-tip="{{ __('_action.delete') }}" ></a>
+                               title="{{ __('_action.delete') }}" ></a>
                         </div>
                     </td>
                     @endif

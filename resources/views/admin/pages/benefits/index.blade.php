@@ -42,13 +42,13 @@
                         <div class="bk-btn-actions">
                             <a class="bk-btn-action bk-btn-action--edit btn btn-warning"
                                href="{{ route('benefits.edit', $benefit) }}"
-                               data-tip="{{ __('_action.edit') }}" ></a>
+                               title="{{ __('_action.edit') }}" ></a>
                             <a class="bk-btn-action bk-btn-action--delete btn btn-danger"
                                href="javascript:void(0)"
                                data-id="{{ $benefit->id }}"
                                data-toggle="modal"
                                data-target="#bk-delete-modal"
-                               data-tip="{{ __('_action.delete') }}" ></a>
+                               title="{{ __('_action.delete') }}" ></a>
                         </div>
                     </td>
                     @endif

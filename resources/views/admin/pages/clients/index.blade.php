@@ -52,7 +52,7 @@
                         <div class="bk-btn-actions">
                             <a class="bk-btn-action bk-btn-action--info btn btn-info"
                                href="{{ route('clients.show', $client) }}"
-                               data-tip="{{ __('_action.look') }}" ></a>
+                               title="{{ __('_action.look') }}" ></a>
                         </div>
                     </td>
                 </tr>
