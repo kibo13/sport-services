@@ -3,7 +3,7 @@
 @section('title-admin', __('_section.users'))
 
 @section('content-admin')
-    <section id="users-index">
+    <section id="user-index">
         <h3>{{ __('_section.users') }}</h3>
 
         @if(auth()->user()->isAdmin())

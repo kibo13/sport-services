@@ -1,6 +1,6 @@
-const users_form = document.getElementById('users-form')
+const userForm = document.getElementById('user-form')
 
-if (users_form) {
+if (userForm) {
     let phoneInput = document.getElementById('phone');
     let phoneMask = new Inputmask('+7 (999) 999-99-99');
     phoneMask.mask(phoneInput);
