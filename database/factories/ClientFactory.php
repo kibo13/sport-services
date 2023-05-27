@@ -4,15 +4,22 @@ namespace Database\Factories;
 
 
 use App\Enums\Service\ServiceType;
-use App\Models\Pass;
+use App\Models\Card;
 use App\Models\Service;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
-class UserFactory extends Factory
+class ClientFactory extends Factory
 {
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    protected $model = User::class;
+
     /**
      * Define the model's default state.
      *
@@ -53,10 +60,10 @@ class UserFactory extends Factory
      *
      * @return $this
      */
-    public function configure(): UserFactory
+    public function configure(): ClientFactory
     {
         return $this->afterCreating(function (User $user) {
-            Pass::query()->create([
+            Card::query()->create([
                 'client_id'  => $user->id,
                 'service_id' => $this->getRandomServiceId(),
             ]);

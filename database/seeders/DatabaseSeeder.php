@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 
-use App\Models\User;
+use Database\Factories\ClientFactory;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -28,6 +28,6 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // factories
-        User::factory(30)->create();
+        ClientFactory::new()->count(30)->create();
     }
 }
