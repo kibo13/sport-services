@@ -76,10 +76,10 @@ class TrainerFactory extends Factory
      */
     private function getRandomSpecializationId(): int
     {
-        $service = Specialization::query()
+        $specialization = Specialization::query()
             ->inRandomOrder()
             ->first();
 
-        return $service->id;
+        return $specialization->id;
     }
 }
