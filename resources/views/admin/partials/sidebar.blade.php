@@ -39,12 +39,12 @@
             </a>
         </li>
         @endif
-        @if(is_access('pass_read'))
-        <li class="sidebar-list__item {{ is_active('pass*', 'sidebar-list__item--active') }}">
-            <a class="sidebar-list__link" href="{{ route('passes.index') }}" title="{{ __('_section.passes') }}">
+        @if(is_access('card_read'))
+        <li class="sidebar-list__item {{ is_active('card*', 'sidebar-list__item--active') }}">
+            <a class="sidebar-list__link" href="{{ route('cards.index') }}" title="{{ __('_section.cards') }}">
                 <i class="fa fa-address-book-o sidebar-list__icon"></i>
                 <span class="sidebar-list__text">
-                    {{ __('_section.passes') }}
+                    {{ __('_section.cards') }}
                 </span>
             </a>
         </li>

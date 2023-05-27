@@ -77,14 +77,14 @@ class PermissionSeeder extends Seeder
                 'note'       => 'Редактирование',
             ],
             [
-                'name'       => 'Абонементы',
-                'slug'       => 'pass_read',
+                'name'       => 'Карточки',
+                'slug'       => 'card_read',
                 'is_setting' => 0,
                 'note'       => 'Просмотр',
             ],
             [
-                'name'       => 'Абонементы',
-                'slug'       => 'pass_full',
+                'name'       => 'Карточки',
+                'slug'       => 'card_full',
                 'is_setting' => 0,
                 'note'       => 'Редактирование',
             ],

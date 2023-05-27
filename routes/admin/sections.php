@@ -3,7 +3,7 @@
 use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\HomeController;
-use App\Http\Controllers\Admin\PassController;
+use App\Http\Controllers\Admin\CardController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\RuleController;
@@ -32,16 +32,16 @@ Route::prefix('services')->as('services.')->group(function () {
     });
 });
 
-Route::prefix('passes')->as('passes.')->group(function () {
-    Route::middleware('permission:pass_read')->group(function () {
-        Route::get('/', [PassController::class, 'index'])->name('index');
+Route::prefix('cards')->as('cards.')->group(function () {
+    Route::middleware('permission:card_read')->group(function () {
+        Route::get('/', [CardController::class, 'index'])->name('index');
     });
-    Route::middleware('permission:pass_full')->group(function () {
-        Route::get('/create', [PassController::class, 'create'])->name('create');
-        Route::post('/', [PassController::class, 'store'])->name('store');
-        Route::get('/{pass}/edit', [PassController::class, 'edit'])->name('edit');
-        Route::match(['put', 'patch'], '/{pass}', [PassController::class, 'update'])->name('update');
-        Route::delete('/{pass}', [PassController::class, 'destroy'])->name('destroy');
+    Route::middleware('permission:card_full')->group(function () {
+        Route::get('/create', [CardController::class, 'create'])->name('create');
+        Route::post('/', [CardController::class, 'store'])->name('store');
+        Route::get('/{card}/edit', [CardController::class, 'edit'])->name('edit');
+        Route::match(['put', 'patch'], '/{card}', [CardController::class, 'update'])->name('update');
+        Route::delete('/{card}', [CardController::class, 'destroy'])->name('destroy');
     });
 });
 

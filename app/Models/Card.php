@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Pass extends Model
+class Card extends Model
 {
     use HasFactory, SoftDeletes;
 
@@ -25,9 +25,9 @@ class Pass extends Model
     {
         parent::boot();
 
-        static::creating(function ($pass) {
-            $pass->start_date = date('Y-m-d');
-            $pass->end_date = date('Y-m-d', strtotime('+1 month'));
+        static::creating(function ($card) {
+            $card->start = date('Y-m-d');
+            $card->end   = date('Y-m-d', strtotime('+1 month'));
         });
     }
 
