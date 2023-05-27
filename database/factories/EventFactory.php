@@ -22,10 +22,12 @@ class EventFactory extends Factory
      */
     public function definition(): array
     {
+        $specializationId = $this->getRandomSpecializationId();
+
         return [
             'title'             => 'Соревнование ' . $this->faker->unique()->numerify('#####'),
-            'specialization_id' => $this->getRandomSpecializationId(),
-            'trainer_id'        => $this->getRandomTrainerId(),
+            'specialization_id' => $specializationId,
+            'trainer_id'        => $this->getRandomTrainerId($specializationId),
             'start'             => $this->faker->dateTimeBetween('+7 days', '+3 months')->format('Y-m-d'),
             'place'             => $this->places[array_rand($this->places)],
         ];
@@ -46,15 +48,15 @@ class EventFactory extends Factory
     }
 
     /**
-     * Generate a random trainer ID.
+     * Generate a random trainer ID from the given specialization.
      *
+     * @param int $specializationId
      * @return int
      */
-    private function getRandomTrainerId(): int
+    private function getRandomTrainerId(int $specializationId): int
     {
         $trainerId = Specialization::query()
-            ->inRandomOrder()
-            ->first()
+            ->find($specializationId)
             ->trainers()
             ->inRandomOrder()
             ->value('id');
