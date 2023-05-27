@@ -57,7 +57,10 @@ Route::prefix('trainers')->as('trainers.')->group(function () {
     Route::middleware('permission:trainer_read')->group(function () {
         Route::get('/', [TrainerController::class, 'index'])->name('index');
         Route::get('/export', [TrainerController::class, 'export'])->name('export');
-        Route::get('/{trainer}', [TrainerController::class, 'show'])->name('show');
+    });
+    Route::middleware('permission:trainer_full')->group(function () {
+        Route::get('/{trainer}/edit', [TrainerController::class, 'edit'])->name('edit');
+        Route::match(['put', 'patch'], '/{trainer}', [TrainerController::class, 'update'])->name('update');
     });
 });
 

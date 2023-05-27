@@ -17,10 +17,12 @@
                 <tr>
                     <th>#</th>
                     <th class="w-25 bk-min-w-250">{{ __('_field.fio') }}</th>
-                    <th class="w-25 bk-min-w-200">{{ __('_field.phone') }}</th>
+                    <th class="w-25 bk-min-w-250">{{ __('_field.phone') }}</th>
                     <th class="w-25 bk-min-w-250">{{ __('_field.email') }}</th>
-                    <th class="w-25 no-sort bk-min-w-150">{{ __('_field.photo') }}</th>
+                    <th class="w-25 bk-min-w-250">{{ __('_field.specializations') }}</th>
+                    @if(is_access('trainer_full'))
                     <th class="no-sort">{{ __('_action.this') }}</th>
+                    @endif
                 </tr>
             </thead>
             <tbody>
@@ -39,22 +41,23 @@
                         </a>
                     </td>
                     <td>
-                        <div class="bk-zoom">
-                            {{ __('_action.look') }}
-                            <img class="bk-zoom__img"
-                                 src="{{ $trainer->photo ? asset('/storage/' . $trainer->photo) : asset('/assets/icons/anonymous.svg') }}"
-                                 alt="{{ $trainer->full_name }}"
-                                 tabindex="0">
-                            <div class="bk-zoom__bg"></div>
-                        </div>
+                        <ul>
+                            @foreach($trainer->specializations as $specialization)
+                            <li>
+                                {{ $specialization->name }}
+                            </li>
+                            @endforeach
+                        </ul>
                     </td>
+                    @if(is_access('trainer_full'))
                     <td>
                         <div class="bk-btn-actions">
-                            <a class="bk-btn-action bk-btn-action--info btn btn-info"
-                               href="{{ route('trainers.show', $trainer) }}"
-                               data-tip="{{ __('_action.look') }}" ></a>
+                            <a class="bk-btn-action bk-btn-action--edit btn btn-warning"
+                               href="{{ route('trainers.edit', $trainer) }}"
+                               title="{{ __('_action.edit') }}"></a>
                         </div>
                     </td>
+                    @endif
                 </tr>
             @endforeach
             </tbody>
