@@ -2,18 +2,14 @@ export const tag = {
     event(data) {
         return `
             <ul>
-                <li>
-                    <strong>Событие: </strong>
-                    <span>${data.title}</span>
-                </li>
-                <li>
-                    <strong>Место проведения: </strong>
-                    <span>${data.place}</span>
-                </li>
-                <li>
-                    <strong>Название концертного номера: </strong>
-                    <span>${data.description}</span>
-                </li>
+                <li class="font-weight-bold">Событие</li>
+                <li>${data.title}</li>
+                <li class="font-weight-bold">Вид</li>
+                <li>${data.type}</li>
+                <li class="font-weight-bold">Тренер</li>
+                <li>${data.trainer}</li>
+                <li class="font-weight-bold">Место проведения</li>
+                <li>${data.place}</li>
             </ul>
         `
     },

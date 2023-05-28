@@ -14,7 +14,7 @@ require('./components/tooltip')
 // require('./custom/comparison')
 
 // pages
-// require('./pages/home')
+require('./pages/home')
 require('./pages/users')
 require('./pages/profile')
 require('./pages/events')
