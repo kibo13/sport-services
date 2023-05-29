@@ -43,8 +43,8 @@
                             </li>
                         </ul>
                     </td>
-                    <td>{{ format_date_for_display($card->start_date) }}</td>
-                    <td>{{ format_date_for_display($card->end_date) }}</td>
+                    <td>{{ format_date_for_display($card->start) }}</td>
+                    <td>{{ format_date_for_display($card->end) }}</td>
                 </tr>
             @endforeach
             </tbody>
