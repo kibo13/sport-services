@@ -35,6 +35,7 @@
         </div>
     </div>
     @include('components.modals.delete')
+    @yield('scripts')
 {{--    @include('components.modals.confirm')--}}
 {{--    @include('components.modals.event')--}}
 {{--    @include('components.modals.load')--}}
