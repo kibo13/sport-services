@@ -1,5 +1,7 @@
 {
-    "/js/admin.js": "/js/admin.js?id=bf913c6abf1ca5e213653241ee877b79",
+    "/js/admin.js": "/js/admin.js?id=1e99335f1086861e15cfbbad92d336aa",
+    "/js/modules/event-calendar.js": "/js/modules/event-calendar.js?id=4e797c329977a99720ed468a4bd0432f",
+    "/js/helpers/input-mask.js": "/js/helpers/input-mask.js?id=69385aa5ec9bdcd5c5f0b71b6fc030e5",
     "/css/admin.css": "/css/admin.css?id=aac0e7afd257ff5bfc0054421f99b42d",
     "/css/auth.css": "/css/auth.css?id=e2f6da9343e896d7a3c7e78a9d55362c",
     "/css/mai.css": "/css/mai.css?id=944776efdaf68236c122c6ded40c04c3",
@@ -12,6 +14,5 @@
     "/js/vendors/popper.min.js": "/js/vendors/popper.min.js?id=70d3fda195602fe8b75e0097eed74dde",
     "/js/vendors/moment.min.js": "/js/vendors/moment.min.js?id=86a47979cd4df3b266798987a12cd519",
     "/js/vendors/fullcalendar.min.js": "/js/vendors/fullcalendar.min.js?id=da7e88923236a32b29fb590930c44f05",
-    "/js/vendors/chart.min.js": "/js/vendors/chart.min.js?id=88dde32eb30aaf84ccf49f22ff35270d",
-    "/js/vendors/inputmask.min.js": "/js/vendors/inputmask.min.js?id=b5a16f50cec90db212765b76e97958cd"
+    "/js/vendors/chart.min.js": "/js/vendors/chart.min.js?id=88dde32eb30aaf84ccf49f22ff35270d"
 }
