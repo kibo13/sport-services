@@ -13,6 +13,18 @@ mix .js('resources/js/admin/index.js', 'public/js/admin.js')
     .sass('resources/sass/admin/index.sass', 'public/css/admin.css')
     .version()
 
+// modules
+mix .js([
+        'resources/js/modules/event-calendar.js'
+    ], 'public/js/modules')
+    .version()
+
+// helpers
+mix .js([
+        'resources/js/helpers/input-mask.js'
+    ], 'public/js/helpers')
+    .version()
+
 // vendors
 mix.copy('node_modules/font-awesome/css/font-awesome.min.css', 'public/css/vendors/font-awesome.min.css')
 mix.copy('node_modules/bootstrap/dist/css/bootstrap.min.css', 'public/css/vendors/bootstrap.min.css')
@@ -24,4 +36,3 @@ mix.copy('node_modules/popper.js/dist/umd/popper.min.js', 'public/js/vendors/pop
 mix.copy('node_modules/moment/min/moment.min.js', 'public/js/vendors/moment.min.js')
 mix.copy('node_modules/fullcalendar/main.min.js', 'public/js/vendors/fullcalendar.min.js')
 mix.copy('node_modules/chart.js/dist/chart.min.js', 'public/js/vendors/chart.min.js')
-mix.copy('node_modules/inputmask/dist/inputmask.min.js', 'public/js/vendors/inputmask.min.js')
