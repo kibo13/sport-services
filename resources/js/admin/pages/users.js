@@ -1,10 +1,6 @@
 const userForm = document.getElementById('user-form')
 
 if (userForm) {
-    let phoneInput = document.getElementById('phone');
-    let phoneMask = new Inputmask('+7 (999) 999-99-99');
-    phoneMask.mask(phoneInput);
-
     $('#role').on('change', function (event) {
         let slug = $(this).find(':selected').data('slug')
 

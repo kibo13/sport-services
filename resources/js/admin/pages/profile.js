@@ -1,10 +1,6 @@
 const profileForm = document.getElementById('profile-form')
 
 if (profileForm) {
-    let phoneInput = document.getElementById('phone')
-    let phoneMask = new Inputmask('+7 (999) 999-99-99')
-    phoneMask.mask(phoneInput)
-
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

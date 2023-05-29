@@ -2,6 +2,10 @@
 
 @section('title-admin', __('_section.users'))
 
+@section('scripts')
+    <script src="{{ mix('js/helpers/input-mask.js') }}"></script>
+@endsection
+
 @section('content-admin')
     <section id="user-form">
         <h3>{{ isset($user) ? __('_record.edit') : __('_record.new')  }}</h3>
@@ -92,7 +96,7 @@
                     </select>
                 </div>
                 <div class="bk-form__field">
-                    <label class="bk-form__label" for="">
+                    <label class="bk-form__label">
                         Права
                     </label>
                     <table class="dataTables table table-bordered table-hover table-responsive">

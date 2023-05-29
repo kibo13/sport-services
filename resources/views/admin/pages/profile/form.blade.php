@@ -2,6 +2,10 @@
 
 @section('title-admin', __('_section.profile'))
 
+@section('scripts')
+    <script src="{{ mix('js/helpers/input-mask.js') }}"></script>
+@endsection
+
 @section('content-admin')
     <section id="profile-form">
         <h3>{{ __('_section.profile') }}</h3>
@@ -124,7 +128,7 @@
                            value="{{ $user->address }}">
                 </div>
                 <div class="bk-form__field">
-                    <label class="bk-form__label" for="">
+                    <label class="bk-form__label">
                         {{ __('_field.password') }}
                         <span class="bk-field bk-field--tip">
                             мин.длина пароля 8 символов
