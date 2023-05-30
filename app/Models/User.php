@@ -21,6 +21,7 @@ class User extends Authenticatable
 
     protected $fillable = [
         'role_id',
+        'benefit_id',
         'name',
         'surname',
         'patronymic',
@@ -31,6 +32,7 @@ class User extends Authenticatable
         'address',
         'password',
         'is_notify',
+        'certificate',
     ];
 
     protected $hidden = [
@@ -101,6 +103,11 @@ class User extends Authenticatable
     public function role(): BelongsTo
     {
         return $this->belongsTo(Role::class);
+    }
+
+    public function benefit(): BelongsTo
+    {
+        return $this->belongsTo(Benefit::class);
     }
 
     public function specializations(): BelongsToMany
