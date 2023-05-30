@@ -8,11 +8,13 @@
     "/css/vendors/font-awesome.min.css": "/css/vendors/font-awesome.min.css?id=269550530cc127b6aa5a35925a7de6ce",
     "/css/vendors/bootstrap.min.css": "/css/vendors/bootstrap.min.css?id=450fc463b8b1a349df717056fbb3e078",
     "/css/vendors/fullcalendar.min.css": "/css/vendors/fullcalendar.min.css?id=ae5cf8df244badf6dca1734e9fb7f8e4",
+    "/css/vendors/select2.min.css": "/css/vendors/select2.min.css?id=e71c39430469a3eea74514a2b48f6536",
     "/js/vendors/bootstrap.min.js": "/js/vendors/bootstrap.min.js?id=14d449eb8876fa55e1ef3c2cc52b0c17",
     "/js/vendors/jquery.min.js": "/js/vendors/jquery.min.js?id=c9f5aeeca3ad37bf2aa006139b935f0a",
     "/js/vendors/jquery.dataTables.min.js": "/js/vendors/jquery.dataTables.min.js?id=15d7433673dfbf9b4aaaea221a3927a7",
     "/js/vendors/popper.min.js": "/js/vendors/popper.min.js?id=70d3fda195602fe8b75e0097eed74dde",
     "/js/vendors/moment.min.js": "/js/vendors/moment.min.js?id=86a47979cd4df3b266798987a12cd519",
     "/js/vendors/fullcalendar.min.js": "/js/vendors/fullcalendar.min.js?id=da7e88923236a32b29fb590930c44f05",
-    "/js/vendors/chart.min.js": "/js/vendors/chart.min.js?id=88dde32eb30aaf84ccf49f22ff35270d"
+    "/js/vendors/chart.min.js": "/js/vendors/chart.min.js?id=88dde32eb30aaf84ccf49f22ff35270d",
+    "/js/vendors/select2.min.js": "/js/vendors/select2.min.js?id=7c98b05dd4f3d7c693eb34690737f0d8"
 }
