@@ -17,16 +17,16 @@ class BenefitSeeder extends Seeder
     {
         $benefits = [
             [
-                'name'     => 'Дети до 7 лет',
-                'discount' => 1,
+                'name'     => 'Категория 1',
+                'discount' => 0.15,
             ],
             [
-                'name'     => 'Пенсионеры',
-                'discount' => 0.5,
+                'name'     => 'Категория 2',
+                'discount' => 0.25,
             ],
             [
-                'name'     => 'Военные, ветераны ВОВ',
-                'discount' => 0.3,
+                'name'     => 'Категория 3',
+                'discount' => 0.35,
             ]
         ];
 
