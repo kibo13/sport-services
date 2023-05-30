@@ -37,6 +37,7 @@
         "fullcalendar": "^5.11.0",
         "inputmask": "^5.0.8",
         "moment": "^2.29.3",
+        "select2": "^4.1.0-rc.0",
         "vue": "^3.3.2"
     },
     "browserslist": [
