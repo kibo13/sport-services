@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{ asset('css/vendors/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/vendors/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/vendors/fullcalendar.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/vendors/select2.min.css') }}">
     <script src="{{ asset('js/vendors/jquery.min.js') }}" defer></script>
     <script src="{{ asset('js/vendors/popper.min.js') }}" defer></script>
     <script src="{{ asset('js/vendors/bootstrap.min.js') }}" defer></script>
@@ -15,6 +16,7 @@
     <script src="{{ asset('js/vendors/chart.min.js') }}" defer></script>
     <script src="{{ asset('js/vendors/moment.min.js') }}" defer></script>
     <script src="{{ asset('js/vendors/fullcalendar.min.js') }}" defer></script>
+    <script src="{{ asset('js/vendors/select2.min.js') }}" defer></script>
 
     <!-- custom -->
     <link rel="stylesheet" href="{{ mix('css/admin.css') }}">
