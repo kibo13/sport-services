@@ -5,6 +5,7 @@ return [
     'achievement'           => 'Достижение',
     'address'               => 'Адрес',
     'age'                   => 'Возраст',
+    'amount'                => 'Сумма',
     'area'                  => 'Площадь',
     'applicant'             => 'Заявитель',
     'attachment'            => 'Вложение',

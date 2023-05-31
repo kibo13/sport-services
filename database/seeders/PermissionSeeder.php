@@ -41,6 +41,18 @@ class PermissionSeeder extends Seeder
                 'note'       => 'Редактирование',
             ],
             [
+                'name'       => 'Платежи',
+                'slug'       => 'pay_read',
+                'is_setting' => 0,
+                'note'       => 'Просмотр',
+            ],
+            [
+                'name'       => 'Платежи',
+                'slug'       => 'pay_full',
+                'is_setting' => 0,
+                'note'       => 'Редактирование',
+            ],
+            [
                 'name'       => 'Помещения',
                 'slug'       => 'room_read',
                 'is_setting' => 1,

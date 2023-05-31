@@ -22,6 +22,7 @@ return [
     'members'               => 'Участники',
     'methods'               => 'Методики',
     'orgkomitets'           => 'Оргкомитеты',
+    'payments'              => 'Платежи',
     'places'                => 'Места',
     'positions'             => 'Должности',
     'profile'               => 'Профиль',

@@ -39,6 +39,16 @@
             </a>
         </li>
         @endif
+        @if(is_access('pay_read'))
+        <li class="sidebar-list__item {{ is_active('payment*', 'sidebar-list__item--active') }}">
+            <a class="sidebar-list__link" href="{{ route('payments.index') }}" title="{{ __('_section.payments') }}">
+                <i class="fa fa-paypal sidebar-list__icon"></i>
+                <span class="sidebar-list__text">
+                    {{ __('_section.payments') }}
+                </span>
+            </a>
+        </li>
+        @endif
         @if(is_access('card_read'))
         <li class="sidebar-list__item {{ is_active('card*', 'sidebar-list__item--active') }}">
             <a class="sidebar-list__link" href="{{ route('cards.index') }}" title="{{ __('_section.cards') }}">

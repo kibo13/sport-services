@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\CardController;
+use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\RuleController;
@@ -29,6 +30,19 @@ Route::prefix('services')->as('services.')->group(function () {
     Route::middleware('permission:service_full')->group(function () {
         Route::get('/{service}/edit', [ServiceController::class, 'edit'])->name('edit');
         Route::match(['put', 'patch'], '/{service}', [ServiceController::class, 'update'])->name('update');
+    });
+});
+
+Route::prefix('payments')->as('payments.')->group(function () {
+    Route::middleware('permission:pay_read')->group(function () {
+        Route::get('/', [PaymentController::class, 'index'])->name('index');
+    });
+    Route::middleware('permission:pay_full')->group(function () {
+        Route::get('/create', [PaymentController::class, 'create'])->name('create');
+        Route::post('/', [PaymentController::class, 'store'])->name('store');
+        Route::get('/{payment}/edit', [PaymentController::class, 'edit'])->name('edit');
+        Route::match(['put', 'patch'], '/{payment}', [PaymentController::class, 'update'])->name('update');
+        Route::delete('/{payment}', [PaymentController::class, 'destroy'])->name('destroy');
     });
 });
 
