@@ -12,6 +12,12 @@
             </a>
         </div>
 
+        @if(session()->has('success'))
+        <div class="my-2 alert alert-success" role="alert">
+            {{ session()->get('success') }}
+        </div>
+        @endif
+
         <table id="is-datatable" class="dataTables table table-bordered table-hover table-responsive">
             <thead class="thead-light">
                 <tr>
@@ -20,7 +26,9 @@
                     <th class="w-25 bk-min-w-200">{{ __('_field.phone') }}</th>
                     <th class="w-25 bk-min-w-250">{{ __('_field.email') }}</th>
                     <th class="w-25 no-sort bk-min-w-150">{{ __('_field.photo') }}</th>
+                    @if(is_access('client_full'))
                     <th class="no-sort">{{ __('_action.this') }}</th>
+                    @endif
                 </tr>
             </thead>
             <tbody>
@@ -39,22 +47,35 @@
                         </a>
                     </td>
                     <td>
+                        @if($client->benefit_id)
                         <div class="bk-zoom">
-                            {{ __('_action.look') }}
+                            <span class="text-success">
+                                {{ format_discount_for_display($client->benefit->discount) }}
+                            </span>
+                            <span class="{{ $client->certificate ? 'text-primary' : 'text-secondary' }}">
+                                {{ $client->certificate ? "(посмотреть)" : null }}
+                            </span>
                             <img class="bk-zoom__img"
-                                 src="{{ $client->photo ? asset('/storage/' . $client->photo) : asset('/assets/icons/anonymous.svg') }}"
-                                 alt="{{ $client->full_name }}"
+                                 src="{{ $client->certificate ? asset('storage/' . $client->certificate) : null }}"
+                                 alt="{{ $client->certificate }}"
                                  tabindex="0">
                             <div class="bk-zoom__bg"></div>
                         </div>
+                        @else
+                        <span class="text-secondary">
+                            Отсутствует
+                        </span>
+                        @endif
                     </td>
+                    @if(is_access('client_full'))
                     <td>
                         <div class="bk-btn-actions">
-                            <a class="bk-btn-action bk-btn-action--info btn btn-info"
-                               href="{{ route('clients.show', $client) }}"
-                               title="{{ __('_action.look') }}" ></a>
+                            <a class="bk-btn-action bk-btn-action--edit btn btn-warning"
+                               href="{{ route('clients.edit', $client) }}"
+                               title="{{ __('_action.edit') }}" ></a>
                         </div>
                     </td>
+                    @endif
                 </tr>
             @endforeach
             </tbody>
