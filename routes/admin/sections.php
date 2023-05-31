@@ -49,7 +49,10 @@ Route::prefix('clients')->as('clients.')->group(function () {
     Route::middleware('permission:client_read')->group(function () {
         Route::get('/', [ClientController::class, 'index'])->name('index');
         Route::get('/export', [ClientController::class, 'export'])->name('export');
-        Route::get('/{client}', [ClientController::class, 'show'])->name('show');
+    });
+    Route::middleware('permission:client_full')->group(function () {
+        Route::get('/{client}/edit', [ClientController::class, 'edit'])->name('edit');
+        Route::match(['put', 'patch'], '/{client}', [ClientController::class, 'update'])->name('update');
     });
 });
 
