@@ -23,9 +23,9 @@
                 <tr>
                     <th>#</th>
                     <th class="w-25 bk-min-w-250">{{ __('_field.fio') }}</th>
-                    <th class="w-25 bk-min-w-200">{{ __('_field.phone') }}</th>
+                    <th class="w-25 bk-min-w-250">{{ __('_field.phone') }}</th>
                     <th class="w-25 bk-min-w-250">{{ __('_field.email') }}</th>
-                    <th class="w-25 no-sort bk-min-w-150">{{ __('_field.photo') }}</th>
+                    <th class="w-25 bk-min-w-250">{{ __('_field.discount') }}</th>
                     @if(is_access('client_full'))
                     <th class="no-sort">{{ __('_action.this') }}</th>
                     @endif
