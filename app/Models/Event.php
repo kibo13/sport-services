@@ -18,6 +18,7 @@ class Event extends Model
         'trainer_id',
         'start',
         'end',
+        'init',
         'place',
         'note',
     ];

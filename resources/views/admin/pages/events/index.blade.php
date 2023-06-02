@@ -26,7 +26,7 @@
                     <th>#</th>
                     <th class="w-25 bk-min-w-250">{{ __('_field.name') }}</th>
                     <th class="w-25 bk-min-w-250">{{ __('_field.event_type') }}</th>
-                    <th class="w-25 bk-min-w-250">{{ __('_field.event_date') }}</th>
+                    <th class="w-25 bk-min-w-250">{{ __('_field.event_dt') }}</th>
                     <th class="w-25 bk-min-w-250">{{ __('_field.trainer') }}</th>
                     @if(is_access('event_full'))
                     <th class="no-sort">{{ __('_action.this') }}</th>
@@ -39,7 +39,12 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $event->title }}</td>
                     <td>{{ $event->specialization->name }}</td>
-                    <td>{{ format_date_for_display($event->start) }}</td>
+                    <td>
+                        {{ format_date_for_display($event->start) }}
+                        <small class="align-text-top text-primary font-weight-bold">
+                            {{ format_time_for_display($event->init) }}
+                        </small>
+                    </td>
                     <td title="{{ $event->trainer->full_name }}">
                         {{ $event->trainer->short_name }}
                     </td>

@@ -43,6 +43,7 @@ const calendar = new Calendar(events, {
             type: info.event.extendedProps.type,
             trainer: info.event.extendedProps.trainer,
             place: info.event.extendedProps.place,
+            init: info.event.extendedProps.init
         }
 
         // if (director) {
@@ -89,6 +90,8 @@ function renderEventPopupContent(data) {
             <li>${data.trainer}</li>
             <li class="font-weight-bold">Место проведения</li>
             <li>${data.place}</li>
+            <li class="font-weight-bold">Время проведения</li>
+            <li>${data.init}</li>
         </ul>
     `
 }

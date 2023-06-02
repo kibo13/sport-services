@@ -61,6 +61,19 @@
                            required/>
                 </div>
                 <div class="bk-form__field">
+                    <label class="bk-form__label" for="init">
+                        {{ __('_field.event_time') }}
+                    </label>
+                    <input class="bk-form__input bk-max-w-300"
+                           id="init"
+                           type="time"
+                           name="init"
+                           value="{{ isset($event) ? $event->init : null }}"
+                           min="07:00"
+                           max="12:00"
+                           required/>
+                </div>
+                <div class="bk-form__field">
                     <label class="bk-form__label" for="place">
                         {{ __('_field.event_place') }}
                     </label>

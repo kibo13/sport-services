@@ -22,6 +22,7 @@ class EventIndexResource extends JsonResource
             'start'   => $this->start,
             'end'     => $this->end,
             'place'   => $this->place,
+            'init'    => $this->init,
         ];
     }
 }
