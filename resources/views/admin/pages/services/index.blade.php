@@ -27,9 +27,10 @@
                 @foreach($types as $type_id => $type)
                     <tr>
                         <td>
-                            <b>
-                                {{ is_null($type) ? $activity : $type }}
-                            </b>
+                            <ul>
+                                <li class="font-weight-bold">{{ $type }}</li>
+                                <li class="text-primary">{{ $activity }}</li>
+                            </ul>
                         </td>
                         <td class="text-center">
                             <b>
