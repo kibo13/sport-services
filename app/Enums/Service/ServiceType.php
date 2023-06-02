@@ -11,7 +11,7 @@ class ServiceType
     public const GROUP  = 3;
 
     public const NAMES = [
-        self::TICKET => null,
+        self::TICKET => 'Разовое посещение',
         self::PASS   => 'Абонемент свободное посещение',
         self::GROUP  => 'Абонемент в группу',
     ];
