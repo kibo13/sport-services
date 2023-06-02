@@ -48,6 +48,11 @@ function format_date_for_display($date)
     return date('d.m.Y', strtotime($date));
 }
 
+function format_time_for_display($time)
+{
+    return date('H:i', strtotime($time));
+}
+
 function format_money_for_display($amount, $decimal = 2): string
 {
     return number_format($amount, $decimal, '.', ' ');
