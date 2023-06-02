@@ -20,6 +20,7 @@ class CreateEventsTable extends Migration
             $table->foreignId('trainer_id')->constrained('users')->cascadeOnUpdate();
             $table->date('start');
             $table->date('end');
+            $table->time('init');
             $table->string('place')->nullable();
             $table->text('note')->nullable();
             $table->softDeletes();
