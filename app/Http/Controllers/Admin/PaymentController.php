@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Enums\Service\ServiceActivity;
+use App\Enums\Service\ServiceCategory;
 use App\Enums\Service\ServiceType;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Payment\CreatePaymentRequest;
 use App\Models\Payment;
 use App\Models\Service;
 use App\Repositories\Client\ClientRepositoryInterface;
@@ -23,20 +25,22 @@ class PaymentController extends Controller
 
     public function create(ClientRepositoryInterface $clientRepository)
     {
-        $visits = [ServiceType::TICKET, ServiceType::PASS];
         $activities = ServiceActivity::NAMES;
+        $types = ServiceType::NAMES;
+        $categories = ServiceCategory::NAMES;
         $services = Service::all();
         $clients = $clientRepository->getAll();
 
         return view('admin.pages.payments.form', [
-            'visits' => $visits,
             'activities' => $activities,
+            'types' => $types,
+            'categories' => $categories,
             'services' => $services,
             'clients' => $clients
         ]);
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(CreatePaymentRequest $request): RedirectResponse
     {
         Payment::query()->create($request->all());
 
