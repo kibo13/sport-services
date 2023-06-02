@@ -23,7 +23,7 @@ class ServiceSeeder extends Seeder
 
             // Плавание
             [
-                'name'        => ServiceActivity::NAMES[ServiceActivity::SWIMMING],
+                'name'        => ServiceType::NAMES[ServiceType::TICKET],
                 'type_id'     => ServiceType::TICKET,
                 'activity_id' => ServiceActivity::SWIMMING,
                 'category_id' => ServiceCategory::KID,
@@ -31,7 +31,7 @@ class ServiceSeeder extends Seeder
                 'price'       => 70,
             ],
             [
-                'name'        => ServiceActivity::NAMES[ServiceActivity::SWIMMING],
+                'name'        => ServiceType::NAMES[ServiceType::TICKET],
                 'type_id'     => ServiceType::TICKET,
                 'activity_id' => ServiceActivity::SWIMMING,
                 'category_id' => ServiceCategory::STUDENT,
@@ -39,7 +39,7 @@ class ServiceSeeder extends Seeder
                 'price'       => 107,
             ],
             [
-                'name'        => ServiceActivity::NAMES[ServiceActivity::SWIMMING],
+                'name'        => ServiceType::NAMES[ServiceType::TICKET],
                 'type_id'     => ServiceType::TICKET,
                 'activity_id' => ServiceActivity::SWIMMING,
                 'category_id' => ServiceCategory::ADULT,
@@ -97,7 +97,7 @@ class ServiceSeeder extends Seeder
 
             // Тренажерный зал
             [
-                'name'        => ServiceActivity::NAMES[ServiceActivity::GYM],
+                'name'        => ServiceType::NAMES[ServiceType::TICKET],
                 'type_id'     => ServiceType::TICKET,
                 'activity_id' => ServiceActivity::GYM,
                 'category_id' => ServiceCategory::KID,
@@ -105,7 +105,7 @@ class ServiceSeeder extends Seeder
                 'price'       => 70,
             ],
             [
-                'name'        => ServiceActivity::NAMES[ServiceActivity::GYM],
+                'name'        => ServiceType::NAMES[ServiceType::TICKET],
                 'type_id'     => ServiceType::TICKET,
                 'activity_id' => ServiceActivity::GYM,
                 'category_id' => ServiceCategory::STUDENT,
@@ -113,7 +113,7 @@ class ServiceSeeder extends Seeder
                 'price'       => 84,
             ],
             [
-                'name'        => ServiceActivity::NAMES[ServiceActivity::GYM],
+                'name'        => ServiceType::NAMES[ServiceType::TICKET],
                 'type_id'     => ServiceType::TICKET,
                 'activity_id' => ServiceActivity::GYM,
                 'category_id' => ServiceCategory::ADULT,
@@ -171,7 +171,7 @@ class ServiceSeeder extends Seeder
 
             // Теннисный корт
             [
-                'name'        => ServiceActivity::NAMES[ServiceActivity::TENNIS],
+                'name'        => ServiceType::NAMES[ServiceType::TICKET],
                 'type_id'     => ServiceType::TICKET,
                 'activity_id' => ServiceActivity::TENNIS,
                 'category_id' => ServiceCategory::KID,
@@ -179,7 +179,7 @@ class ServiceSeeder extends Seeder
                 'price'       => 70,
             ],
             [
-                'name'        => ServiceActivity::NAMES[ServiceActivity::TENNIS],
+                'name'        => ServiceType::NAMES[ServiceType::TICKET],
                 'type_id'     => ServiceType::TICKET,
                 'activity_id' => ServiceActivity::TENNIS,
                 'category_id' => ServiceCategory::STUDENT,
@@ -187,7 +187,7 @@ class ServiceSeeder extends Seeder
                 'price'       => 104,
             ],
             [
-                'name'        => ServiceActivity::NAMES[ServiceActivity::TENNIS],
+                'name'        => ServiceType::NAMES[ServiceType::TICKET],
                 'type_id'     => ServiceType::TICKET,
                 'activity_id' => ServiceActivity::TENNIS,
                 'category_id' => ServiceCategory::ADULT,
