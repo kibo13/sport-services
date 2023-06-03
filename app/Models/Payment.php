@@ -28,7 +28,9 @@ class Payment extends Model
         parent::boot();
 
         static::creating(function ($payment) {
-            $payment->paid_at = date('Y-m-d');
+            if (! $payment->paid_at) {
+                $payment->paid_at = date('Y-m-d');
+            }
         });
     }
 
