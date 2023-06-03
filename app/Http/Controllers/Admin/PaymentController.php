@@ -19,7 +19,7 @@ class PaymentController extends Controller
 {
     public function index(PaymentRepositoryInterface $paymentRepository)
     {
-        $payments = Payment::all();
+        $payments = Payment::query()->orderByDesc('created_at')->get();
 
         return view('admin.pages.payments.index', [
             'payments' => $payments,
