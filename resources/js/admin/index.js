@@ -9,9 +9,9 @@ require('./components/image')
 require('./components/tooltip')
 
 // custom
-// require('./custom/validation')
-// require('./custom/calculation')
-// require('./custom/comparison')
+require('./custom/validation')
+require('./custom/calculation')
+require('./custom/comparison')
 
 // pages
 require('./pages/users')
