@@ -47,6 +47,7 @@
         <table id="is-datatable" class="dataTables table table-bordered table-hover table-responsive">
             <thead class="thead-light">
                 <tr>
+                    <th>#</th>
                     <th class="w-00 bk-min-w-100">{{ __('_field.num') }}</th>
                     <th class="w-25 bk-min-w-200">{{ __('_field.activity') }}</th>
                     <th class="w-25 bk-min-w-250">{{ __('_field.service') }}</th>
@@ -58,9 +59,16 @@
             <tbody>
             @foreach($payments as $payment)
                 <tr>
+                    <td>{{ $loop->iteration }}</td>
                     <td>{{ $payment->id }}</td>
                     <td>{{ ServiceActivity::NAMES[$payment->activity_id] }}</td>
-                    <td>{{ $payment->service->name }}</td>
+                    <td>
+
+                        <ul>
+                            <li>{{ $payment->service->name }}</li>
+                            <li class="text-muted">{{ ServiceCategory::NAMES[$payment->service->category_id] }}</li>
+                        </ul>
+                    </td>
                     <td>{{ format_money_for_display($payment->amount, 0) . ' ₽' }}</td>
                     <td>{{ format_date_for_display($payment->paid_at) }}</td>
                     <td>
