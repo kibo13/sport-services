@@ -41,9 +41,6 @@ Route::prefix('payments')->as('payments.')->group(function () {
     Route::middleware('permission:pay_full')->group(function () {
         Route::get('/create', [PaymentController::class, 'create'])->name('create');
         Route::post('/', [PaymentController::class, 'store'])->name('store');
-        Route::get('/{payment}/edit', [PaymentController::class, 'edit'])->name('edit');
-        Route::match(['put', 'patch'], '/{payment}', [PaymentController::class, 'update'])->name('update');
-        Route::delete('/{payment}', [PaymentController::class, 'destroy'])->name('destroy');
     });
 });
 

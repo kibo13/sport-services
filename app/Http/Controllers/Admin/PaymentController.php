@@ -11,16 +11,22 @@ use App\Http\Requests\Payment\CreatePaymentRequest;
 use App\Models\Payment;
 use App\Models\Service;
 use App\Repositories\Client\ClientRepositoryInterface;
+use App\Repositories\Payment\PaymentRepositoryInterface;
+use App\Services\Receipt\ReceiptService;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 
 class PaymentController extends Controller
 {
-    public function index()
+    public function index(PaymentRepositoryInterface $paymentRepository)
     {
         $payments = Payment::all();
 
-        return view('admin.pages.payments.index', compact('payments'));
+        return view('admin.pages.payments.index', [
+            'payments' => $payments,
+            'totalAmount' => $paymentRepository->getTotalAmount(),
+            'previousMonthAmount' => $paymentRepository->getPreviousMonthAmount(),
+            'currentMonthAmount' => $paymentRepository->getCurrentMonthAmount()
+        ]);
     }
 
     public function create(ClientRepositoryInterface $clientRepository)
@@ -49,26 +55,8 @@ class PaymentController extends Controller
             ->with('success', __('_record.added'));
     }
 
-    public function edit(Payment $payment)
+    public function generateReceipt(Payment $payment)
     {
-        return view('admin.pages.payments.form', compact('payment'));
-    }
-
-    public function update(Request $request, Payment $payment): RedirectResponse
-    {
-        $payment->update($request->all());
-
-        return redirect()
-            ->route('payments.index')
-            ->with('success', __('_record.updated'));
-    }
-
-    public function destroy(Payment $payment): RedirectResponse
-    {
-        $payment->delete();
-
-        return redirect()
-            ->route('payments.index')
-            ->with('success', __('_record.deleted'));
+        return ReceiptService::generate($payment);
     }
 }

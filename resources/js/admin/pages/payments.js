@@ -20,6 +20,7 @@ if (paymentForm) {
         .on('change', handleClientIdChange);
 
     function handlePaymentInputChange() {
+        $('.alert').addClass('d-none')
         activityInput.value = $(this).data('activity');
         serviceInput.value = $(this).data('service');
         amountInput.value = $(this).data('price');

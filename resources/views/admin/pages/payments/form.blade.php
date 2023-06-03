@@ -4,7 +4,7 @@
 
 @section('content-admin')
     <section id="payment-form">
-        <h3>{{ isset($payment) ? __('_record.edit') : __('_record.new')  }}</h3>
+        <h3>{{ __('_record.new') }}</h3>
 
         @if ($errors->any())
         <div class="alert alert-danger">
@@ -12,12 +12,9 @@
         </div>
         @endif
 
-        <form class="bk-form" action="{{ isset($payment) ? route('payments.update', $payment) : route('payments.store') }}" method="POST">
+        <form class="bk-form" action="{{ route('payments.store') }}" method="POST">
             <div class="bk-form__wrapper">
                 @csrf
-                @isset($payment)
-                @method('PUT')
-                @endisset
                 <div class="bk-form__field">
                     <label class="bk-form__label">{{ __('_field.service') }}</label>
                     <table class="dataTables table table-bordered table-responsive">
@@ -81,8 +78,7 @@
                     <select id="client_id" name="client_id">
                         <option value="" disabled hidden selected>Выбрать</option>
                         @foreach($clients as $client)
-                        <option value="{{ $client->id }}"
-                                data-discount="{{ $client->benefit ? $client->benefit->discount : 0 }}">
+                        <option value="{{ $client->id }}" data-discount="{{ $client->benefit ? $client->benefit->discount : 0 }}">
                             {{ $client->full_name }}
                         </option>
                         @endforeach
@@ -104,17 +100,6 @@
                     </label>
                     <div class="bk-form__text" id="js-amount-text">{{ __('_select.service') }}</div>
                     <input type="hidden" id="amount" name="amount"/>
-                </div>
-                <div class="form-check">
-                    <input type="hidden" name="is_paid" value="0">
-                    <input type="checkbox"
-                           class="form-check-input"
-                           id="is_paid"
-                           name="is_paid"
-                           value="1" {{ isset($payment) && $payment->is_paid ? 'checked' : '' }}>
-                    <label class="form-check-label" for="is_paid">
-                        {{ __('_field.pay_yep') }}
-                    </label>
                 </div>
                 <div class="mt-1 mb-0 form-group">
                     <button class="btn btn-outline-success">
