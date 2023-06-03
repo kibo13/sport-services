@@ -19,7 +19,7 @@ class CreatePaymentsTable extends Migration
             $table->foreignId('service_id')->nullable(false)->constrained('services')->cascadeOnUpdate();
             $table->foreignId('client_id')->nullable(true)->constrained('users')->cascadeOnUpdate();
             $table->double('amount');
-            $table->boolean('is_paid')->default(false);
+            $table->boolean('is_paid')->default(true);
             $table->date('paid_at')->nullable();
             $table->softDeletes();
             $table->timestamps();
