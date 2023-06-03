@@ -36,6 +36,7 @@ Route::prefix('services')->as('services.')->group(function () {
 Route::prefix('payments')->as('payments.')->group(function () {
     Route::middleware('permission:pay_read')->group(function () {
         Route::get('/', [PaymentController::class, 'index'])->name('index');
+        Route::get('/{payment}/receipt', [PaymentController::class, 'generateReceipt'])->name('receipt');
     });
     Route::middleware('permission:pay_full')->group(function () {
         Route::get('/create', [PaymentController::class, 'create'])->name('create');
