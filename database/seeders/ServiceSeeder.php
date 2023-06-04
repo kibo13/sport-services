@@ -6,7 +6,6 @@ namespace Database\Seeders;
 use App\Enums\Service\ServiceActivity;
 use App\Enums\Service\ServiceCategory;
 use App\Enums\Service\ServiceType;
-use App\Enums\Service\ServiceUnit;
 use App\Models\Service;
 use Illuminate\Database\Seeder;
 
