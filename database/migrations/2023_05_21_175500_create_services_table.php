@@ -17,8 +17,8 @@ class CreateServicesTable extends Migration
             $table->id();
             $table->string('name');
             $table->integer('type_id')->nullable();
-            $table->integer('activity_id');
-            $table->integer('category_id');
+            $table->foreignId('activity_id')->constrained('activities')->cascadeOnUpdate();
+            $table->foreignId('category_id')->constrained('categories')->cascadeOnUpdate();
             $table->integer('unit');
             $table->double('price');
             $table->softDeletes();
