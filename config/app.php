@@ -233,9 +233,6 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
-        'ServiceType' => \App\Enums\Service\ServiceType::class,
-        'ServiceCategory' => \App\Enums\Service\ServiceCategory::class,
-        'ServiceActivity' => \App\Enums\Service\ServiceActivity::class,
     ],
 
 ];
