@@ -47,7 +47,7 @@
                 Активность:
             </span>
             <span class="receipt-list__text">
-                {{ ServiceActivity::NAMES[$payment->activity_id] }}
+                {{ $payment->activity->name }}
             </span>
         </li>
         <li class="receipt-list__item">

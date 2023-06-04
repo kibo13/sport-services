@@ -32,7 +32,7 @@
                     <td>
                         <ul>
                             <li class="font-weight-bold">
-                                {{ ServiceActivity::NAMES[$card->service->activity_id] }}
+                                {{ $card->service->activity->name }}
                             </li>
                             <li class="bk-field bk-field--tip">
                                 {{ $card->service->name }}

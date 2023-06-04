@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Admin;
 use App\Charts\MasterChart;
 use App\Enums\Service\ServiceActivity;
 use App\Http\Controllers\Controller;
+use App\Models\Activity;
 use App\Repositories\Payment\PaymentRepositoryInterface;
 use App\Services\Chart\ChartService;
 use Carbon\Carbon;
@@ -18,17 +19,17 @@ class StatisticController extends Controller
         $from = $request->input('from', Carbon::now()->subYear()->endOfMonth()->format('Y-m-d'));
         $till = $request->input('till', Carbon::now()->endOfMonth()->format('Y-m-d'));
         $labels = ChartService::generateLabels($from, $till);
-        $activities = ServiceActivity::NAMES;
+        $activities = Activity::all();
         $activityPayments = [];
 
-        foreach ($activities as $activityId => $activity) {
-            $activityPayments[$activityId] = array_fill_keys($labels, 0);
+        foreach ($activities as $activity) {
+            $activityPayments[$activity->id] = array_fill_keys($labels, 0);
 
-            $payments = $paymentRepository->getDataByActivity($activityId, $from, $till);
+            $payments = $paymentRepository->getDataByActivity($activity->id, $from, $till);
 
             foreach ($payments as $payment) {
-                if (array_key_exists($payment->period, $activityPayments[$activityId])) {
-                    $activityPayments[$activityId][$payment->period] = $payment->count;
+                if (array_key_exists($payment->period, $activityPayments[$activity->id])) {
+                    $activityPayments[$activity->id][$payment->period] = $payment->count;
                 }
             }
         }

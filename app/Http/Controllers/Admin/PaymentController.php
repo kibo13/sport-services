@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 
-use App\Enums\Service\ServiceActivity;
-use App\Enums\Service\ServiceCategory;
 use App\Enums\Service\ServiceType;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Payment\CreatePaymentRequest;
+use App\Models\Activity;
+use App\Models\Category;
 use App\Models\Payment;
 use App\Models\Service;
 use App\Repositories\Client\ClientRepositoryInterface;
@@ -31,9 +31,9 @@ class PaymentController extends Controller
 
     public function create(ClientRepositoryInterface $clientRepository)
     {
-        $activities = ServiceActivity::NAMES;
+        $activities = Activity::all();
         $types = ServiceType::NAMES;
-        $categories = ServiceCategory::NAMES;
+        $categories = Category::all();
         $services = Service::all();
         $clients = $clientRepository->getAll();
 

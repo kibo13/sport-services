@@ -3,8 +3,8 @@
 namespace Database\Factories;
 
 
-use App\Enums\Service\ServiceActivity;
 use App\Enums\Service\ServiceType;
+use App\Models\Activity;
 use App\Models\Service;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -19,7 +19,7 @@ class PaymentFactory extends Factory
      */
     public function definition(): array
     {
-        $activityId = array_rand(ServiceActivity::NAMES);
+        $activityId = $this->getRandomActivityId();
         $service = $this->getRandomService($activityId);
 
         return [
@@ -28,6 +28,20 @@ class PaymentFactory extends Factory
             'amount'      => $service->price,
             'paid_at'     => $this->faker->dateTimeBetween('-1 year', '-7 days')->format('Y-m-d'),
         ];
+    }
+
+    /**
+     * Generate a random activity ID.
+     *
+     * @return int
+     */
+    private function getRandomActivityId(): int
+    {
+        $activity = Activity::query()
+            ->inRandomOrder()
+            ->first();
+
+        return $activity->id;
     }
 
     /**

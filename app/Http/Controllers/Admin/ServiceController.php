@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 
-use App\Enums\Service\ServiceActivity;
-use App\Enums\Service\ServiceCategory;
 use App\Enums\Service\ServiceType;
 use App\Http\Controllers\Controller;
+use App\Models\Activity;
+use App\Models\Category;
 use App\Models\Service;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -15,9 +15,9 @@ class ServiceController extends Controller
 {
     public function index()
     {
-        $activities = ServiceActivity::NAMES;
+        $activities = Activity::all();
         $types      = ServiceType::NAMES;
-        $categories = ServiceCategory::NAMES;
+        $categories = Category::all();
         $services   = Service::all();
 
         return view('admin.pages.services.index', [

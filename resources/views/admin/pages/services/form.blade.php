@@ -17,7 +17,7 @@
                         {{ __('_field.activity') }}
                     </label>
                     <div class="bk-form__text">
-                        {{ ServiceActivity::NAMES[$service->activity_id] }}
+                        {{ $service->activity->name }}
                     </div>
                 </div>
                 <div class="bk-form__field">
@@ -44,7 +44,7 @@
                         {{ __('_field.category') }}
                     </label>
                     <div class="bk-form__text">
-                        {{ ServiceCategory::NAMES[$service->category_id] }}
+                        {{ $service->category->name }}
                     </div>
                 </div>
                 <div class="bk-form__field">

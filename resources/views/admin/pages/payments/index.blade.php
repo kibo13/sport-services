@@ -61,12 +61,12 @@
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $payment->id }}</td>
-                    <td>{{ ServiceActivity::NAMES[$payment->activity_id] }}</td>
+                    <td>{{ $payment->activity->name }}</td>
                     <td>
 
                         <ul>
                             <li>{{ $payment->service->name }}</li>
-                            <li class="text-muted">{{ ServiceCategory::NAMES[$payment->service->category_id] }}</li>
+                            <li class="text-muted">{{ $payment->service->category->name }}</li>
                         </ul>
                     </td>
                     <td>{{ format_money_for_display($payment->amount, 0) . ' ₽' }}</td>

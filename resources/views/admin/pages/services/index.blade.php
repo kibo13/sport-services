@@ -23,27 +23,27 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($activities as $activity_id => $activity)
+            @foreach($activities as $activity)
                 @foreach($types as $type_id => $type)
                     <tr>
                         <td>
                             <ul>
                                 <li class="font-weight-bold">{{ $type }}</li>
-                                <li class="text-primary">{{ $activity }}</li>
+                                <li class="text-primary">{{ $activity->name }}</li>
                             </ul>
                         </td>
                         <td class="text-center">
                             <b>
-                                {{ ServiceType::UNITS[$type_id] }}
+                                {{ $type_id == 1 ? 1 : 12 }}
                             </b>
                             <span class="bk-field bk-field--tip">
                                 {{ $type_id == 1 ? ' посещение' : ' посещений' }}
                             </span>
                         </td>
                         @foreach($services as $service)
-                            @if($service->type_id == $type_id && $service->activity_id == $activity_id)
-                                @foreach($categories as $category_id => $category)
-                                    @if($service->category_id == $category_id)
+                            @if($service->type_id == $type_id && $service->activity_id == $activity->id)
+                                @foreach($categories as $category)
+                                    @if($service->category_id == $category->id)
                                         <td class="text-center">
                                             <b>
                                                 {{ format_money_for_display($service->price, 0) }}
