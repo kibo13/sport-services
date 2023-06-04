@@ -34,6 +34,11 @@ class Payment extends Model
         });
     }
 
+    public function activity(): BelongsTo
+    {
+        return $this->belongsTo(Activity::class);
+    }
+
     public function service(): BelongsTo
     {
         return $this->belongsTo(Service::class);
