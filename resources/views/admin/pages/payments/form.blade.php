@@ -12,6 +12,12 @@
         </div>
         @endif
 
+        @if(session()->has('success'))
+        <div class="my-2 alert alert-success" role="alert">
+            {{ session()->get('success') }}
+        </div>
+        @endif
+
         <form class="bk-form" action="{{ route('payments.store') }}" method="POST">
             <div class="bk-form__wrapper">
                 @csrf
