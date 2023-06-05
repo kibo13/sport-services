@@ -28,6 +28,35 @@ class ClientController extends Controller
         return Excel::download(new ClientExport(), 'clients.xlsx');
     }
 
+    public function create()
+    {
+        $benefits = Benefit::all();
+
+        return view('admin.pages.clients.form', compact('benefits'));
+    }
+
+    public function store(Request $request): RedirectResponse
+    {
+        if ($request->has('certificate')) {
+            $certificate = $request->file('certificate')->store('certificates', 'public');
+        }
+
+        User::query()->create([
+            'name'        => $request['name'],
+            'surname'     => $request['surname'],
+            'patronymic'  => $request['patronymic'],
+            'birthday'    => $request['birthday'],
+            'phone'       => $request['phone'],
+            'email'       => $request['email'],
+            'benefit_id'  => $request['benefit_id'],
+            'certificate' => $certificate ?? null,
+        ]);
+
+        return redirect()
+            ->route('payments.create')
+            ->with('success', __('_record.added'));
+    }
+
     public function edit(User $client)
     {
         $benefits = Benefit::all();

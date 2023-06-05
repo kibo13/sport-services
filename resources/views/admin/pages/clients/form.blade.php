@@ -2,76 +2,83 @@
 
 @section('title-admin', __('_section.clients'))
 
+@section('scripts')
+    <script src="{{ mix('js/helpers/input-mask.js') }}"></script>
+@endsection
+
 @section('content-admin')
     <section id="client-form">
-        <h3>{{ __('_record.edit') }}</h3>
-        <form class="bk-form" action="{{ route('clients.update', $client) }}" method="POST" enctype="multipart/form-data">
+        <h3>{{ __('_record.new') }}</h3>
+        <form class="bk-form" action="{{ route('payments.clients.store') }}" method="POST" enctype="multipart/form-data">
             <div class="bk-form__wrapper">
                 @csrf
-                @method('PUT')
                 <div class="bk-form__field">
-                    <a href="{{ $client->photo ? asset('/storage/' . $client->photo) : asset('/assets/icons/anonymous.svg') }}" target="_blank">
-                        <img class="bk-form__photo"
-                             src="{{ $client->photo ? asset('/storage/' . $client->photo) : asset('/assets/icons/anonymous.svg') }}"
-                             alt="{{ $client->full_name }}">
-                    </a>
-                </div>
-                <div class="bk-form__field">
-                    <label class="bk-form__label">
-                        {{ __('_field.fio') }}
+                    <label class="bk-form__label" for="name">
+                        {{ __('_field.first_name') }}
                     </label>
-                    <div class="bk-form__text">
-                        {{ $client->full_name }}
-                    </div>
+                    <input class="bk-form__input bk-max-w-300"
+                           id="name"
+                           type="text"
+                           name="name"
+                           required/>
                 </div>
                 <div class="bk-form__field">
-                    <label class="bk-form__label">
-                        {{ __('_field.age') }}
+                    <label class="bk-form__label" for="surname">
+                        {{ __('_field.last_name') }}
                     </label>
-                    <div class="bk-form__text">
-                        {{ $client->age }}
-                    </div>
+                    <input class="bk-form__input bk-max-w-300"
+                           id="surname"
+                           type="text"
+                           name="surname"
+                           required/>
                 </div>
                 <div class="bk-form__field">
-                    <label class="bk-form__label">
+                    <label class="bk-form__label" for="patronymic">
+                        {{ __('_field.middle_name') }}
+                    </label>
+                    <input class="bk-form__input bk-max-w-300"
+                           id="patronymic"
+                           type="text"
+                           name="patronymic"/>
+                </div>
+                <div class="bk-form__field">
+                    <label class="bk-form__label" for="birthday">
                         {{ __('_field.birthday') }}
                     </label>
-                    <div class="bk-form__text">
-                        {{ format_date_for_display($client->birthday) }}
-                    </div>
+                    <input class="bk-form__input bk-max-w-300"
+                           id="birthday"
+                           type="date"
+                           name="birthday"
+                           max="{{ date('Y-m-d', strtotime('-7 years')) }}"/>
                 </div>
                 <div class="bk-form__field">
-                    <label class="bk-form__label">
+                    <label class="bk-form__label" for="phone">
                         {{ __('_field.phone') }}
                     </label>
-                    <div class="bk-form__text">
-                        {{ format_phone_number_for_display($client->phone) }}
-                    </div>
+                    <input class="bk-form__input bk-max-w-300"
+                           id="phone"
+                           type="text"
+                           name="phone"
+                           required/>
                 </div>
                 <div class="bk-form__field">
-                    <label class="bk-form__label">
+                    <label class="bk-form__label" for="email">
                         {{ __('_field.email') }}
                     </label>
-                    <div class="bk-form__text">
-                        {{ $client->email }}
-                    </div>
-                </div>
-                <div class="bk-form__field">
-                    <label class="bk-form__label">
-                        {{ __('_field.address') }}
-                    </label>
-                    <div class="bk-form__text">
-                        {{ $client->address }}
-                    </div>
+                    <input class="bk-form__input bk-max-w-300"
+                           id="email"
+                           type="email"
+                           name="email"
+                           required/>
                 </div>
                 <div class="bk-form__field">
                     <label class="bk-form__label" for="benefit_id">
                         {{ __('_field.discount') }}
                     </label>
-                    <select class="bk-form__select bk-max-w-300" id="benefit_id" name="benefit_id" required>
-                        <option value="" disabled hidden selected>Выбрать</option>
+                    <select class="bk-form__select bk-max-w-300" id="benefit_id" name="benefit_id">
+                        <option value="" selected>Выбрать</option>
                         @foreach($benefits as $benefit)
-                        <option value="{{ $benefit->id }}" @isset($client) @if($client->benefit_id == $benefit->id) selected @endif @endisset>
+                        <option value="{{ $benefit->id }}">
                             {{ $benefit->name . ' (' . format_discount_for_display($benefit->discount) . ')' }}
                         </option>
                         @endforeach
@@ -83,7 +90,6 @@
                     </label>
                     <input class="bk-form__input"
                            type="text"
-                           value="{{ $client->certificate ?? null }}"
                            placeholder="{{ __('_field.file_not') }}"
                            disabled/>
                     <input class="bk-form__file"
@@ -96,7 +102,7 @@
                     <button class="btn btn-outline-success">
                         {{ __('_action.save') }}
                     </button>
-                    <a class="btn btn-outline-secondary" href="{{ route('clients.index') }}">
+                    <a class="btn btn-outline-secondary" href="{{ route('payments.create') }}">
                         {{ __('_action.back') }}
                     </a>
                 </div>
