@@ -6,6 +6,8 @@ namespace Database\Factories;
 use App\Enums\Service\ServiceType;
 use App\Models\Benefit;
 use App\Models\Card;
+use App\Models\CardLesson;
+use App\Models\PermissionUser;
 use App\Models\Service;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -68,11 +70,40 @@ class ClientFactory extends Factory
     public function configure(): ClientFactory
     {
         return $this->afterCreating(function (User $user) {
-            Card::query()->create([
+            $this->syncPermissionsForUser($user);
+
+            $card = Card::query()->create([
                 'client_id'  => $user->id,
                 'service_id' => $this->getRandomServiceId(),
             ]);
+
+            for ($lesson = 1; $lesson <= 12; $lesson++) {
+                CardLesson::query()->create([
+                    'card_id' => $card->id,
+                    'number'  => $lesson
+                ]);
+            }
         });
+    }
+
+    /**
+     * Sync permissions for a user based on their role.
+     *
+     * @param  User  $user
+     * @return void
+     */
+    private function syncPermissionsForUser(User $user)
+    {
+        $permissions = config('permissions');
+
+        foreach ($permissions as $permission_id => $permission) {
+            if (in_array($user['role_id'], $permission['roles'])) {
+                PermissionUser::query()->updateOrCreate([
+                    'permission_id' => ++$permission_id,
+                    'user_id' => $user['id']
+                ]);
+            }
+        }
     }
 
     /**

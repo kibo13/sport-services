@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 
 use App\Enums\Role;
+use App\Models\PermissionUser;
 use App\Models\Specialization;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -63,10 +64,31 @@ class TrainerFactory extends Factory
     public function configure(): TrainerFactory
     {
         return $this->afterCreating(function (User $user) {
+            $this->syncPermissionsForUser($user);
             $user->specializations()->attach([
                 $this->getRandomSpecializationId()
             ]);
         });
+    }
+
+    /**
+     * Sync permissions for a user based on their role.
+     *
+     * @param  User  $user
+     * @return void
+     */
+    private function syncPermissionsForUser(User $user)
+    {
+        $permissions = config('permissions');
+
+        foreach ($permissions as $permission_id => $permission) {
+            if (in_array($user['role_id'], $permission['roles'])) {
+                PermissionUser::query()->updateOrCreate([
+                    'permission_id' => ++$permission_id,
+                    'user_id' => $user['id']
+                ]);
+            }
+        }
     }
 
     /**
