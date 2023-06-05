@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -63,6 +64,7 @@ class User extends Authenticatable
             $user->surname_name = "$user->surname $user->name";
             $user->phone        = format_phone_number_for_storage($user->phone);
             $user->age          = $user->birthday ? $user->calculateAge($user->birthday) : null;
+            $user->deleteCertificateIfNoBenefit();
         });
     }
 
@@ -93,6 +95,20 @@ class User extends Authenticatable
         }
 
         return $shortName;
+    }
+
+    protected function deleteCertificateIfNoBenefit()
+    {
+        if (is_null($this->benefit_id) && $this->certificate) {
+            $filePath = $this->certificate;
+
+            if (Storage::disk('public')->exists($filePath)) {
+                Storage::disk('public')->delete($filePath);
+            }
+
+            $this->benefit_id = null;
+            $this->certificate = null;
+        }
     }
 
     public function isAdmin(): bool
