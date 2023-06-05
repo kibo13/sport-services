@@ -4,7 +4,10 @@ namespace Database\Seeders;
 
 
 use Database\Factories\ClientFactory;
+use Database\Factories\DirectorFactory;
+use Database\Factories\DoctorFactory;
 use Database\Factories\EventFactory;
+use Database\Factories\PaymasterFactory;
 use Database\Factories\PaymentFactory;
 use Database\Factories\TrainerFactory;
 use Illuminate\Database\Seeder;
@@ -31,6 +34,9 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // factories
+        DirectorFactory::new()->count(1)->create();
+        DoctorFactory::new()->count(2)->create();
+        PaymasterFactory::new()->count(2)->create();
         TrainerFactory::new()->count(10)->create();
         ClientFactory::new()->count(30)->create();
         EventFactory::new()->count(20)->create();
