@@ -29,6 +29,16 @@
                 </span>
             </a>
         </li>
+        @if(is_access('lesson_read'))
+        <li class="sidebar-list__item {{ is_active('lesson*', 'sidebar-list__item--active') }}">
+            <a class="sidebar-list__link" href="{{ route('lessons.index') }}" title="{{ __('_section.lessons') }}">
+                <i class="fa fa-th sidebar-list__icon"></i>
+                <span class="sidebar-list__text">
+                    {{ __('_section.lessons') }}
+                </span>
+            </a>
+        </li>
+        @endif
         @if(is_access('service_read'))
         <li class="sidebar-list__item {{ is_active('service*', 'sidebar-list__item--active') }}">
             <a class="sidebar-list__link" href="{{ route('services.index') }}" title="{{ __('_section.services') }}">

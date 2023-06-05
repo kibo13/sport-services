@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CardLessonController;
 use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\HomeController;
@@ -21,6 +22,10 @@ Route::prefix('profile')->as('profile.')->group(function () {
     Route::get('/', [ProfileController::class, 'index'])->name('index');
     Route::match(['put', 'patch'], '/{user}', [ProfileController::class, 'update'])->name('update');
     Route::post('/photo/update', [ProfileController::class, 'updatePhoto'])->name('update.photo');
+});
+
+Route::prefix('lessons')->as('lessons.')->group(function () {
+    Route::get('/', [CardLessonController::class, 'index'])->name('index');
 });
 
 Route::prefix('services')->as('services.')->group(function () {
