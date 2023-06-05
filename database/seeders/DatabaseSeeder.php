@@ -24,9 +24,8 @@ class DatabaseSeeder extends Seeder
             BenefitSeeder::class,
             CategorySeeder::class,
             RoleSeeder::class,
-            AdminSeeder::class,
             PermissionSeeder::class,
-            PermissionUserSeeder::class,
+            AdminSeeder::class,
             ServiceSeeder::class,
             SpecializationSeeder::class,
         ]);
