@@ -74,6 +74,9 @@
                 <div class="bk-form__field d-none" id="js-client-block">
                     <label class="bk-form__label" for="client_id">
                         {{ __('_field.client') }}
+                        <a class="text-primary" href="{{ route('payments.clients.create') }}">
+                            (Новый клиент)
+                        </a>
                     </label>
                     <select id="client_id" name="client_id">
                         <option value="" disabled hidden selected>Выбрать</option>
