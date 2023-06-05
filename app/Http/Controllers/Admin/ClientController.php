@@ -32,7 +32,7 @@ class ClientController extends Controller
     {
         $benefits = Benefit::all();
 
-        return view('admin.pages.clients.form', [
+        return view('admin.pages.clients.show', [
             'client' => $client,
             'benefits' => $benefits
         ]);
