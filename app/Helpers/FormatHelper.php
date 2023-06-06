@@ -43,9 +43,9 @@ function format_discount_for_display($discount): string
     return $discountPercentage . '%';
 }
 
-function format_date_for_display($date)
+function format_date_for_display($date, string $format = 'd.m.Y')
 {
-    return date('d.m.Y', strtotime($date));
+    return date($format, strtotime($date));
 }
 
 function format_time_for_display($time)
