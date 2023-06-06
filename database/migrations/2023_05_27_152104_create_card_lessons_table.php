@@ -18,6 +18,7 @@ class CreateCardLessonsTable extends Migration
             $table->foreignId('card_id')->constrained('cards')->cascadeOnUpdate()->cascadeOnDelete();
             $table->integer('number');
             $table->boolean('is_attended')->default(false);
+            $table->date('attended_at')->nullable();
             $table->timestamps();
         });
     }
