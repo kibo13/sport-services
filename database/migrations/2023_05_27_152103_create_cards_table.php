@@ -16,9 +16,11 @@ class CreateCardsTable extends Migration
         Schema::create('cards', function (Blueprint $table) {
             $table->id();
             $table->foreignId('client_id')->constrained('users')->cascadeOnUpdate();
+            $table->foreignId('activity_id')->constrained('activities')->cascadeOnUpdate();
             $table->foreignId('service_id')->constrained('services')->cascadeOnUpdate();
             $table->date('start');
             $table->date('end');
+            $table->boolean('is_active')->default(true);
             $table->softDeletes();
             $table->timestamps();
         });
