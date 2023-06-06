@@ -10,7 +10,9 @@ use App\Models\CardLesson;
 use App\Models\PermissionUser;
 use App\Models\Service;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -71,10 +73,11 @@ class ClientFactory extends Factory
     {
         return $this->afterCreating(function (User $user) {
             $this->syncPermissionsForUser($user);
-
+            $service = $this->getRandomService();
             $card = Card::query()->create([
-                'client_id'  => $user->id,
-                'service_id' => $this->getRandomServiceId(),
+                'client_id'   => $user['id'],
+                'activity_id' => $service->activity_id,
+                'service_id'  => $service->id,
             ]);
 
             for ($lesson = 1; $lesson <= 12; $lesson++) {
@@ -107,18 +110,16 @@ class ClientFactory extends Factory
     }
 
     /**
-     * Generate a random service ID.
+     * Generate a random service.
      *
-     * @return int
+     * @return Builder|Model|object|null
      */
-    private function getRandomServiceId(): int
+    private function getRandomService()
     {
-        $service = Service::query()
+        return Service::query()
             ->where('type_id', ServiceType::PASS)
             ->inRandomOrder()
             ->first();
-
-        return $service->id;
     }
 
     /**
