@@ -6,5 +6,5 @@ namespace App\Repositories\Card;
 
 interface CardRepositoryInterface
 {
-    public function getActiveCards(array $activities, int $clientId);
+    public function getActiveLessonsByActivitiesAndClient(array $activities, int $clientId);
 }
