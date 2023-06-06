@@ -88,13 +88,9 @@ class User extends Authenticatable
 
     protected function getShortName(User $user): string
     {
-        if ($user->patronymic) {
-            $shortName = $user->surname . ' ' . mb_substr($user->name, 0, 1) . '.' . mb_substr($user->patronymic, 0, 1) . '.';
-        } else {
-            $shortName = $user->surname . ' ' . mb_substr($user->name, 0, 1) . '.';
-        }
-
-        return $shortName;
+        return $user->patronymic
+            ? $user->surname . ' ' . mb_substr($user->name, 0, 1) . '.' . mb_substr($user->patronymic, 0, 1) . '.'
+            : $user->surname . ' ' . mb_substr($user->name, 0, 1) . '.';
     }
 
     protected function deleteCertificateIfNoBenefit()
