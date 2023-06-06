@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 
+use App\Repositories\Card\CardRepository;
+use App\Repositories\Card\CardRepositoryInterface;
 use App\Repositories\Client\ClientRepository;
 use App\Repositories\Client\ClientRepositoryInterface;
 use App\Repositories\Payment\PaymentRepository;
@@ -23,6 +25,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(ClientRepositoryInterface::class, ClientRepository::class);
         $this->app->bind(TrainerRepositoryInterface::class, TrainerRepository::class);
         $this->app->bind(PaymentRepositoryInterface::class, PaymentRepository::class);
+        $this->app->bind(CardRepositoryInterface::class, CardRepository::class);
     }
 
     /**
