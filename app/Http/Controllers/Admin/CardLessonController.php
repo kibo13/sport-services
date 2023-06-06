@@ -14,11 +14,10 @@ class CardLessonController extends Controller
     {
         $user = auth()->user();
         $activities = Activity::all();
-        $ids = $activities->pluck('id')->toArray();
-        $cards = $cardRepository->getActiveCards($ids, $user->id);
+        $activityIds = $activities->pluck('id')->toArray();
+        $cards = $cardRepository->getActiveLessonsByActivitiesAndClient($activityIds, $user->id);
 
         return view('admin.pages.lessons.index', [
-            'user' => $user,
             'activities' => $activities,
             'cards' => $cards
         ]);
