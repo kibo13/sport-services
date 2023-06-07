@@ -7,6 +7,7 @@ use App\Enums\Service\ServiceType;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Payment\CreatePaymentRequest;
 use App\Models\Activity;
+use App\Models\Card;
 use App\Models\Category;
 use App\Models\Payment;
 use App\Models\Service;
@@ -48,7 +49,18 @@ class PaymentController extends Controller
 
     public function store(CreatePaymentRequest $request): RedirectResponse
     {
-        Payment::query()->create($request->all());
+        $payment = Payment::query()->create($request->all());
+        $serviceTypeId = $payment->service->type_id;
+        $serviceTypes = [ServiceType::PASS, ServiceType::GROUP];
+
+        if (in_array($serviceTypeId, $serviceTypes)) {
+            Card::query()->create([
+                'client_id'   => $payment->client_id,
+                'activity_id' => $payment->activity_id,
+                'service_id'  => $payment->service_id,
+                'payment_id'  => $payment->id,
+            ]);
+        }
 
         return redirect()
             ->route('payments.index')
