@@ -7,7 +7,6 @@ use App\Enums\Service\ServiceCategory;
 use App\Enums\Service\ServiceType;
 use App\Models\Benefit;
 use App\Models\Card;
-use App\Models\CardLesson;
 use App\Models\Payment;
 use App\Models\PermissionUser;
 use App\Models\Service;
@@ -108,8 +107,7 @@ class ClientFactory extends Factory
             $this->syncPermissionsForUser($user);
             $service = $this->getRandomService();
             $payment = $this->createPayment($user, $service);
-            $card = $this->createCard($service, $payment);
-            $this->createCardLessons($card);
+            $this->createCard($service, $payment);
         });
     }
 
@@ -168,33 +166,17 @@ class ClientFactory extends Factory
      *
      * @param Service $service
      * @param Payment $payment
-     * @return Builder|Model
-     */
-    private function createCard(Service $service, Payment $payment)
-    {
-        return Card::query()->create([
-            'client_id'   => $payment->client_id,
-            'activity_id' => $service->activity_id,
-            'service_id'  => $service->id,
-            'payment_id'  => $payment->id,
-            'start'       => $payment->paid_at,
-            'end'         => date('Y-m-d', strtotime($payment->paid_at . '+1 month')),
-        ]);
-    }
-
-    /**
-     * Create card lessons for the given card.
-     *
-     * @param Card $card
      * @return void
      */
-    private function createCardLessons(Card $card): void
+    private function createCard(Service $service, Payment $payment): void
     {
-        for ($lesson = 1; $lesson <= 12; $lesson++) {
-            CardLesson::query()->create([
-                'card_id' => $card->id,
-                'number'  => $lesson
-            ]);
-        }
+        Card::query()->create([
+            'client_id' => $payment->client_id,
+            'activity_id' => $service->activity_id,
+            'service_id' => $service->id,
+            'payment_id' => $payment->id,
+            'start' => $payment->paid_at,
+            'end' => date('Y-m-d', strtotime($payment->paid_at . '+1 month')),
+        ]);
     }
 }

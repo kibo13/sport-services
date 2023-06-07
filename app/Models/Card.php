@@ -32,6 +32,20 @@ class Card extends Model
             $card->start = is_null($card->start) ? date('Y-m-d') : $card->start;
             $card->end   = is_null($card->end) ? date('Y-m-d', strtotime('+1 month')) : $card->end;
         });
+
+        static::created(function ($card) {
+            $card->initializeCardLessons();
+        });
+    }
+
+    protected function initializeCardLessons()
+    {
+        for ($lesson = 1; $lesson <= 12; $lesson++) {
+            CardLesson::query()->create([
+                'card_id' => $this->id,
+                'number'  => $lesson
+            ]);
+        }
     }
 
     public function client(): BelongsTo
