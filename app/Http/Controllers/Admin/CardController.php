@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Card;
+use App\Services\Pdf\PdfService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
@@ -52,5 +53,12 @@ class CardController extends Controller
         return redirect()
             ->route('cards.index')
             ->with('success', __('_record.deleted'));
+    }
+
+    public function generate(Card $card)
+    {
+        $html = view('layouts.card', compact('card'))->render();
+
+        return PdfService::generate($html, 'card');
     }
 }

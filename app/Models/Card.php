@@ -30,8 +30,8 @@ class Card extends Model
         parent::boot();
 
         static::creating(function ($card) {
-            $card->start = date('Y-m-d');
-            $card->end   = date('Y-m-d', strtotime('+1 month'));
+            $card->start = is_null($card->start) ? date('Y-m-d') : $card->start;
+            $card->end   = is_null($card->end) ? date('Y-m-d', strtotime('+1 month')) : $card->end;
         });
     }
 
