@@ -12,7 +12,7 @@ use App\Models\Payment;
 use App\Models\Service;
 use App\Repositories\Client\ClientRepositoryInterface;
 use App\Repositories\Payment\PaymentRepositoryInterface;
-use App\Services\Receipt\ReceiptService;
+use App\Services\Pdf\PdfService;
 use Illuminate\Http\RedirectResponse;
 
 class PaymentController extends Controller
@@ -57,6 +57,8 @@ class PaymentController extends Controller
 
     public function generateReceipt(Payment $payment)
     {
-        return ReceiptService::generate($payment);
+        $html = view('layouts.receipt', compact('payment'))->render();
+
+        return PdfService::generate($html, 'receipt');
     }
 }

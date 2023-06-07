@@ -1,19 +1,16 @@
 <?php
 
 
-namespace App\Services\Receipt;
+namespace App\Services\Pdf;
 
 
-use App\Models\Payment;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 
-class ReceiptService
+class PdfService
 {
-    public static function generate(Payment $payment)
+    public static function generate($html, string $fileName)
     {
-        $html = view('layouts.receipt', compact('payment'))->render();
-
         $options = new Options();
         $options->set('defaultFont', 'DejaVu Sans');
         $options->set('isHtml5ParserEnabled', true);
@@ -23,6 +20,6 @@ class ReceiptService
         $dompdf->setPaper('A4', 'portrait');
         $dompdf->render();
 
-        return $dompdf->stream('receipt.pdf', ['Attachment' => false]);
+        return $dompdf->stream($fileName . '.pdf', ['Attachment' => false]);
     }
 }
