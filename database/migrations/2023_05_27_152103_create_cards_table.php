@@ -18,6 +18,7 @@ class CreateCardsTable extends Migration
             $table->foreignId('client_id')->constrained('users')->cascadeOnUpdate();
             $table->foreignId('activity_id')->constrained('activities')->cascadeOnUpdate();
             $table->foreignId('service_id')->constrained('services')->cascadeOnUpdate();
+            $table->foreignId('payment_id')->constrained('payments')->cascadeOnUpdate();
             $table->date('start');
             $table->date('end');
             $table->boolean('is_active')->default(true);
