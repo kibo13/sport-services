@@ -54,13 +54,6 @@ Route::prefix('cards')->as('cards.')->group(function () {
         Route::get('/', [CardController::class, 'index'])->name('index');
         Route::get('/{card}/generate', [CardController::class, 'generate'])->name('generate');
     });
-    Route::middleware('permission:card_full')->group(function () {
-        Route::get('/create', [CardController::class, 'create'])->name('create');
-        Route::post('/', [CardController::class, 'store'])->name('store');
-        Route::get('/{card}/edit', [CardController::class, 'edit'])->name('edit');
-        Route::match(['put', 'patch'], '/{card}', [CardController::class, 'update'])->name('update');
-        Route::delete('/{card}', [CardController::class, 'destroy'])->name('destroy');
-    });
 });
 
 Route::prefix('clients')->group(function () {
