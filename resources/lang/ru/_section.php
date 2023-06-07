@@ -1,11 +1,9 @@
 <?php
 
 return [
-    'achievements'          => 'Достижения',
     'admin'                 => 'Админ-панель',
     'applications'          => 'Заявки',
     'attendance'            => 'Посещаемость',
-    'awards'                => 'Награды',
     'benefits'              => 'Льготники',
     'cabinet'               => 'Личный кабинет',
     'cards'                 => 'Карточки',
@@ -19,15 +17,13 @@ return [
     'info'                  => 'Информация',
     'lessons'               => 'Занятия',
     'loads'                 => 'Нагрузки',
+    'management'            => 'Управление карточками',
     'members'               => 'Участники',
     'methods'               => 'Методики',
-    'orgkomitets'           => 'Оргкомитеты',
     'payments'              => 'Платежи',
     'places'                => 'Места',
-    'positions'             => 'Должности',
     'profile'               => 'Профиль',
     'reports'               => 'Отчеты',
-    'reps'                  => 'Родители',
     'rooms'                 => 'Кабинеты',
     'rules'                 => 'Правила',
     'schedule'              => 'Расписание',
