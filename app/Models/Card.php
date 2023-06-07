@@ -17,6 +17,7 @@ class Card extends Model
         'client_id',
         'activity_id',
         'service_id',
+        'payment_id',
         'is_active',
     ];
 

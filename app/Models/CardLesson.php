@@ -10,6 +10,11 @@ class CardLesson extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'card_id',
+        'number',
+    ];
+
     protected static function boot()
     {
         parent::boot();
