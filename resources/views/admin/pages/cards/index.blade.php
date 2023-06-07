@@ -48,7 +48,7 @@
                             <a class="bk-btn-action bk-btn-action--card btn btn-primary"
                                href="{{ route('cards.generate', $card) }}"
                                target="_blank"
-                               title="{{ __('_action.generate') }}"></a>
+                               title="{{ __('_field.card') }}"></a>
                         </div>
                     </td>
                 </tr>

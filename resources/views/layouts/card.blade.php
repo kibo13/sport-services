@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content-head')
-    <title>{{ __('_field.pass') }}</title>
+    <title>{{ __('_field.card') }}</title>
     <style>
         .card {
             margin: 0 auto;

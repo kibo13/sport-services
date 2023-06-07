@@ -63,7 +63,6 @@
                     <td>{{ $payment->id }}</td>
                     <td>{{ $payment->activity->name }}</td>
                     <td>
-
                         <ul>
                             <li>{{ $payment->service->name }}</li>
                             <li class="text-muted">{{ $payment->service->category->name }}</li>
@@ -76,7 +75,13 @@
                             <a class="bk-btn-action bk-btn-action--bill btn btn-primary"
                                href="{{ route('payments.receipt', $payment) }}"
                                target="_blank"
-                               title="{{ __('_action.generate') }}"></a>
+                               title="{{ __('_field.check') }}"></a>
+                            @if(is_access('card_read') && $payment->card)
+                            <a class="bk-btn-action bk-btn-action--card btn btn-primary"
+                               href="{{ route('cards.generate', $payment->card) }}"
+                               target="_blank"
+                               title="{{ __('_field.card') }}"></a>
+                            @endif
                         </div>
                     </td>
                 </tr>
