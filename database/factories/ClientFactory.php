@@ -3,19 +3,18 @@
 namespace Database\Factories;
 
 
+use App\Enums\Service\ServiceCategory;
 use App\Enums\Service\ServiceType;
-use App\Models\Benefit;
 use App\Models\Card;
 use App\Models\CardLesson;
+use App\Models\Payment;
 use App\Models\PermissionUser;
 use App\Models\Service;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\File;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class ClientFactory extends Factory
@@ -35,7 +34,6 @@ class ClientFactory extends Factory
     public function definition(): array
     {
         return [
-            'benefit_id'        => $this->getRandomBenefitId(),
             'name'              => $this->faker->firstName(),
             'surname'           => $this->faker->lastName(),
             'patronymic'        => $this->faker->firstNameMale(),
@@ -46,7 +44,6 @@ class ClientFactory extends Factory
             'email_verified_at' => now(),
             'password'          => Hash::make('secret'),
             'remember_token'    => Str::random(10),
-            'certificate'       => $this->generateFile(),
         ];
     }
 
@@ -74,18 +71,9 @@ class ClientFactory extends Factory
         return $this->afterCreating(function (User $user) {
             $this->syncPermissionsForUser($user);
             $service = $this->getRandomService();
-            $card = Card::query()->create([
-                'client_id'   => $user['id'],
-                'activity_id' => $service->activity_id,
-                'service_id'  => $service->id,
-            ]);
-
-            for ($lesson = 1; $lesson <= 12; $lesson++) {
-                CardLesson::query()->create([
-                    'card_id' => $card->id,
-                    'number'  => $lesson
-                ]);
-            }
+            $payment = $this->createPayment($user, $service);
+            $card = $this->createCard($service, $payment);
+            $this->createCardLessons($card);
         });
     }
 
@@ -118,38 +106,57 @@ class ClientFactory extends Factory
     {
         return Service::query()
             ->where('type_id', ServiceType::PASS)
+            ->where('category_id', ServiceCategory::ADULT)
             ->inRandomOrder()
             ->first();
     }
 
     /**
-     * Generate a random benefit ID.
-     *
-     * @return int
+     * @param User $user
+     * @param Service $service
+     * @return Builder|Model
      */
-    private function getRandomBenefitId(): int
+    private function createPayment(User $user, Service $service)
     {
-        $service = Benefit::query()
-            ->inRandomOrder()
-            ->first();
-
-        return $service->id;
+        return Payment::query()->create([
+            'activity_id' => $service->activity_id,
+            'service_id'  => $service->id,
+            'client_id'   => $user->id,
+            'amount'      => $service->price,
+            'paid_at'     => date('Y-m-d', strtotime('-3 days')),
+        ]);
     }
 
     /**
-     * Generate a random file and save it in the specified directory.
+     * Create a card for the given user, service, and payment.
      *
-     * @return string The generated file name.
+     * @param Service $service
+     * @param Payment $payment
+     * @return Builder|Model
      */
-    protected function generateFile(): string
+    private function createCard(Service $service, Payment $payment)
     {
-        $templateFile = public_path('assets/images/certificate.jpg');
-        $destinationDirectory = 'certificates';
-        $fileName = $this->faker->uuid . '.jpg';
-        $file = new File($templateFile);
+        return Card::query()->create([
+            'client_id'   => $payment->client_id,
+            'activity_id' => $service->activity_id,
+            'service_id'  => $service->id,
+            'payment_id'  => $payment->id,
+        ]);
+    }
 
-        Storage::disk('public')->putFileAs($destinationDirectory, $file, $fileName);
-
-        return $destinationDirectory . '/' . $fileName;
+    /**
+     * Create card lessons for the given card.
+     *
+     * @param Card $card
+     * @return void
+     */
+    private function createCardLessons(Card $card): void
+    {
+        for ($lesson = 1; $lesson <= 12; $lesson++) {
+            CardLesson::query()->create([
+                'card_id' => $card->id,
+                'number'  => $lesson
+            ]);
+        }
     }
 }
