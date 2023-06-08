@@ -73,4 +73,9 @@ class Card extends Model
     {
         return $this->hasMany(CardLesson::class);
     }
+
+    public function getRemainingLessonsCount(): int
+    {
+        return $this->lessons()->where('is_attended', false)->count();
+    }
 }
