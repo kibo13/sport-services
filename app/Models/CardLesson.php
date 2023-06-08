@@ -13,6 +13,7 @@ class CardLesson extends Model
     protected $fillable = [
         'card_id',
         'number',
+        'is_attended',
     ];
 
     protected static function boot()
