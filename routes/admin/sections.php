@@ -25,7 +25,13 @@ Route::prefix('profile')->as('profile.')->group(function () {
 });
 
 Route::prefix('lessons')->as('lessons.')->group(function () {
-    Route::get('/', [CardLessonController::class, 'index'])->name('index');
+    Route::middleware('permission:lesson_read')->group(function () {
+        Route::get('/', [CardLessonController::class, 'index'])->name('index');
+    });
+    Route::middleware('permission:lesson_full')->group(function () {
+        Route::get('/management', [CardLessonController::class, 'management'])->name('management');
+        Route::match(['put', 'patch'], '/{lesson}', [CardLessonController::class, 'update'])->name('update');
+    });
 });
 
 Route::prefix('services')->as('services.')->group(function () {

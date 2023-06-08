@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Activity;
+use App\Models\Card;
+use App\Models\CardLesson;
 use App\Repositories\Card\CardRepositoryInterface;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class CardLessonController extends Controller
@@ -21,5 +24,26 @@ class CardLessonController extends Controller
             'activities' => $activities,
             'cards' => $cards
         ]);
+    }
+
+    public function management(Request $request)
+    {
+        $searchQuery = $request->input('search');
+
+        $request->session()->put('search', $searchQuery);
+
+        $card = $searchQuery ? Card::query()->find($searchQuery) : null;
+
+        return view('admin.pages.lessons.management', [
+            'searchQuery' => $searchQuery,
+            'card' => $card,
+        ]);
+    }
+
+    public function update(Request $request, CardLesson $lesson): RedirectResponse
+    {
+        $lesson->update($request->all());
+
+        return redirect()->back();
     }
 }
