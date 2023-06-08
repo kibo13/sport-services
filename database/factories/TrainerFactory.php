@@ -92,16 +92,17 @@ class TrainerFactory extends Factory
     }
 
     /**
-     * Generate a random specialization ID.
+     * Get a random specialization ID that has less than 2 trainers.
      *
      * @return int
      */
     private function getRandomSpecializationId(): int
     {
-        $specialization = Specialization::query()
+        $specializations = Specialization::query()
+            ->has('trainers', '<', 2)
             ->inRandomOrder()
-            ->first();
+            ->pluck('id');
 
-        return $specialization->id;
+        return $specializations->first();
     }
 }
