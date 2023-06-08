@@ -5,6 +5,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class CardLesson extends Model
 {
@@ -25,5 +26,18 @@ class CardLesson extends Model
                 $lesson->attended_at = date('Y-m-d');
             }
         });
+
+        static::updated(function ($lesson) {
+            $card = $lesson->card;
+            $remainingLessonsCount = $card->getRemainingLessonsCount();
+            if ($remainingLessonsCount === 0) {
+                $card->update(['is_active' => false]);
+            }
+        });
+    }
+
+    public function card(): BelongsTo
+    {
+        return $this->belongsTo(Card::class);
     }
 }
