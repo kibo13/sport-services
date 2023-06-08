@@ -139,8 +139,6 @@ return [
         'is_setting' => 0,
         'note'       => 'Просмотр',
         'roles'      => [
-            Role::ADMIN,
-            Role::DIRECTOR,
             Role::CLIENT,
         ],
     ],
