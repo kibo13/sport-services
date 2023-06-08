@@ -37,7 +37,7 @@ class DatabaseSeeder extends Seeder
         DirectorFactory::new()->count(1)->create();
         DoctorFactory::new()->count(2)->create();
         PaymasterFactory::new()->count(2)->create();
-        TrainerFactory::new()->count(10)->create();
+        TrainerFactory::new()->count(6)->create();
         ClientFactory::new()->count(30)->create();
         EventFactory::new()->count(20)->create();
         PaymentFactory::new()->count(500)->create();
