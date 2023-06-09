@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 
-use App\Enums\Service\ServiceActivity;
+use App\Enums\Activity;
 use App\Enums\Service\ServiceCategory;
 use App\Enums\Service\ServiceType;
 use App\Models\Service;
@@ -24,7 +24,7 @@ class ServiceSeeder extends Seeder
             [
                 'name'        => ServiceType::NAMES[ServiceType::TICKET],
                 'type_id'     => ServiceType::TICKET,
-                'activity_id' => ServiceActivity::SWIMMING,
+                'activity_id' => Activity::SWIMMING,
                 'category_id' => ServiceCategory::KID,
                 'unit'        => ServiceType::UNITS[ServiceType::TICKET],
                 'price'       => 70,
@@ -32,7 +32,7 @@ class ServiceSeeder extends Seeder
             [
                 'name'        => ServiceType::NAMES[ServiceType::TICKET],
                 'type_id'     => ServiceType::TICKET,
-                'activity_id' => ServiceActivity::SWIMMING,
+                'activity_id' => Activity::SWIMMING,
                 'category_id' => ServiceCategory::STUDENT,
                 'unit'        => ServiceType::UNITS[ServiceType::TICKET],
                 'price'       => 107,
@@ -40,7 +40,7 @@ class ServiceSeeder extends Seeder
             [
                 'name'        => ServiceType::NAMES[ServiceType::TICKET],
                 'type_id'     => ServiceType::TICKET,
-                'activity_id' => ServiceActivity::SWIMMING,
+                'activity_id' => Activity::SWIMMING,
                 'category_id' => ServiceCategory::ADULT,
                 'unit'        => ServiceType::UNITS[ServiceType::TICKET],
                 'price'       => 134,
@@ -48,7 +48,7 @@ class ServiceSeeder extends Seeder
             [
                 'name'        => ServiceType::NAMES[ServiceType::PASS],
                 'type_id'     => ServiceType::PASS,
-                'activity_id' => ServiceActivity::SWIMMING,
+                'activity_id' => Activity::SWIMMING,
                 'category_id' => ServiceCategory::KID,
                 'unit'        => ServiceType::UNITS[ServiceType::PASS],
                 'price'       => 700,
@@ -56,7 +56,7 @@ class ServiceSeeder extends Seeder
             [
                 'name'        => ServiceType::NAMES[ServiceType::PASS],
                 'type_id'     => ServiceType::PASS,
-                'activity_id' => ServiceActivity::SWIMMING,
+                'activity_id' => Activity::SWIMMING,
                 'category_id' => ServiceCategory::STUDENT,
                 'unit'        => ServiceType::UNITS[ServiceType::PASS],
                 'price'       => 1070,
@@ -64,7 +64,7 @@ class ServiceSeeder extends Seeder
             [
                 'name'        => ServiceType::NAMES[ServiceType::PASS],
                 'type_id'     => ServiceType::PASS,
-                'activity_id' => ServiceActivity::SWIMMING,
+                'activity_id' => Activity::SWIMMING,
                 'category_id' => ServiceCategory::ADULT,
                 'unit'        => ServiceType::UNITS[ServiceType::PASS],
                 'price'       => 1340,
@@ -72,7 +72,7 @@ class ServiceSeeder extends Seeder
             [
                 'name'        => ServiceType::NAMES[ServiceType::GROUP],
                 'type_id'     => ServiceType::GROUP,
-                'activity_id' => ServiceActivity::SWIMMING,
+                'activity_id' => Activity::SWIMMING,
                 'category_id' => ServiceCategory::KID,
                 'unit'        => ServiceType::UNITS[ServiceType::GROUP],
                 'price'       => 800,
@@ -80,7 +80,7 @@ class ServiceSeeder extends Seeder
             [
                 'name'        => ServiceType::NAMES[ServiceType::GROUP],
                 'type_id'     => ServiceType::GROUP,
-                'activity_id' => ServiceActivity::SWIMMING,
+                'activity_id' => Activity::SWIMMING,
                 'category_id' => ServiceCategory::STUDENT,
                 'unit'        => ServiceType::UNITS[ServiceType::GROUP],
                 'price'       => 1200,
@@ -88,7 +88,7 @@ class ServiceSeeder extends Seeder
             [
                 'name'        => ServiceType::NAMES[ServiceType::GROUP],
                 'type_id'     => ServiceType::GROUP,
-                'activity_id' => ServiceActivity::SWIMMING,
+                'activity_id' => Activity::SWIMMING,
                 'category_id' => ServiceCategory::ADULT,
                 'unit'        => ServiceType::UNITS[ServiceType::GROUP],
                 'price'       => 1500,
@@ -98,7 +98,7 @@ class ServiceSeeder extends Seeder
             [
                 'name'        => ServiceType::NAMES[ServiceType::TICKET],
                 'type_id'     => ServiceType::TICKET,
-                'activity_id' => ServiceActivity::GYM,
+                'activity_id' => Activity::GYM,
                 'category_id' => ServiceCategory::KID,
                 'unit'        => ServiceType::UNITS[ServiceType::TICKET],
                 'price'       => 70,
@@ -106,7 +106,7 @@ class ServiceSeeder extends Seeder
             [
                 'name'        => ServiceType::NAMES[ServiceType::TICKET],
                 'type_id'     => ServiceType::TICKET,
-                'activity_id' => ServiceActivity::GYM,
+                'activity_id' => Activity::GYM,
                 'category_id' => ServiceCategory::STUDENT,
                 'unit'        => ServiceType::UNITS[ServiceType::TICKET],
                 'price'       => 84,
@@ -114,7 +114,7 @@ class ServiceSeeder extends Seeder
             [
                 'name'        => ServiceType::NAMES[ServiceType::TICKET],
                 'type_id'     => ServiceType::TICKET,
-                'activity_id' => ServiceActivity::GYM,
+                'activity_id' => Activity::GYM,
                 'category_id' => ServiceCategory::ADULT,
                 'unit'        => ServiceType::UNITS[ServiceType::TICKET],
                 'price'       => 105,
@@ -122,7 +122,7 @@ class ServiceSeeder extends Seeder
             [
                 'name'        => ServiceType::NAMES[ServiceType::PASS],
                 'type_id'     => ServiceType::PASS,
-                'activity_id' => ServiceActivity::GYM,
+                'activity_id' => Activity::GYM,
                 'category_id' => ServiceCategory::KID,
                 'unit'        => ServiceType::UNITS[ServiceType::PASS],
                 'price'       => 700,
@@ -130,7 +130,7 @@ class ServiceSeeder extends Seeder
             [
                 'name'        => ServiceType::NAMES[ServiceType::PASS],
                 'type_id'     => ServiceType::PASS,
-                'activity_id' => ServiceActivity::GYM,
+                'activity_id' => Activity::GYM,
                 'category_id' => ServiceCategory::STUDENT,
                 'unit'        => ServiceType::UNITS[ServiceType::PASS],
                 'price'       => 840,
@@ -138,7 +138,7 @@ class ServiceSeeder extends Seeder
             [
                 'name'        => ServiceType::NAMES[ServiceType::PASS],
                 'type_id'     => ServiceType::PASS,
-                'activity_id' => ServiceActivity::GYM,
+                'activity_id' => Activity::GYM,
                 'category_id' => ServiceCategory::ADULT,
                 'unit'        => ServiceType::UNITS[ServiceType::PASS],
                 'price'       => 1050,
@@ -146,7 +146,7 @@ class ServiceSeeder extends Seeder
             [
                 'name'        => ServiceType::NAMES[ServiceType::GROUP],
                 'type_id'     => ServiceType::GROUP,
-                'activity_id' => ServiceActivity::GYM,
+                'activity_id' => Activity::GYM,
                 'category_id' => ServiceCategory::KID,
                 'unit'        => ServiceType::UNITS[ServiceType::GROUP],
                 'price'       => 800,
@@ -154,7 +154,7 @@ class ServiceSeeder extends Seeder
             [
                 'name'        => ServiceType::NAMES[ServiceType::GROUP],
                 'type_id'     => ServiceType::GROUP,
-                'activity_id' => ServiceActivity::GYM,
+                'activity_id' => Activity::GYM,
                 'category_id' => ServiceCategory::STUDENT,
                 'unit'        => ServiceType::UNITS[ServiceType::GROUP],
                 'price'       => 960,
@@ -162,7 +162,7 @@ class ServiceSeeder extends Seeder
             [
                 'name'        => ServiceType::NAMES[ServiceType::GROUP],
                 'type_id'     => ServiceType::GROUP,
-                'activity_id' => ServiceActivity::GYM,
+                'activity_id' => Activity::GYM,
                 'category_id' => ServiceCategory::ADULT,
                 'unit'        => ServiceType::UNITS[ServiceType::GROUP],
                 'price'       => 1200,
@@ -172,7 +172,7 @@ class ServiceSeeder extends Seeder
             [
                 'name'        => ServiceType::NAMES[ServiceType::TICKET],
                 'type_id'     => ServiceType::TICKET,
-                'activity_id' => ServiceActivity::TENNIS,
+                'activity_id' => Activity::TENNIS,
                 'category_id' => ServiceCategory::KID,
                 'unit'        => ServiceType::UNITS[ServiceType::TICKET],
                 'price'       => 70,
@@ -180,7 +180,7 @@ class ServiceSeeder extends Seeder
             [
                 'name'        => ServiceType::NAMES[ServiceType::TICKET],
                 'type_id'     => ServiceType::TICKET,
-                'activity_id' => ServiceActivity::TENNIS,
+                'activity_id' => Activity::TENNIS,
                 'category_id' => ServiceCategory::STUDENT,
                 'unit'        => ServiceType::UNITS[ServiceType::TICKET],
                 'price'       => 104,
@@ -188,7 +188,7 @@ class ServiceSeeder extends Seeder
             [
                 'name'        => ServiceType::NAMES[ServiceType::TICKET],
                 'type_id'     => ServiceType::TICKET,
-                'activity_id' => ServiceActivity::TENNIS,
+                'activity_id' => Activity::TENNIS,
                 'category_id' => ServiceCategory::ADULT,
                 'unit'        => ServiceType::UNITS[ServiceType::TICKET],
                 'price'       => 130,
@@ -196,7 +196,7 @@ class ServiceSeeder extends Seeder
             [
                 'name'        => ServiceType::NAMES[ServiceType::PASS],
                 'type_id'     => ServiceType::PASS,
-                'activity_id' => ServiceActivity::TENNIS,
+                'activity_id' => Activity::TENNIS,
                 'category_id' => ServiceCategory::KID,
                 'unit'        => ServiceType::UNITS[ServiceType::PASS],
                 'price'       => 700,
@@ -204,7 +204,7 @@ class ServiceSeeder extends Seeder
             [
                 'name'        => ServiceType::NAMES[ServiceType::PASS],
                 'type_id'     => ServiceType::PASS,
-                'activity_id' => ServiceActivity::TENNIS,
+                'activity_id' => Activity::TENNIS,
                 'category_id' => ServiceCategory::STUDENT,
                 'unit'        => ServiceType::UNITS[ServiceType::PASS],
                 'price'       => 1040,
@@ -212,7 +212,7 @@ class ServiceSeeder extends Seeder
             [
                 'name'        => ServiceType::NAMES[ServiceType::PASS],
                 'type_id'     => ServiceType::PASS,
-                'activity_id' => ServiceActivity::TENNIS,
+                'activity_id' => Activity::TENNIS,
                 'category_id' => ServiceCategory::ADULT,
                 'unit'        => ServiceType::UNITS[ServiceType::PASS],
                 'price'       => 1300,
@@ -220,7 +220,7 @@ class ServiceSeeder extends Seeder
             [
                 'name'        => ServiceType::NAMES[ServiceType::GROUP],
                 'type_id'     => ServiceType::GROUP,
-                'activity_id' => ServiceActivity::TENNIS,
+                'activity_id' => Activity::TENNIS,
                 'category_id' => ServiceCategory::KID,
                 'unit'        => ServiceType::UNITS[ServiceType::GROUP],
                 'price'       => 800,
@@ -228,7 +228,7 @@ class ServiceSeeder extends Seeder
             [
                 'name'        => ServiceType::NAMES[ServiceType::GROUP],
                 'type_id'     => ServiceType::GROUP,
-                'activity_id' => ServiceActivity::TENNIS,
+                'activity_id' => Activity::TENNIS,
                 'category_id' => ServiceCategory::STUDENT,
                 'unit'        => ServiceType::UNITS[ServiceType::GROUP],
                 'price'       => 1200,
@@ -236,7 +236,7 @@ class ServiceSeeder extends Seeder
             [
                 'name'        => ServiceType::NAMES[ServiceType::GROUP],
                 'type_id'     => ServiceType::GROUP,
-                'activity_id' => ServiceActivity::TENNIS,
+                'activity_id' => Activity::TENNIS,
                 'category_id' => ServiceCategory::ADULT,
                 'unit'        => ServiceType::UNITS[ServiceType::GROUP],
                 'price'       => 1450,

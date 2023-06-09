@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Charts\MasterChart;
-use App\Enums\Service\ServiceActivity;
 use App\Http\Controllers\Controller;
 use App\Models\Activity;
+use App\Repositories\Activity\ActivityRepositoryInterface;
 use App\Repositories\Payment\PaymentRepositoryInterface;
 use App\Services\Chart\ChartService;
 use Carbon\Carbon;
@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 
 class StatisticController extends Controller
 {
-    public function index(Request $request, PaymentRepositoryInterface $paymentRepository)
+    public function index(Request $request, PaymentRepositoryInterface $paymentRepository, ActivityRepositoryInterface $activityRepository)
     {
         $from = $request->input('from', Carbon::now()->subYear()->endOfMonth()->format('Y-m-d'));
         $till = $request->input('till', Carbon::now()->endOfMonth()->format('Y-m-d'));
@@ -38,9 +38,12 @@ class StatisticController extends Controller
         $chart->labels($labels);
 
         foreach ($activityPayments as $activityId => $activityPayment) {
-            $chart->dataset(ServiceActivity::NAMES[$activityId], 'bar', array_values($activityPayment))
+            $activityName = $activityRepository->getNameActivityById($activityId);
+            $activityColor = $activityRepository->getColorActivityById($activityId);
+
+            $chart->dataset($activityName, 'bar', array_values($activityPayment))
                 ->options([
-                    'backgroundColor' => ServiceActivity::COLORS[$activityId],
+                    'backgroundColor' => $activityColor,
                     'borderColor' => 'transparent',
                 ]);
         }
