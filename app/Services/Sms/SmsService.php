@@ -23,6 +23,7 @@ class SmsService
                     'login'  => self::USERNAME,
                     'psw'    => self::PASSWORD,
                     'phones' => '7' . $phone,
+                    'sender' => 'SBI-SPORT',
                     'mes'    => $message
                 ]
             ]);
