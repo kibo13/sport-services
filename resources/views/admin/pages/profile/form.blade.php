@@ -90,6 +90,7 @@
                         {{ $message }}
                     </small>
                     @enderror
+                    @if(auth()->user()->isClient())
                     <div class="form-check">
                         <input type="hidden" name="is_notify" value="0">
                         <input type="checkbox"
@@ -101,6 +102,7 @@
                             Получать SMS-уведомления
                         </label>
                     </div>
+                    @endif
                 </div>
                 <div class="bk-form__field">
                     <label class="bk-form__label" for="email">
