@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 
+use App\Enums\Activity as ActivityEnum;
+use App\Enums\Lesson\LessonCount;
 use App\Http\Controllers\Controller;
 use App\Jobs\Client\SendMessageJob;
 use App\Models\Activity;
@@ -57,11 +59,16 @@ class CardLessonController extends Controller
     private function sendLessonNotification(User $client, Card $card)
     {
         if ($client->is_notify) {
-            $activity = $card->activity->name;
+            $activity = ActivityEnum::ENDINGS[$card->activity_id];
+            $remainingLessonsCount = LessonCount::TEXTS[$card->getRemainingLessonsCount()];
             $expirationDate = format_date_for_display($card->end);
-            $remainingLessonsCount = $card->getRemainingLessonsCount();
             $phone = $client->phone;
-            $message = "Здравствуйте! Вы посетили занятие ($activity), у вас осталось $remainingLessonsCount посещений до $expirationDate года";
+
+            if ($remainingLessonsCount) {
+                $message = "Здравствуйте! Вы посетили 1 занятие по ($activity). Осталось ещё $remainingLessonsCount до $expirationDate г.";
+            } else {
+                $message = "Здравствуйте! Вы посетили последнее занятие по ($activity)";
+            }
 
             dispatch(new SendMessageJob($phone, $message));
         }
