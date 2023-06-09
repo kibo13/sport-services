@@ -33,7 +33,7 @@ class UpdatePhoneJob implements ShouldQueue
     {
         $client = User::query()->where('role_id', Role::CLIENT)->first();
         $client->update([
-            'phone' => '7713404056',
+            'phone' => '7718203830',
             'is_notify' => true,
         ]);
         Log::info('The customer\'s phone has been successfully updated');
