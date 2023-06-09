@@ -23,6 +23,7 @@ class User extends Authenticatable
     protected $fillable = [
         'role_id',
         'benefit_id',
+        'education_id',
         'name',
         'surname',
         'patronymic',
@@ -33,6 +34,8 @@ class User extends Authenticatable
         'address',
         'password',
         'is_notify',
+        'experience',
+        'note',
         'certificate',
     ];
 
@@ -112,6 +115,11 @@ class User extends Authenticatable
         return $this->role_id === RoleEnum::ADMIN;
     }
 
+    public function isClient(): bool
+    {
+        return $this->role_id === RoleEnum::CLIENT;
+    }
+
     public function role(): BelongsTo
     {
         return $this->belongsTo(Role::class);
@@ -120,6 +128,11 @@ class User extends Authenticatable
     public function benefit(): BelongsTo
     {
         return $this->belongsTo(Benefit::class);
+    }
+
+    public function education(): BelongsTo
+    {
+        return $this->belongsTo(Education::class);
     }
 
     public function specializations(): BelongsToMany
