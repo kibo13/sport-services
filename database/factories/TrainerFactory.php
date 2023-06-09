@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 
 use App\Enums\Role;
+use App\Models\Education;
 use App\Models\PermissionUser;
 use App\Models\Specialization;
 use App\Models\User;
@@ -29,6 +30,7 @@ class TrainerFactory extends Factory
     {
         return [
             'role_id'           => Role::INSTRUCTOR,
+            'education_id'      => $this->getRandomEducationId(),
             'name'              => $this->faker->firstName(),
             'surname'           => $this->faker->lastName(),
             'patronymic'        => $this->faker->firstNameMale(),
@@ -38,6 +40,7 @@ class TrainerFactory extends Factory
             'address'           => $this->faker->streetAddress() . '-' . $this->faker->buildingNumber(),
             'email_verified_at' => now(),
             'password'          => Hash::make('secret'),
+            'experience'        => rand(1, 5),
             'remember_token'    => Str::random(10),
         ];
     }
@@ -104,5 +107,19 @@ class TrainerFactory extends Factory
             ->pluck('id');
 
         return $specializations->first();
+    }
+
+    /**
+     * Get a random education ID.
+     *
+     * @return int
+     */
+    private function getRandomEducationId(): int
+    {
+        $educationId = Education::query()
+            ->inRandomOrder()
+            ->value('id');
+
+        return (int) $educationId;
     }
 }
