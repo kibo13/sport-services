@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 
+use App\Repositories\Activity\ActivityRepository;
+use App\Repositories\Activity\ActivityRepositoryInterface;
 use App\Repositories\Card\CardRepository;
 use App\Repositories\Card\CardRepositoryInterface;
 use App\Repositories\Client\ClientRepository;
@@ -22,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->app->bind(ActivityRepositoryInterface::class, ActivityRepository::class);
         $this->app->bind(ClientRepositoryInterface::class, ClientRepository::class);
         $this->app->bind(TrainerRepositoryInterface::class, TrainerRepository::class);
         $this->app->bind(PaymentRepositoryInterface::class, PaymentRepository::class);
