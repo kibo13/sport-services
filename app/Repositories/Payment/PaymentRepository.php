@@ -41,7 +41,7 @@ class PaymentRepository implements PaymentRepositoryInterface
             ->sum('amount');
     }
 
-    public function getDataByActivity(int $activityId, $from, $till)
+    public function getPaymentsByActivity(int $activityId, $from, $till)
     {
         return $this->createQuery()
             ->select([

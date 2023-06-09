@@ -24,8 +24,7 @@ class StatisticController extends Controller
 
         foreach ($activities as $activity) {
             $activityPayments[$activity->id] = array_fill_keys($labels, 0);
-
-            $payments = $paymentRepository->getDataByActivity($activity->id, $from, $till);
+            $payments = $this->paymentRepository->getPaymentsByActivity($activity->id, $from, $till);
 
             foreach ($payments as $payment) {
                 if (array_key_exists($payment->period, $activityPayments[$activity->id])) {

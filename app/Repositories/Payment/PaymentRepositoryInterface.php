@@ -9,5 +9,5 @@ interface PaymentRepositoryInterface
     public function getTotalAmount();
     public function getPreviousMonthAmount();
     public function getCurrentMonthAmount();
-    public function getDataByActivity(int $activityId, $from, $till);
+    public function getPaymentsByActivity(int $activityId, $from, $till);
 }
