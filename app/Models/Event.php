@@ -14,6 +14,7 @@ class Event extends Model
 
     protected $fillable = [
         'title',
+        'activity_id',
         'specialization_id',
         'trainer_id',
         'start',
@@ -32,8 +33,14 @@ class Event extends Model
         parent::boot();
 
         static::saving(function ($event) {
+            $event->activity_id = $event->specialization_id;
             $event->end = $event->start;
         });
+    }
+
+    public function activity(): BelongsTo
+    {
+        return $this->belongsTo(Activity::class);
     }
 
     public function specialization(): BelongsTo
