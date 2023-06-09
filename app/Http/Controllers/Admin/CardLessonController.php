@@ -65,9 +65,9 @@ class CardLessonController extends Controller
             $phone = $client->phone;
 
             if ($remainingLessonsCount) {
-                $message = "Здравствуйте! Вы посетили 1 занятие по ($activity). Осталось ещё $remainingLessonsCount до $expirationDate г.";
+                $message = "Здравствуйте! Вы посетили 1 занятие по $activity. Осталось ещё $remainingLessonsCount до $expirationDate г.";
             } else {
-                $message = "Здравствуйте! Вы посетили последнее занятие по ($activity)";
+                $message = "Здравствуйте! Вы посетили последнее занятие по $activity";
             }
 
             dispatch(new SendMessageJob($phone, $message));
