@@ -26,9 +26,10 @@ class EventFactory extends Factory
 
         return [
             'title'             => 'Соревнование ' . $this->faker->unique()->numerify('#####'),
+            'activity_id'       => $specializationId,
             'specialization_id' => $specializationId,
             'trainer_id'        => $this->getRandomTrainerId($specializationId),
-            'start'             => $this->faker->dateTimeBetween('+7 days', '+3 months')->format('Y-m-d'),
+            'start'             => $this->faker->dateTimeBetween('-1 year', '-1 month')->format('Y-m-d'),
             'init'              => $this->faker->dateTimeBetween('07:00:00', '12:00:00')->format('H:i'),
             'place'             => $this->places[array_rand($this->places)],
         ];
