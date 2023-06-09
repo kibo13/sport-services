@@ -14,7 +14,19 @@ use Illuminate\Http\Request;
 
 class StatisticController extends Controller
 {
-    public function index(Request $request, PaymentRepositoryInterface $paymentRepository, ActivityRepositoryInterface $activityRepository)
+    protected $paymentRepository;
+    protected $activityRepository;
+
+    public function __construct(
+        ActivityRepositoryInterface $activityRepository,
+        PaymentRepositoryInterface $paymentRepository
+    )
+    {
+        $this->activityRepository = $activityRepository;
+        $this->paymentRepository = $paymentRepository;
+    }
+
+    public function index(Request $request)
     {
         $from = $request->input('from', Carbon::now()->subYear()->endOfMonth()->format('Y-m-d'));
         $till = $request->input('till', Carbon::now()->endOfMonth()->format('Y-m-d'));
@@ -37,8 +49,8 @@ class StatisticController extends Controller
         $chart->labels($labels);
 
         foreach ($activityPayments as $activityId => $activityPayment) {
-            $activityName = $activityRepository->getNameActivityById($activityId);
-            $activityColor = $activityRepository->getColorActivityById($activityId);
+            $activityName = $this->activityRepository->getNameActivityById($activityId);
+            $activityColor = $this->activityRepository->getColorActivityById($activityId);
 
             $chart->dataset($activityName, 'bar', array_values($activityPayment))
                 ->options([
