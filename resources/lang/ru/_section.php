@@ -11,6 +11,7 @@ return [
     'categories'            => 'Категории групп',
     'clients'               => 'Клиенты',
     'discounts'             => 'Скидки',
+    'educations'            => 'Образования',
     'events'                => 'Мероприятия',
     'groups'                => 'Группы',
     'home'                  => 'Главная',

@@ -87,6 +87,26 @@ return [
         ],
     ],
     [
+        'name'       => 'Образования',
+        'slug'       => 'education_read',
+        'is_setting' => 1,
+        'note'       => 'Просмотр',
+        'roles'      => [
+            Role::ADMIN,
+            Role::DIRECTOR,
+        ],
+    ],
+    [
+        'name'       => 'Образования',
+        'slug'       => 'education_full',
+        'is_setting' => 1,
+        'note'       => 'Редактирование',
+        'roles'      => [
+            Role::ADMIN,
+            Role::DIRECTOR,
+        ],
+    ],
+    [
         'name'       => 'Услуги',
         'slug'       => 'service_read',
         'is_setting' => 0,
