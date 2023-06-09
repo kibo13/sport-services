@@ -16,10 +16,12 @@
             <thead class="thead-light">
                 <tr>
                     <th>#</th>
-                    <th class="w-25 bk-min-w-250">{{ __('_field.fio') }}</th>
-                    <th class="w-25 bk-min-w-250">{{ __('_field.phone') }}</th>
-                    <th class="w-25 bk-min-w-250">{{ __('_field.email') }}</th>
-                    <th class="w-25 bk-min-w-250">{{ __('_field.specializations') }}</th>
+                    <th class="w-25 bk-min-w-200">{{ __('_field.fio') }}</th>
+                    <th class="w-25 bk-min-w-250">{{ __('_field.education') }}</th>
+                    <th class="w-00 bk-min-w-100">{{ __('_field.experience') }}</th>
+                    <th class="w-25 bk-min-w-200">{{ __('_field.specializations') }}</th>
+                    <th class="w-25 bk-min-w-300 no-sort">{{ __('_field.description') }}</th>
+                    <th class="w-00 bk-min-w-150 no-sort">{{ __('_field.photo') }}</th>
                     @if(is_access('trainer_full'))
                     <th class="no-sort">{{ __('_action.this') }}</th>
                     @endif
@@ -30,15 +32,10 @@
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td title="{{ $trainer->full_name }}">{{ $trainer->short_name }}</td>
+                    <td>{{ $trainer->education ? $trainer->education->name : null }}</td>
                     <td>
-                        <a href="tel:{{ $trainer->phone }}">
-                            {{ format_phone_number_for_display($trainer->phone) }}
-                        </a>
-                    </td>
-                    <td>
-                        <a href="mailto:{{ $trainer->email }}">
-                            {{ $trainer->email }}
-                        </a>
+                        <b>{{ $trainer->experience }}</b>
+                        <span class="bk-field bk-field--tip">{{ experience_label($trainer->experience) }}</span>
                     </td>
                     <td>
                         <ul>
@@ -48,6 +45,26 @@
                             </li>
                             @endforeach
                         </ul>
+                    </td>
+                    <td>
+                        <div class="bk-btn-info">
+                            {{ $trainer->note }}
+                            @if($trainer->note)
+                            <i class="fa fa-eye bk-btn-info--fa"></i>
+                            @endif
+                        </div>
+                    </td>
+                    <td>
+                        <div class="bk-zoom">
+                            <span class="text-primary">
+                                {{ __('_action.look') }}
+                            </span>
+                            <img class="bk-zoom__img"
+                                 src="{{ $trainer->photo ? asset('/storage/' . $trainer->photo) : asset('/assets/icons/anonymous.svg') }}"
+                                 alt="{{ $trainer->full_name }}"
+                                 tabindex="0">
+                            <div class="bk-zoom__bg"></div>
+                        </div>
                     </td>
                     @if(is_access('trainer_full'))
                     <td>
