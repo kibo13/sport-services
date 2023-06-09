@@ -14,6 +14,11 @@ class ActivityRepository implements ActivityRepositoryInterface
         return Activity::query();
     }
 
+    public function getAllActivities()
+    {
+        return $this->createQuery()->get();
+    }
+
     public function getNameActivityById(int $activityId)
     {
         $activity = $this->createQuery()->find($activityId);
