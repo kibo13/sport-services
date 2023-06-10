@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 
+use Database\Factories\AdminFactory;
 use Database\Factories\ClientFactory;
 use Database\Factories\DirectorFactory;
 use Database\Factories\DoctorFactory;
@@ -29,12 +30,13 @@ class DatabaseSeeder extends Seeder
             EducationSeeder::class,
             RoleSeeder::class,
             PermissionSeeder::class,
-            AdminSeeder::class,
+            OwnerSeeder::class,
             ServiceSeeder::class,
             SpecializationSeeder::class,
         ]);
 
         // factories
+        AdminFactory::new()->count(1)->create();
         DirectorFactory::new()->count(1)->create();
         DoctorFactory::new()->count(2)->create();
         PaymasterFactory::new()->count(2)->create();

@@ -14,7 +14,7 @@
 
         <div class="collapse navbar-collapse" id="navbar-content">
             <ul class="navbar-nav d-flex justify-content-end w-100">
-                @if(auth()->user()->isAdmin())
+                @if(auth()->user()->isOwner())
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('users.index') }}">
                         {{ __('_section.users') }}

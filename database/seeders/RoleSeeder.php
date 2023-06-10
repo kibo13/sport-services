@@ -19,7 +19,13 @@ class RoleSeeder extends Seeder
         $roles = RoleEnum::SLUGS;
 
         foreach ($roles as $index => $role) {
-            Role::query()->updateOrCreate(['slug' => $role], ['name' => RoleEnum::NAMES[$index]]);
+            Role::query()->updateOrCreate(
+                ['slug' => $role],
+                [
+                    'name' => RoleEnum::NAMES[$index],
+                    'is_hidden' => $role === 'owner'
+                ]
+            );
         }
     }
 }

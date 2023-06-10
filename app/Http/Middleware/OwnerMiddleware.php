@@ -4,8 +4,9 @@ namespace App\Http\Middleware;
 
 
 use Closure;
+use Illuminate\Http\Request;
 
-class AdminMiddleware
+class OwnerMiddleware
 {
     /**
      * @param $request
@@ -14,7 +15,7 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if ($request->user() && $request->user()->isAdmin()) {
+        if ($request->user() && $request->user()->isOwner()) {
             return $next($request);
         }
 

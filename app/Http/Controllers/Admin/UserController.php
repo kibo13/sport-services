@@ -25,7 +25,7 @@ class UserController extends Controller
 
     public function index()
     {
-        $users = User::query()->where('is_hidden', false)->get();
+        $users = User::query()->where('role_id', '>', 1)->get();
 
         return view('admin.pages.users.index', [
             'users'    => $users,
@@ -35,13 +35,13 @@ class UserController extends Controller
 
     public function create()
     {
-        $roles       = Role::all();
+        $roles = Role::query()->where('is_hidden', false)->get();
         $permissions = Permission::all();
 
         return view('admin.pages.users.form', [
-            'roles'       => $roles,
+            'roles' => $roles,
             'permissions' => $permissions,
-            'sections'    => $this->getSectionNames(),
+            'sections' => $this->getSectionNames(),
         ]);
     }
 
@@ -60,14 +60,14 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
-        $roles       = Role::all();
+        $roles = Role::query()->where('is_hidden', false)->get();
         $permissions = Permission::all();
 
         return view('admin.pages.users.form', [
-            'user'        => $user,
-            'roles'       => $roles,
+            'user' => $user,
+            'roles' => $roles,
             'permissions' => $permissions,
-            'sections'    => $this->getSectionNames(),
+            'sections' => $this->getSectionNames(),
         ]);
     }
 

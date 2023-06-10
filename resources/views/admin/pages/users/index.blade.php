@@ -6,7 +6,7 @@
     <section id="user-index">
         <h3>{{ __('_section.users') }}</h3>
 
-        @if(auth()->user()->isAdmin())
+        @if(auth()->user()->isOwner())
         <div class="my-2 btn-group">
             <a class="btn btn-primary" href="{{ route('users.create') }}">
                 {{ __('_record.new') }}

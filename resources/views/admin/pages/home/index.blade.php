@@ -9,7 +9,7 @@
 @section('content-admin')
     <section>
         <h3>{{ __('_section.home') }}</h3>
-        <input type="hidden" id="is_director" value="{{ auth()->user()->isAdmin() }}">
+        <input type="hidden" id="is_director" value="{{ auth()->user()->isOwner() }}">
         <div id="events"></div>
     </section>
 @endsection

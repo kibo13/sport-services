@@ -9,7 +9,7 @@ return [
         'is_setting' => 1,
         'note'       => 'Просмотр',
         'roles'      => [
-            Role::ADMIN,
+            Role::OWNER,
             Role::DIRECTOR,
             Role::PAYMASTER,
         ],
@@ -20,28 +20,7 @@ return [
         'is_setting' => 1,
         'note'       => 'Редактирование',
         'roles'      => [
-            Role::ADMIN,
-            Role::DIRECTOR,
-        ],
-    ],
-    [
-        'name'       => 'Методики',
-        'slug'       => 'method_read',
-        'is_setting' => 1,
-        'note'       => 'Просмотр',
-        'roles'      => [
-            Role::ADMIN,
-            Role::DIRECTOR,
-        ],
-    ],
-    [
-        'name'       => 'Методики',
-        'slug'       => 'method_full',
-        'is_setting' => 1,
-        'note'       => 'Редактирование',
-        'roles'      => [
-            Role::ADMIN,
-            Role::DIRECTOR,
+            Role::OWNER,
         ],
     ],
     [
@@ -50,7 +29,7 @@ return [
         'is_setting' => 0,
         'note'       => 'Просмотр',
         'roles'      => [
-            Role::ADMIN,
+            Role::OWNER,
             Role::DIRECTOR,
             Role::PAYMASTER,
         ],
@@ -61,8 +40,7 @@ return [
         'is_setting' => 0,
         'note'       => 'Редактирование',
         'roles'      => [
-            Role::ADMIN,
-            Role::DIRECTOR,
+            Role::OWNER,
             Role::PAYMASTER,
         ],
     ],
@@ -72,7 +50,7 @@ return [
         'is_setting' => 1,
         'note'       => 'Просмотр',
         'roles'      => [
-            Role::ADMIN,
+            Role::OWNER,
             Role::DIRECTOR,
         ],
     ],
@@ -82,8 +60,7 @@ return [
         'is_setting' => 1,
         'note'       => 'Редактирование',
         'roles'      => [
-            Role::ADMIN,
-            Role::DIRECTOR,
+            Role::OWNER,
         ],
     ],
     [
@@ -92,7 +69,7 @@ return [
         'is_setting' => 1,
         'note'       => 'Просмотр',
         'roles'      => [
-            Role::ADMIN,
+            Role::OWNER,
             Role::DIRECTOR,
         ],
     ],
@@ -102,8 +79,7 @@ return [
         'is_setting' => 1,
         'note'       => 'Редактирование',
         'roles'      => [
-            Role::ADMIN,
-            Role::DIRECTOR,
+            Role::OWNER,
         ],
     ],
     [
@@ -112,6 +88,7 @@ return [
         'is_setting' => 0,
         'note'       => 'Просмотр',
         'roles'      => [
+            Role::OWNER,
             Role::ADMIN,
             Role::DIRECTOR,
             Role::PAYMASTER,
@@ -126,8 +103,7 @@ return [
         'is_setting' => 0,
         'note'       => 'Редактирование',
         'roles'      => [
-            Role::ADMIN,
-            Role::DIRECTOR,
+            Role::OWNER,
             Role::PAYMASTER,
         ],
     ],
@@ -137,6 +113,7 @@ return [
         'is_setting' => 0,
         'note'       => 'Просмотр',
         'roles'      => [
+            Role::OWNER,
             Role::ADMIN,
             Role::DIRECTOR,
             Role::PAYMASTER
@@ -148,8 +125,7 @@ return [
         'is_setting' => 0,
         'note'       => 'Редактирование',
         'roles'      => [
-            Role::ADMIN,
-            Role::DIRECTOR,
+            Role::OWNER,
             Role::PAYMASTER
         ],
     ],
@@ -168,8 +144,8 @@ return [
         'is_setting' => 0,
         'note'       => 'Редактирование',
         'roles'      => [
+            Role::OWNER,
             Role::ADMIN,
-            Role::DIRECTOR,
         ],
     ],
     [
@@ -178,6 +154,7 @@ return [
         'is_setting' => 0,
         'note'       => 'Просмотр',
         'roles'      => [
+            Role::OWNER,
             Role::ADMIN,
             Role::DIRECTOR,
             Role::DOCTOR
@@ -189,8 +166,8 @@ return [
         'is_setting' => 0,
         'note'       => 'Редактирование',
         'roles'      => [
+            Role::OWNER,
             Role::ADMIN,
-            Role::DIRECTOR,
         ],
     ],
     [
@@ -199,9 +176,10 @@ return [
         'is_setting' => 0,
         'note'       => 'Просмотр',
         'roles'      => [
+            Role::OWNER,
             Role::ADMIN,
             Role::DIRECTOR,
-            Role::DOCTOR,
+            Role::DOCTOR
         ],
     ],
     [
@@ -210,31 +188,8 @@ return [
         'is_setting' => 0,
         'note'       => 'Редактирование',
         'roles'      => [
+            Role::OWNER,
             Role::ADMIN,
-            Role::DIRECTOR,
-        ],
-    ],
-    [
-        'name'       => 'Расписание',
-        'slug'       => 'timetable_read',
-        'is_setting' => 0,
-        'note'       => 'Просмотр',
-        'roles'      => [
-            Role::ADMIN,
-            Role::DIRECTOR,
-            Role::INSTRUCTOR,
-            Role::CLIENT
-        ],
-    ],
-    [
-        'name'       => 'Расписание',
-        'slug'       => 'timetable_full',
-        'is_setting' => 0,
-        'note'       => 'Редактирование',
-        'roles'      => [
-            Role::ADMIN,
-            Role::DIRECTOR,
-            Role::INSTRUCTOR
         ],
     ],
     [
@@ -243,7 +198,7 @@ return [
         'is_setting' => 0,
         'note'       => 'Просмотр',
         'roles'      => [
-            Role::ADMIN,
+            Role::OWNER,
             Role::DIRECTOR,
             Role::INSTRUCTOR,
         ],
@@ -254,8 +209,7 @@ return [
         'is_setting' => 0,
         'note'       => 'Редактирование',
         'roles'      => [
-            Role::ADMIN,
-            Role::DIRECTOR,
+            Role::OWNER,
             Role::INSTRUCTOR,
         ],
     ],
@@ -265,6 +219,7 @@ return [
         'is_setting' => 0,
         'note'       => 'Просмотр',
         'roles'      => [
+            Role::OWNER,
             Role::ADMIN,
             Role::DIRECTOR,
         ],
@@ -275,7 +230,7 @@ return [
         'is_setting' => 0,
         'note'       => 'Просмотр',
         'roles'      => [
-            Role::ADMIN,
+            Role::OWNER,
             Role::DIRECTOR,
         ],
     ],

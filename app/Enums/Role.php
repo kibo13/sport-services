@@ -6,14 +6,16 @@ namespace App\Enums;
 
 class Role
 {
-    public const ADMIN      = 1;
-    public const DIRECTOR   = 2;
-    public const PAYMASTER  = 3;
-    public const INSTRUCTOR = 4;
-    public const DOCTOR     = 5;
-    public const CLIENT     = 6;
+    public const OWNER      = 1;
+    public const ADMIN      = 2;
+    public const DIRECTOR   = 3;
+    public const PAYMASTER  = 4;
+    public const INSTRUCTOR = 5;
+    public const DOCTOR     = 6;
+    public const CLIENT     = 7;
 
     public const NAMES = [
+        self::OWNER      => 'Владелец',
         self::ADMIN      => 'Администратор',
         self::DIRECTOR   => 'Директор',
         self::PAYMASTER  => 'Кассир',
@@ -23,6 +25,7 @@ class Role
     ];
 
     public const SLUGS = [
+        self::OWNER      => 'owner',
         self::ADMIN      => 'admin',
         self::DIRECTOR   => 'director',
         self::PAYMASTER  => 'paymaster',
