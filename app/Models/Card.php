@@ -31,7 +31,7 @@ class Card extends Model
 
         static::creating(function ($card) {
             $card->start = is_null($card->start) ? date('Y-m-d') : $card->start;
-            $card->end   = is_null($card->end) ? date('Y-m-d', strtotime('+1 month')) : $card->end;
+            $card->end   = is_null($card->end) ? date('Y-m-d', strtotime('+2 month')) : $card->end;
         });
 
         static::created(function ($card) {
