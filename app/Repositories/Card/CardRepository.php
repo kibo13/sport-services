@@ -14,6 +14,16 @@ class CardRepository implements CardRepositoryInterface
         return Card::query();
     }
 
+    public function getActiveCards()
+    {
+        return $this->createQuery()->where('is_active', true)->get();
+    }
+
+    public function getInactiveCards()
+    {
+        return $this->createQuery()->where('is_active', false)->get();
+    }
+
     public function getActiveLessonsByActivitiesAndClient(array $activities, int $clientId)
     {
         return $this->createQuery()
