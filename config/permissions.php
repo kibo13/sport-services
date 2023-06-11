@@ -179,7 +179,8 @@ return [
             Role::OWNER,
             Role::ADMIN,
             Role::DIRECTOR,
-            Role::DOCTOR
+            Role::DOCTOR,
+            Role::CLIENT,
         ],
     ],
     [

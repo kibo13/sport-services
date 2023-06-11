@@ -6,11 +6,13 @@
     <section id="trainers-index">
         <h3>{{ __('_section.trainers') }}</h3>
 
+        @if(is_access('trainer_full'))
         <div class="my-2 btn-group">
             <a class="btn btn-success" href="{{ route('trainers.export') }}">
                 {{ __('_action.export') }}
             </a>
         </div>
+        @endif
 
         <table id="is-datatable" class="dataTables table table-bordered table-hover table-responsive">
             <thead class="thead-light">

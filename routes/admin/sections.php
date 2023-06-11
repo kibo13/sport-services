@@ -66,9 +66,9 @@ Route::prefix('cards')->as('cards.')->group(function () {
 Route::prefix('clients')->group(function () {
     Route::middleware('permission:client_read')->group(function () {
         Route::get('/', [ClientController::class, 'index'])->name('clients.index');
-        Route::get('/export', [ClientController::class, 'export'])->name('clients.export');
     });
     Route::middleware('permission:client_full')->group(function () {
+        Route::get('/export', [ClientController::class, 'export'])->name('clients.export');
         Route::get('/create', [ClientController::class, 'create'])->name('payments.clients.create');
         Route::post('/', [ClientController::class, 'store'])->name('payments.clients.store');
         Route::get('/{client}/edit', [ClientController::class, 'edit'])->name('clients.edit');
@@ -79,9 +79,9 @@ Route::prefix('clients')->group(function () {
 Route::prefix('trainers')->as('trainers.')->group(function () {
     Route::middleware('permission:trainer_read')->group(function () {
         Route::get('/', [TrainerController::class, 'index'])->name('index');
-        Route::get('/export', [TrainerController::class, 'export'])->name('export');
     });
     Route::middleware('permission:trainer_full')->group(function () {
+        Route::get('/export', [TrainerController::class, 'export'])->name('export');
         Route::get('/{trainer}/edit', [TrainerController::class, 'edit'])->name('edit');
         Route::match(['put', 'patch'], '/{trainer}', [TrainerController::class, 'update'])->name('update');
     });

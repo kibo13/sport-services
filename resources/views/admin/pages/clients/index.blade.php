@@ -6,11 +6,13 @@
     <section id="clients-index">
         <h3>{{ __('_section.clients') }}</h3>
 
+        @if(is_access('client_full'))
         <div class="my-2 btn-group">
             <a class="btn btn-success" href="{{ route('clients.export') }}">
                 {{ __('_action.export') }}
             </a>
         </div>
+        @endif
 
         @if(session()->has('success'))
         <div class="my-2 alert alert-success" role="alert">
