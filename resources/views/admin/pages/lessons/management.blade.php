@@ -32,11 +32,20 @@
                         {{ $card ? $card->client->full_name : 'Клиент не найден' }}
                     </div>
                 </div>
+                <div class="bk-form__field">
+                    <label class="bk-form__label">
+                        {{ __('_field.expiration_at') }}
+                    </label>
+                    <div class="bk-form__text {{ $card->isCardActive() ? 'text-success' : 'text-danger' }}">
+                        {{ format_date_for_display($card->end) }}
+                    </div>
+                </div>
                 @if($card)
                 <div class="bk-form__field">
                     <label class="bk-form__label">
                         {{ __('_field.card') }}
                     </label>
+                    @if($card->isCardActive())
                     <table class="dataTables table table-bordered table-responsive">
                         <tbody>
                             <tr class="font-weight-bold">
@@ -84,6 +93,11 @@
                             </tr>
                         </tbody>
                     </table>
+                    @else
+                    <div class="bk-form__text">
+                        Карточка неактивна, необходимо приобрести новую
+                    </div>
+                    @endif
                 </div>
                 @endif
             </div>

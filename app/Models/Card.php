@@ -78,4 +78,11 @@ class Card extends Model
     {
         return $this->lessons()->where('is_attended', false)->count();
     }
+
+    public function isCardActive(): bool
+    {
+        $currentDate = date('Y-m-d');
+
+        return $this->end >= $currentDate;
+    }
 }
