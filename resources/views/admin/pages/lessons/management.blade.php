@@ -32,6 +32,7 @@
                         {{ $card ? $card->client->full_name : 'Клиент не найден' }}
                     </div>
                 </div>
+                @if($card)
                 <div class="bk-form__field">
                     <label class="bk-form__label">
                         {{ __('_field.expiration_at') }}
@@ -40,7 +41,6 @@
                         {{ format_date_for_display($card->end) }}
                     </div>
                 </div>
-                @if($card)
                 <div class="bk-form__field">
                     <label class="bk-form__label">
                         {{ __('_field.card') }}
