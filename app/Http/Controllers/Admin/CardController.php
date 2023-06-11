@@ -5,15 +5,20 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Card;
+use App\Repositories\Card\CardRepositoryInterface;
 use App\Services\Pdf\PdfService;
 
 class CardController extends Controller
 {
-    public function index()
+    public function index(CardRepositoryInterface $cardRepository)
     {
-        $cards = Card::all();
+        $activeCards = $cardRepository->getActiveCards();
+        $inactiveCards = $cardRepository->getInactiveCards();
 
-        return view('admin.pages.cards.index', compact('cards'));
+        return view('admin.pages.cards.index', [
+            'activeCards' => $activeCards,
+            'inactiveCards' => $inactiveCards,
+        ]);
     }
 
     public function generate(Card $card)

@@ -12,48 +12,28 @@
         </div>
         @endif
 
-        <table id="is-datatable" class="dataTables table table-bordered table-hover table-responsive">
-            <thead class="thead-light">
-                <tr>
-                    <th>#</th>
-                    <th class="w-25 bk-min-w-200">{{ __('_field.activity') }}</th>
-                    <th class="w-25 bk-min-w-250">{{ __('_field.service') }}</th>
-                    <th class="w-25 bk-min-w-200">{{ __('_field.fio') }}</th>
-                    <th class="w-25 bk-min-w-200">{{ __('_field.expiration_at') }}</th>
-                    <th class="no-sort">{{ __('_action.this') }}</th>
-                </tr>
-            </thead>
-            <tbody>
-            @foreach($cards as $card)
-                <tr>
-                    <td>{{ $loop->iteration }}</td>
-                    <td>{{ $card->service->activity->name }}</td>
-                    <td>
-                        <ul>
-                            <li class="bk-field bk-field--tip">
-                                {{ $card->service->name }}
-                            </li>
-                            <li class="bk-field bk-field--tip">
-                                {{ $card->service->unit }}
-                                {{ $card->service->unit == 1 ? ' посещение' : ' посещений' }}
-                            </li>
-                        </ul>
-                    </td>
-                    <td title="{{ $card->client->full_name }}">
-                        {{ $card->client->short_name }}
-                    </td>
-                    <td>{{ format_date_for_display($card->end) }}</td>
-                    <td>
-                        <div class="bk-btn-actions">
-                            <a class="bk-btn-action bk-btn-action--card btn btn-primary"
-                               href="{{ route('cards.generate', $card) }}"
-                               target="_blank"
-                               title="{{ __('_field.card') }}"></a>
-                        </div>
-                    </td>
-                </tr>
-            @endforeach
-            </tbody>
-        </table>
+        <div class="bk-tabs">
+            <input class="bk-tabs__input bk-tab-1"
+                   id="tab-1"
+                   type="radio"
+                   name="tab"
+                   checked>
+            <label class="bk-tabs__label" for="tab-1">
+                Активные
+            </label>
+            <input class="bk-tabs__input bk-tab-2"
+                   id="tab-2"
+                   type="radio"
+                   name="tab">
+            <label class="bk-tabs__label" for="tab-2">
+                Неактивные
+            </label>
+            <div class="bk-tabs__content bk-tab-content-1">
+                @include('admin.pages.cards.tabs.active')
+            </div>
+            <div class="bk-tabs__content bk-tab-content-2">
+                @include('admin.pages.cards.tabs.inactive')
+            </div>
+        </div>
     </section>
 @endsection
