@@ -176,7 +176,7 @@ class ClientFactory extends Factory
             'service_id' => $service->id,
             'payment_id' => $payment->id,
             'start' => $payment->paid_at,
-            'end' => date('Y-m-d', strtotime($payment->paid_at . '+1 month')),
+            'end' => date('Y-m-d', strtotime($payment->paid_at . '+2 month')),
         ]);
     }
 }
