@@ -10,4 +10,6 @@ interface PaymentRepositoryInterface
     public function getPreviousMonthAmount();
     public function getCurrentMonthAmount();
     public function getPaymentsByActivity(int $activityId, $from, $till);
+    public function getMaxPaymentId();
+    public function setAutoIncrementValue($value);
 }

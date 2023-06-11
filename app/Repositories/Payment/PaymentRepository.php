@@ -53,4 +53,14 @@ class PaymentRepository implements PaymentRepositoryInterface
             ->groupBy('period')
             ->get();
     }
+
+    public function getMaxPaymentId()
+    {
+        return $this->createQuery()->max('id');
+    }
+
+    public function setAutoIncrementValue($value)
+    {
+        DB::statement("ALTER TABLE payments AUTO_INCREMENT = $value;");
+    }
 }
