@@ -214,6 +214,26 @@ return [
         ],
     ],
     [
+        'name'       => 'Настройки',
+        'slug'       => 'option_read',
+        'is_setting' => 0,
+        'note'       => 'Просмотр',
+        'roles'      => [
+            Role::OWNER,
+            Role::PAYMASTER,
+        ],
+    ],
+    [
+        'name'       => 'Настройки',
+        'slug'       => 'option_full',
+        'is_setting' => 0,
+        'note'       => 'Редактирование',
+        'roles'      => [
+            Role::OWNER,
+            Role::PAYMASTER,
+        ],
+    ],
+    [
         'name'       => 'Отчеты',
         'slug'       => 'report_read',
         'is_setting' => 0,

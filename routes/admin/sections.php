@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\CardController;
+use App\Http\Controllers\Admin\OptionController;
 use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\ReportController;
@@ -96,6 +97,15 @@ Route::prefix('events')->as('events.')->group(function () {
         Route::get('/{event}/edit', [EventController::class, 'edit'])->name('edit');
         Route::match(['put', 'patch'], '/{event}', [EventController::class, 'update'])->name('update');
         Route::delete('/{event}', [EventController::class, 'destroy'])->name('destroy');
+    });
+});
+
+Route::prefix('options')->as('options.')->group(function () {
+    Route::middleware('permission:option_read')->group(function () {
+        Route::get('/', [OptionController::class, 'index'])->name('index');
+    });
+    Route::middleware('permission:option_full')->group(function () {
+        Route::match(['put', 'patch'], '/{option}', [OptionController::class, 'update'])->name('update');
     });
 });
 

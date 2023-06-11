@@ -33,6 +33,7 @@ class DatabaseSeeder extends Seeder
             OwnerSeeder::class,
             ServiceSeeder::class,
             SpecializationSeeder::class,
+            OptionSeeder::class,
         ]);
 
         // factories

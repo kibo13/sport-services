@@ -137,5 +137,15 @@
             </a>
         </li>
         @endif
+        @if(is_access('option_read'))
+        <li class="sidebar-list__item {{ is_active('option*', 'sidebar-list__item--active') }}">
+            <a class="sidebar-list__link" href="{{ route('options.index') }}" title="{{ __('_section.settings') }}">
+                <i class="fa fa-cog sidebar-list__icon"></i>
+                <span class="sidebar-list__text">
+                    {{ __('_section.settings') }}
+                </span>
+            </a>
+        </li>
+        @endif
     </ul>
 </nav>
