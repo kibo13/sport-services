@@ -60,13 +60,14 @@ class CardLessonController extends Controller
     {
         if ($client->is_notify) {
             $activity = ActivityEnum::ENDINGS[$card->activity_id];
-            $remainingLessonsCount = LessonCount::TEXTS[$card->getRemainingLessonsCount()];
+            $remainingLessonsCount = $card->getRemainingLessonsCount();
             $expirationDate = format_date_for_display($card->end);
             $phone = $client->phone;
             $company = 'ГБУ "СОК"';
 
             if ($remainingLessonsCount) {
-                $message = "Здравствуйте! Вы посетили 1 занятие по $activity. Осталось ещё $remainingLessonsCount до $expirationDate г. $company";
+                $remainingLessonsText = LessonCount::TEXTS[$remainingLessonsCount];
+                $message = "Здравствуйте! Вы посетили 1 занятие по $activity. Осталось ещё $remainingLessonsText до $expirationDate г. $company";
             } else {
                 $message = "Здравствуйте! Вы посетили последнее занятие по $activity. $company";
             }
