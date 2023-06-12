@@ -109,8 +109,11 @@ Route::prefix('options')->as('options.')->group(function () {
     });
 });
 
-Route::middleware('permission:report_read')->group(function () {
-    Route::get('/reports', [ReportController::class, 'index'])->name('reports.index');
+Route::prefix('reports')->as('reports.')->group(function () {
+    Route::middleware('permission:report_read')->group(function () {
+        Route::get('/', [ReportController::class, 'index'])->name('index');
+        Route::get('/clients', [ReportController::class, 'clients'])->name('clients');
+    });
 });
 
 Route::middleware('permission:stat_read')->group(function () {
