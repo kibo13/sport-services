@@ -5,6 +5,7 @@ namespace Database\Factories;
 
 use App\Enums\Role;
 use App\Models\Education;
+use App\Models\Group;
 use App\Models\PermissionUser;
 use App\Models\Specialization;
 use App\Models\User;
@@ -68,9 +69,9 @@ class TrainerFactory extends Factory
     {
         return $this->afterCreating(function (User $user) {
             $this->syncPermissionsForUser($user);
-            $user->specializations()->attach([
-                $this->getRandomSpecializationId()
-            ]);
+            $specializationId = $this->getRandomSpecializationId();
+            $user->specializations()->attach([$specializationId]);
+            $this->createGroupWithActivityAndTrainer($specializationId, $user->id);
         });
     }
 
@@ -121,5 +122,22 @@ class TrainerFactory extends Factory
             ->value('id');
 
         return (int) $educationId;
+    }
+
+    /**
+     * Create a group with the specified activity and trainer.
+     *
+     * @param int $activityId The ID of the activity.
+     * @param int $trainerId The ID of the trainer.
+     * @return void
+     */
+    public function createGroupWithActivityAndTrainer(int $activityId, int $trainerId)
+    {
+        Group::query()->create([
+            'name' => 'Группа ' . $activityId . $trainerId,
+            'activity_id' => $activityId,
+            'trainer_id' => $trainerId,
+            'limit' => 12
+        ]);
     }
 }
