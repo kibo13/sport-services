@@ -59,6 +59,16 @@
             </a>
         </li>
         @endif
+        @if(is_access('group_read'))
+        <li class="sidebar-list__item {{ is_active('group*', 'sidebar-list__item--active') }}">
+            <a class="sidebar-list__link" href="{{ route('groups.index') }}" title="{{ __('_section.groups') }}">
+                <i class="fa fa-cubes sidebar-list__icon"></i>
+                <span class="sidebar-list__text">
+                    {{ __('_section.groups') }}
+                </span>
+            </a>
+        </li>
+        @endif
         @if(is_access('pay_read'))
         <li class="sidebar-list__item {{ is_active('payment*', 'sidebar-list__item--active') }}">
             <a class="sidebar-list__link" href="{{ route('payments.index') }}" title="{{ __('_section.payments') }}">

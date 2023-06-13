@@ -149,6 +149,28 @@ return [
         ],
     ],
     [
+        'name'       => 'Группы',
+        'slug'       => 'group_read',
+        'is_setting' => 0,
+        'note'       => 'Просмотр',
+        'roles'      => [
+            Role::OWNER,
+            Role::ADMIN,
+            Role::DIRECTOR,
+            Role::INSTRUCTOR,
+        ],
+    ],
+    [
+        'name'       => 'Группы',
+        'slug'       => 'group_full',
+        'is_setting' => 0,
+        'note'       => 'Редактирование',
+        'roles'      => [
+            Role::OWNER,
+            Role::ADMIN,
+        ],
+    ],
+    [
         'name'       => 'Клиенты',
         'slug'       => 'client_read',
         'is_setting' => 0,

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CardLessonController;
 use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\EventController;
+use App\Http\Controllers\Admin\GroupController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\CardController;
 use App\Http\Controllers\Admin\OptionController;
@@ -60,6 +61,19 @@ Route::prefix('cards')->as('cards.')->group(function () {
     Route::middleware('permission:card_read')->group(function () {
         Route::get('/', [CardController::class, 'index'])->name('index');
         Route::get('/{card}/generate', [CardController::class, 'generate'])->name('generate');
+    });
+});
+
+Route::prefix('groups')->as('groups.')->group(function () {
+    Route::middleware('permission:group_read')->group(function () {
+        Route::get('/', [GroupController::class, 'index'])->name('index');
+    });
+    Route::middleware('permission:group_full')->group(function () {
+        Route::get('/create', [GroupController::class, 'create'])->name('create');
+        Route::post('/', [GroupController::class, 'store'])->name('store');
+        Route::get('/{group}/edit', [GroupController::class, 'edit'])->name('edit');
+        Route::match(['put', 'patch'], '/{group}', [GroupController::class, 'update'])->name('update');
+        Route::delete('/{group}', [GroupController::class, 'destroy'])->name('destroy');
     });
 });
 
