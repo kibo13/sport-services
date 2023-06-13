@@ -25,6 +25,12 @@ mix .js([
     ], 'public/js/helpers')
     .version()
 
+// api
+mix .js([
+    'resources/js/api/get-trainers-by-specialization.js'
+], 'public/js/api')
+    .version()
+
 // vendors
 mix.copy('node_modules/font-awesome/css/font-awesome.min.css', 'public/css/vendors/font-awesome.min.css')
 mix.copy('node_modules/bootstrap/dist/css/bootstrap.min.css', 'public/css/vendors/bootstrap.min.css')
