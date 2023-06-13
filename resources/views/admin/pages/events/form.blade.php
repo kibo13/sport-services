@@ -2,6 +2,10 @@
 
 @section('title-admin', __('_section.events'))
 
+@section('scripts')
+    <script src="{{ mix('js/api/get-trainers-by-specialization.js') }}"></script>
+@endsection
+
 @section('content-admin')
     <section id="event-form">
         <h3>{{ isset($event) ? __('_record.edit') : __('_record.new')  }}</h3>

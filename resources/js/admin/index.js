@@ -16,7 +16,6 @@ require('./custom/comparison')
 // pages
 require('./pages/users')
 require('./pages/profile')
-require('./pages/events')
 require('./pages/payments')
 require('./pages/statistics')
 require('./pages/reports')
