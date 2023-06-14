@@ -1,0 +1,31 @@
+.group
+
+    &-title
+        margin-top: 15px
+        margin-bottom: 0
+
+    &-places
+        display: grid
+        grid-template-columns: repeat(auto-fill, minmax(35px, 1fr))
+        grid-gap: 5px
+
+    &-place
+        position: relative
+        width: 35px
+        height: 35px
+        display: flex
+        justify-content: center
+        align-items: center
+        font-size: $text-sm
+        border: $border-gray
+        border-radius: 4px
+
+        &--free
+            color: $dark
+            background-color: transparent
+            border: 2px solid $info
+        &--busy
+            color: $white
+            background-color: $info
+            border: 2px solid $info
+
