@@ -20,45 +20,68 @@
         </div>
         @endif
 
-        <table id="is-datatable" class="dataTables table table-bordered table-hover table-responsive">
-            <thead class="thead-light">
-                <tr>
-                    <th>#</th>
-                    <th class="w-25 bk-min-w-200">{{ __('_field.name') }}</th>
-                    <th class="w-25 bk-min-w-200">{{ __('_field.activity') }}</th>
-                    <th class="w-25 bk-min-w-200">{{ __('_field.trainer') }}</th>
-                    <th class="w-25 bk-min-w-150">{{ __('_field.max_seating') }}</th>
-                    @if(is_access('group_full'))
-                    <th class="no-sort">{{ __('_action.this') }}</th>
-                    @endif
-                </tr>
-            </thead>
-            <tbody>
-            @foreach($groups as $group)
-                <tr>
-                    <td>{{ $loop->iteration }}</td>
-                    <td>{{ $group->name }}</td>
-                    <td>{{ $group->activity->name }}</td>
-                    <td title="{{ $group->trainer->full_name }}">{{ $group->trainer->short_name }}</td>
-                    <td>{{ $group->limit }}</td>
-                    @if(is_access('group_full'))
-                    <td>
-                        <div class="bk-btn-actions">
-                            <a class="bk-btn-action bk-btn-action--edit btn btn-warning"
-                               href="{{ route('groups.edit', $group) }}"
-                               title="{{ __('_action.edit') }}" ></a>
-                            <a class="bk-btn-action bk-btn-action--delete btn btn-danger"
-                               href="javascript:void(0)"
-                               data-id="{{ $group->id }}"
-                               data-toggle="modal"
-                               data-target="#bk-delete-modal"
-                               title="{{ __('_action.delete') }}" ></a>
-                        </div>
-                    </td>
-                    @endif
-                </tr>
-            @endforeach
-            </tbody>
-        </table>
+        @foreach($groups as $group)
+            <h5 class="group-title">{{ $group->name }}</h5>
+            <hr class="my-2">
+            <ul class="group-places">
+                @foreach($group->places as $place)
+                    <li class="group-place {{ $place->is_busy ? 'group-place--busy' : 'group-place--free' }}">
+                        {{ $loop->iteration }}
+                    </li>
+                @endforeach
+{{--                @for($i = 1; $i <= $group->basic_seats; $i++)--}}
+{{--                    @if($i <= $group->members->where('form_study', 0)->count())--}}
+{{--                        <li class="bk-places-cell bk-places-cell--free-fill">--}}
+{{--                            {{ $i }}--}}
+{{--                        </li>--}}
+{{--                    @else--}}
+{{--                        <li class="bk-places-cell bk-places-cell--free">--}}
+{{--                            {{ $i }}--}}
+{{--                        </li>--}}
+{{--                    @endif--}}
+{{--                @endfor--}}
+            </ul>
+        @endforeach
+
+{{--        <table id="is-datatable" class="dataTables table table-bordered table-hover table-responsive">--}}
+{{--            <thead class="thead-light">--}}
+{{--                <tr>--}}
+{{--                    <th>#</th>--}}
+{{--                    <th class="w-25 bk-min-w-200">{{ __('_field.name') }}</th>--}}
+{{--                    <th class="w-25 bk-min-w-200">{{ __('_field.activity') }}</th>--}}
+{{--                    <th class="w-25 bk-min-w-200">{{ __('_field.trainer') }}</th>--}}
+{{--                    <th class="w-25 bk-min-w-150">{{ __('_field.max_seating') }}</th>--}}
+{{--                    @if(is_access('group_full'))--}}
+{{--                    <th class="no-sort">{{ __('_action.this') }}</th>--}}
+{{--                    @endif--}}
+{{--                </tr>--}}
+{{--            </thead>--}}
+{{--            <tbody>--}}
+{{--            @foreach($groups as $group)--}}
+{{--                <tr>--}}
+{{--                    <td>{{ $loop->iteration }}</td>--}}
+{{--                    <td>{{ $group->name }}</td>--}}
+{{--                    <td>{{ $group->activity->name }}</td>--}}
+{{--                    <td title="{{ $group->trainer->full_name }}">{{ $group->trainer->short_name }}</td>--}}
+{{--                    <td>{{ $group->limit }}</td>--}}
+{{--                    @if(is_access('group_full'))--}}
+{{--                    <td>--}}
+{{--                        <div class="bk-btn-actions">--}}
+{{--                            <a class="bk-btn-action bk-btn-action--edit btn btn-warning"--}}
+{{--                               href="{{ route('groups.edit', $group) }}"--}}
+{{--                               title="{{ __('_action.edit') }}" ></a>--}}
+{{--                            <a class="bk-btn-action bk-btn-action--delete btn btn-danger"--}}
+{{--                               href="javascript:void(0)"--}}
+{{--                               data-id="{{ $group->id }}"--}}
+{{--                               data-toggle="modal"--}}
+{{--                               data-target="#bk-delete-modal"--}}
+{{--                               title="{{ __('_action.delete') }}" ></a>--}}
+{{--                        </div>--}}
+{{--                    </td>--}}
+{{--                    @endif--}}
+{{--                </tr>--}}
+{{--            @endforeach--}}
+{{--            </tbody>--}}
+{{--        </table>--}}
     </section>
 @endsection
