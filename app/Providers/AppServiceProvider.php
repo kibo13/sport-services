@@ -13,6 +13,8 @@ use App\Repositories\Event\EventRepository;
 use App\Repositories\Event\EventRepositoryInterface;
 use App\Repositories\Group\GroupRepository;
 use App\Repositories\Group\GroupRepositoryInterface;
+use App\Repositories\Order\OrderRepository;
+use App\Repositories\Order\OrderRepositoryInterface;
 use App\Repositories\Payment\PaymentRepository;
 use App\Repositories\Payment\PaymentRepositoryInterface;
 use App\Repositories\Trainer\TrainerRepository;
@@ -38,6 +40,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(PaymentRepositoryInterface::class, PaymentRepository::class);
         $this->app->bind(EventRepositoryInterface::class, EventRepository::class);
         $this->app->bind(CardRepositoryInterface::class, CardRepository::class);
+        $this->app->bind(OrderRepositoryInterface::class, OrderRepository::class);
     }
 
     /**
