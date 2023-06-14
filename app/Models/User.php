@@ -115,6 +115,11 @@ class User extends Authenticatable
         return $this->role_id === RoleEnum::OWNER;
     }
 
+    public function isAdmin(): bool
+    {
+        return $this->role_id === RoleEnum::ADMIN;
+    }
+
     public function isClient(): bool
     {
         return $this->role_id === RoleEnum::CLIENT;
