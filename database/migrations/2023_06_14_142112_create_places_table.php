@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateClientGroupTable extends Migration
+class CreatePlacesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,21 @@ class CreateClientGroupTable extends Migration
      */
     public function up()
     {
-        Schema::create('client_group', function (Blueprint $table) {
+        Schema::create('places', function (Blueprint $table) {
             $table->id();
-            $table->smallInteger('place');
-            $table->foreignId('client_id')
-                ->nullable(true)
-                ->constrained('users')
-                ->cascadeOnUpdate()
-                ->cascadeOnDelete();
             $table->foreignId('group_id')
                 ->nullable(false)
                 ->constrained('groups')
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
+            $table->foreignId('client_id')
+                ->nullable(true)
+                ->constrained('users')
+                ->cascadeOnUpdate()
+                ->cascadeOnDelete();
+            $table->smallInteger('number');
+            $table->boolean('is_busy')->default(false);
+            $table->timestamps();
         });
     }
 
@@ -36,6 +38,6 @@ class CreateClientGroupTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('client_group');
+        Schema::dropIfExists('places');
     }
 }
