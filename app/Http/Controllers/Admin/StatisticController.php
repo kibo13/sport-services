@@ -34,7 +34,7 @@ class StatisticController extends Controller
         $from = $request->input('from', Carbon::now()->subYear()->endOfMonth()->format('Y-m-d'));
         $till = $request->input('till', Carbon::now()->endOfMonth()->format('Y-m-d'));
         $labels = ChartService::generateLabels($from, $till);
-        $activities = $this->activityRepository->getAllActivities();
+        $activities = $this->activityRepository->getAll();
         $activityPayments = $this->initializeActivityData($activities, $labels);
         $activityEvents = $this->initializeActivityData($activities, $labels);
 

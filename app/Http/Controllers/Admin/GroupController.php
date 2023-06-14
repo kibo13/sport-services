@@ -30,7 +30,7 @@ class GroupController extends Controller
 
     public function create(ActivityRepositoryInterface $activityRepository, TrainerRepositoryInterface $trainerRepository)
     {
-        $activities = $activityRepository->getAllActivities();
+        $activities = $activityRepository->getAll();
         $trainers = $trainerRepository->getAll();
 
         return view('admin.pages.groups.form', [
@@ -50,7 +50,7 @@ class GroupController extends Controller
 
     public function edit(Group $group, ActivityRepositoryInterface $activityRepository, TrainerRepositoryInterface $trainerRepository)
     {
-        $activities = $activityRepository->getAllActivities();
+        $activities = $activityRepository->getAll();
         $trainers = $trainerRepository->getAll();
 
         return view('admin.pages.groups.form', [

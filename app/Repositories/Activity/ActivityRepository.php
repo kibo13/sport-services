@@ -14,7 +14,7 @@ class ActivityRepository implements ActivityRepositoryInterface
         return Activity::query();
     }
 
-    public function getAllActivities()
+    public function getAll()
     {
         return $this->createQuery()->get();
     }
