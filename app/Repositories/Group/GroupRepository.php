@@ -14,7 +14,7 @@ class GroupRepository implements GroupRepositoryInterface
         return Group::query();
     }
 
-    public function getAllGroups()
+    public function getAll()
     {
         return $this->createQuery()
             ->get();

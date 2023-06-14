@@ -22,7 +22,7 @@ class GroupController extends Controller
         if ($isTrainer) {
             $groups = $groupRepository->getGroupsByTrainer($user->id);
         } else {
-            $groups = $groupRepository->getAllGroups();
+            $groups = $groupRepository->getAll();
         }
 
         return view('admin.pages.groups.index', compact('groups'));

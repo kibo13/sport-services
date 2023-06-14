@@ -6,6 +6,6 @@ namespace App\Repositories\Group;
 
 interface GroupRepositoryInterface
 {
-    public function getAllGroups();
+    public function getAll();
     public function getGroupsByTrainer(int $trainerId);
 }
