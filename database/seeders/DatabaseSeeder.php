@@ -34,6 +34,7 @@ class DatabaseSeeder extends Seeder
             ServiceSeeder::class,
             SpecializationSeeder::class,
             OptionSeeder::class,
+            OrderStatusSeeder::class,
         ]);
 
         // factories
