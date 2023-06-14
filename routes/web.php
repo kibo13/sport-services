@@ -20,6 +20,9 @@ Route::middleware('auth')->group(function () {
     // Подключаем файл маршрутов sections.php
     include_once __DIR__ . '/admin/sections.php';
 
+    // Подключаем файл маршрутов orders.php
+    include_once __DIR__ . '/admin/orders.php';
+
     // Подключаем файл маршрутов users.php
     include_once __DIR__ . '/admin/users.php';
 

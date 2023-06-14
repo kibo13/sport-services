@@ -29,6 +29,16 @@
                 </span>
             </a>
         </li>
+        @if(auth()->user()->isOwner() || auth()->user()->isAdmin() || auth()->user()->isClient())
+        <li class="sidebar-list__item {{ is_active('order*', 'sidebar-list__item--active') }}">
+            <a class="sidebar-list__link" href="{{ route('orders.index') }}" title="{{ __('_section.orders') }}">
+                <i class="fa fa-inbox sidebar-list__icon"></i>
+                <span class="sidebar-list__text">
+                    {{ __('_section.orders') }}
+                </span>
+            </a>
+        </li>
+        @endif
         @if(is_access('lesson_full'))
         <li class="sidebar-list__item {{ is_active('lesson*', 'sidebar-list__item--active') }}">
             <a class="sidebar-list__link" href="{{ route('lessons.management') }}" title="{{ __('_section.management') }}">

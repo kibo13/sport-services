@@ -21,6 +21,7 @@ return [
     'management'            => 'Управление карточками',
     'members'               => 'Участники',
     'methods'               => 'Методики',
+    'orders'                => 'Заявки',
     'payments'              => 'Платежи',
     'places'                => 'Места',
     'profile'               => 'Профиль',
