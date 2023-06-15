@@ -31,12 +31,18 @@
                         {{ __('_field.activity') }}
                     </label>
                     <select class="bk-form__input bk-max-w-300" id="specialization_id" name="activity_id" required>
+                        @isset($group)
+                        <option value="{{ $group->activity_id }}" selected>
+                            {{ $group->activity->name }}
+                        </option>
+                        @else
                         <option value="" disabled hidden selected>Выбрать</option>
                         @foreach($activities as $activity)
-                        <option value="{{ $activity->id }}" @isset($group) @if($group->activity_id == $activity->id) selected @endif @endisset>
-                        {{ $activity->name }}
+                        <option value="{{ $activity->id }}">
+                            {{ $activity->name }}
                         </option>
                         @endforeach
+                        @endisset
                     </select>
                 </div>
                 <div class="bk-form__field">
