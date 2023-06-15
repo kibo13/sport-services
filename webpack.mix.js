@@ -14,22 +14,16 @@ mix .js('resources/js/admin/index.js', 'public/js/admin.js')
     .version()
 
 // modules
-mix .js([
-        'resources/js/modules/event-calendar.js'
-    ], 'public/js/modules')
+mix .js('resources/js/modules/event-calendar.js', 'public/js/modules/event-calendar.js')
     .version()
 
 // helpers
-mix .js([
-        'resources/js/helpers/input-mask.js',
-        'resources/js/helpers/select2.js',
-    ], 'public/js/helpers')
+mix .js('resources/js/helpers/input-mask.js', 'public/js/helpers/input-mask.js')
+    .js('resources/js/helpers/select2.js', 'public/js/helpers/select2.js')
     .version()
 
 // api
-mix .js([
-    'resources/js/api/get-trainers-by-specialization.js'
-], 'public/js/api')
+mix .js('resources/js/api/get-trainers-by-specialization.js', 'public/js/api/get-trainers-by-specialization.js')
     .version()
 
 // vendors
