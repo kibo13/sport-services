@@ -18,7 +18,7 @@ class Order extends Model
         'client_id',
         'trainer_id',
         'executor_id',
-        'status',
+        'status_id',
         'message',
         'comment',
     ];
@@ -33,14 +33,24 @@ class Order extends Model
 
         static::creating(function ($order) {
             $authorizedUser = auth()->user();
-            $order->status = 1;
+            $order->status_id = 1;
             $order->client_id = $authorizedUser->isClient() ? $authorizedUser->id : null;
         });
+    }
+
+    public function activity(): BelongsTo
+    {
+        return $this->belongsTo(Activity::class);
     }
 
     public function client(): BelongsTo
     {
         return $this->belongsTo(User::class, 'client_id');
+    }
+
+    public function trainer(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'trainer_id');
     }
 
     public function executor(): BelongsTo

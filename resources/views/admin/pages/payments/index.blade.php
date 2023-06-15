@@ -27,7 +27,6 @@
                     <span class="text-primary">
                         {{ format_money_for_display($currentMonthAmount, 0) . ' ₽'  }}
                     </span>
-
                 </li>
                 <li>
                     <span class="font-weight-bold">Сумма за весь период: </span>

@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Admin;
 use App\Enums\Role;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use App\Models\OrderStatus;
 use App\Repositories\Activity\ActivityRepositoryInterface;
 use App\Repositories\Order\OrderRepositoryInterface;
 use App\Repositories\Trainer\TrainerRepositoryInterface;
@@ -31,8 +32,18 @@ class OrderController extends Controller
             $orders = $orderRepository->getAll();
         }
 
+        // Получаем количество новых, завершенных и отклоненных заказов
+        $newOrdersCount = $orderRepository->getNewOrdersCount();
+        $completedOrdersCount = $orderRepository->getCompletedOrdersCount();
+        $rejectedOrdersCount = $orderRepository->getRejectedOrdersCount();
+
         // Возвращаем представление 'admin.pages.orders.index' и передаем в него список заказов
-        return view('admin.pages.orders.index', compact('orders'));
+        return view('admin.pages.orders.index', [
+            'orders' => $orders,
+            'newOrdersCount' => $newOrdersCount,
+            'completedOrdersCount' => $completedOrdersCount,
+            'rejectedOrdersCount' => $rejectedOrdersCount,
+        ]);
     }
 
     public function create(ActivityRepositoryInterface $activityRepository, TrainerRepositoryInterface $trainerRepository)
@@ -43,8 +54,8 @@ class OrderController extends Controller
         // Получаем всех тренеров
         $trainers = $trainerRepository->getAll();
 
-        // Возвращаем представление 'admin.pages.orders.form' и передаем в него список активностей и тренеров
-        return view('admin.pages.orders.form', [
+        // Возвращаем представление 'admin.pages.orders.forms.client' и передаем в него список активностей и тренеров
+        return view('admin.pages.orders.forms.client', [
             'activities' => $activities,
             'trainers' => $trainers,
         ]);
@@ -63,8 +74,14 @@ class OrderController extends Controller
 
     public function edit(Order $order)
     {
-        // Возвращаем представление 'admin.pages.orders.form' и передаем в него объект заказа
-        return view('admin.pages.orders.form', compact('order'));
+        // Получаем статусы заказов с идентификаторами 2 и 4 из базы данных
+        $statuses = OrderStatus::query()->whereIn('id', [2, 4])->get();
+
+        // Возвращаем представление 'admin.pages.orders.forms.admin' и передаем в него объект заказа и статусы
+        return view('admin.pages.orders.forms.admin', [
+            'order' => $order,
+            'statuses' => $statuses
+        ]);
     }
 
     public function update(Request $request, Order $order): RedirectResponse
