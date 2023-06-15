@@ -17,7 +17,6 @@ class Group extends Model
         'name',
         'activity_id',
         'trainer_id',
-        'limit',
     ];
 
     protected $dates = [

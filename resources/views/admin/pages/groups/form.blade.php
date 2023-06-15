@@ -52,20 +52,6 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="bk-form__field">
-                    <label class="bk-form__label" for="limit">
-                        {{ __('_field.max_seating') }}
-                    </label>
-                    <input class="bk-form__input bk-max-w-100"
-                           id="limit"
-                           type="number"
-                           name="limit"
-                           value="{{ isset($group) ? $group->limit : null }}"
-                           min="5"
-                           max="12"
-                           step="1"
-                           required/>
-                </div>
                 <div class="mt-1 mb-0 form-group">
                     <button class="btn btn-outline-success">
                         {{ __('_action.save') }}
