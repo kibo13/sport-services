@@ -9,6 +9,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -143,6 +144,11 @@ class User extends Authenticatable
     public function specializations(): BelongsToMany
     {
         return $this->belongsToMany(Specialization::class);
+    }
+
+    public function places(): HasMany
+    {
+        return $this->hasMany(Place::class, 'client_id');
     }
 
     public function permissions(): BelongsToMany
