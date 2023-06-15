@@ -36,6 +36,14 @@ class Order extends Model
             $order->status_id = 1;
             $order->client_id = $authorizedUser->isClient() ? $authorizedUser->id : null;
         });
+
+        static::updating(function ($order) {
+            $authorizedUser = auth()->user();
+
+            if ($authorizedUser->isAdmin() && is_null($order->executor_id)) {
+                $order->executor_id = $authorizedUser->id;
+            }
+        });
     }
 
     public function activity(): BelongsTo
