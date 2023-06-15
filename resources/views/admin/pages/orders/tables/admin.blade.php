@@ -30,7 +30,9 @@
             <th class="w-25 bk-min-w-200">{{ __('_field.trainer') }}</th>
             <th class="w-25 bk-min-w-200">{{ __('_field.client') }}</th>
             <th class="w-00 bk-min-w-200">{{ __('_field.status') }}</th>
+            @if(auth()->user()->isAdmin())
             <th class="no-sort">{{ __('_action.this') }}</th>
+            @endif
         </tr>
     </thead>
     <tbody>
@@ -44,6 +46,7 @@
             <td style="color: {{ $order->status->color }}">
                 <b>{{ $order->status->name }}</b>
             </td>
+            @if(auth()->user()->isAdmin())
             <td>
                 <div class="bk-btn-actions">
                     <a class="bk-btn-action bk-btn-action--info btn btn-info"
@@ -51,6 +54,7 @@
                        title="{{ __('_action.look') }}" ></a>
                 </div>
             </td>
+            @endif
         </tr>
     @endforeach
     </tbody>
