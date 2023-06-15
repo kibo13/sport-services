@@ -21,7 +21,8 @@ mix .js([
 
 // helpers
 mix .js([
-        'resources/js/helpers/input-mask.js'
+        'resources/js/helpers/input-mask.js',
+        'resources/js/helpers/select2.js',
     ], 'public/js/helpers')
     .version()
 
