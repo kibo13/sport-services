@@ -36,13 +36,7 @@
         </div>
     </div>
     @include('components.modals.delete')
+    @include('components.modals.client')
+    @include('components.modals.place')
     @yield('scripts')
-{{--    @include('components.modals.confirm')--}}
-{{--    @include('components.modals.event')--}}
-{{--    @include('components.modals.load')--}}
-{{--    @include('components.modals.timetable')--}}
-{{--    @include('components.modals.topic')--}}
-{{--    @include('components.modals.visit')--}}
-{{--    @include('components.modals.adult')--}}
-{{--    @include('components.modals.child')--}}
 @endsection

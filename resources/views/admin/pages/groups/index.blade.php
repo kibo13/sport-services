@@ -30,8 +30,7 @@
                         <td class="font-weight-bold">{{ __('_field.group') }}</td>
                         <td colspan="12">
                             <a class="{{ is_access('group_full') ? 'text-primary' : 'text-muted' }}"
-                               href="{{ is_access('group_full') ? route('groups.edit', $group) : null }}"
-                               target="{{ is_access('group_full') ? '_blank' : null }}">
+                               href="{{ is_access('group_full') ? route('groups.edit', $group) : null }}">
                                 {{ $group->name }}
                             </a>
                         </td>
@@ -55,6 +54,9 @@
                                 <a class="bk-btn-action bk-btn-action--user btn btn-info"
                                    href="javascript:void(0)"
                                    data-id="{{ $place->id }}"
+                                   data-full-name="{{ $place->client->full_name }}"
+                                   data-phone="{{ format_phone_number_for_display($place->client->phone) }}"
+                                   data-photo="{{ $place->client->photo ? asset('/storage/' . $place->client->photo) : asset('/assets/icons/anonymous.svg') }}"
                                    data-toggle="modal"
                                    data-target="#bk-client-modal"
                                    title="{{ __('_action.look') }}"></a>
