@@ -26,4 +26,25 @@ class OrderRepository implements OrderRepositoryInterface
             ->where('client_id', $clientId)
             ->get();
     }
+
+    public function getNewOrdersCount(): int
+    {
+        return $this->createQuery()
+            ->where('status_id', 1)
+            ->count();
+    }
+
+    public function getCompletedOrdersCount(): int
+    {
+        return $this->createQuery()
+            ->where('status_id', 2)
+            ->count();
+    }
+
+    public function getRejectedOrdersCount(): int
+    {
+        return $this->createQuery()
+            ->where('status_id', 4)
+            ->count();
+    }
 }
