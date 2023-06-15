@@ -1,7 +1,8 @@
 {
-    "/js/admin.js": "/js/admin.js?id=8f2b0892e90d5e24d911aab77972dea5",
+    "/js/admin.js": "/js/admin.js?id=2e2446aeac330db0429da588b542e9f8",
     "/js/modules/event-calendar.js": "/js/modules/event-calendar.js?id=43c347c48f585fbbe3dcc60a6cedac41",
     "/js/helpers/input-mask.js": "/js/helpers/input-mask.js?id=69385aa5ec9bdcd5c5f0b71b6fc030e5",
+    "/js/helpers/select2.js": "/js/helpers/select2.js?id=0ce58e9d3d66cb9d58a0ad7dab754351",
     "/js/api/get-trainers-by-specialization.js": "/js/api/get-trainers-by-specialization.js?id=61ad3c11758a164a0665100d45fc994b",
     "/css/admin.css": "/css/admin.css?id=bc6951b2f6efb28eb87768553d7a025f",
     "/css/auth.css": "/css/auth.css?id=e2f6da9343e896d7a3c7e78a9d55362c",
