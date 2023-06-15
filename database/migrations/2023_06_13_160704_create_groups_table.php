@@ -18,7 +18,7 @@ class CreateGroupsTable extends Migration
             $table->string('name');
             $table->foreignId('activity_id')->constrained('activities')->cascadeOnUpdate();
             $table->foreignId('trainer_id')->constrained('users')->cascadeOnUpdate();
-            $table->smallInteger('limit');
+            $table->smallInteger('limit')->default(12);
             $table->softDeletes();
             $table->timestamps();
         });
