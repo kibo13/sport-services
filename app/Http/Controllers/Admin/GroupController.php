@@ -14,10 +14,11 @@ use Illuminate\Http\Request;
 
 class GroupController extends Controller
 {
-    public function index(GroupRepositoryInterface $groupRepository)
+    public function index(ActivityRepositoryInterface $activityRepository, GroupRepositoryInterface $groupRepository)
     {
         $user = auth()->user();
         $isTrainer = $user->role_id == Role::INSTRUCTOR;
+        $activities = $activityRepository->getAll();
 
         if ($isTrainer) {
             $groups = $groupRepository->getGroupsByTrainer($user->id);
@@ -25,7 +26,10 @@ class GroupController extends Controller
             $groups = $groupRepository->getAll();
         }
 
-        return view('admin.pages.groups.index', compact('groups'));
+        return view('admin.pages.groups.index', [
+            'activities' => $activities,
+            'groups' => $groups,
+        ]);
     }
 
     public function create(ActivityRepositoryInterface $activityRepository, TrainerRepositoryInterface $trainerRepository)
