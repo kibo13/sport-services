@@ -74,6 +74,8 @@ Route::prefix('groups')->as('groups.')->group(function () {
         Route::get('/{group}/edit', [GroupController::class, 'edit'])->name('edit');
         Route::match(['put', 'patch'], '/{group}', [GroupController::class, 'update'])->name('update');
         Route::delete('/{group}', [GroupController::class, 'destroy'])->name('destroy');
+        Route::post('/place/bind', [GroupController::class, 'bindPlace'])->name('place.bind');
+        Route::post('/place/unbind', [GroupController::class, 'unbindPlace'])->name('place.unbind');
     });
 });
 

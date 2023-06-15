@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Admin;
 use App\Enums\Role;
 use App\Http\Controllers\Controller;
 use App\Models\Group;
+use App\Models\Place;
 use App\Repositories\Activity\ActivityRepositoryInterface;
 use App\Repositories\Group\GroupRepositoryInterface;
 use App\Repositories\Trainer\TrainerRepositoryInterface;
@@ -80,5 +81,27 @@ class GroupController extends Controller
         return redirect()
             ->route('groups.index')
             ->with('success', __('_record.deleted'));
+    }
+
+    public function bindPlace(Request $request): RedirectResponse
+    {
+        $place = Place::query()->find($request['place_id']);
+        $place->update([
+            'client_id' => $request['client_id'],
+            'is_busy' => true
+        ]);
+
+        return redirect()->route('groups.index');
+    }
+
+    public function unbindPlace(Request $request): RedirectResponse
+    {
+        $place = Place::query()->find($request['place_id']);
+        $place->update([
+            'client_id' => null,
+            'is_busy' => false
+        ]);
+
+        return redirect()->route('groups.index');
     }
 }
