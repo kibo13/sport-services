@@ -129,6 +129,8 @@ Route::prefix('reports')->as('reports.')->group(function () {
     Route::middleware('permission:report_read')->group(function () {
         Route::get('/', [ReportController::class, 'index'])->name('index');
         Route::get('/clients', [ReportController::class, 'clients'])->name('clients');
+        Route::get('/events', [ReportController::class, 'events'])->name('events');
+        Route::get('/payments', [ReportController::class, 'payments'])->name('payments');
     });
 });
 
