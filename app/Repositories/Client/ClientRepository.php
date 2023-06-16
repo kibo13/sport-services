@@ -28,4 +28,21 @@ class ClientRepository implements ClientRepositoryInterface
             ->where('role_id', Role::CLIENT)
             ->count();
     }
+
+    public function getUsersWithActivities()
+    {
+        return $this->createQuery()
+            ->select([
+                'users.full_name',
+                'users.age',
+                'users.phone',
+                'users.address',
+                'activities.name AS activity',
+            ])
+            ->leftJoin('places', 'places.client_id', 'users.id')
+            ->leftJoin('groups', 'groups.id', 'places.group_id')
+            ->leftJoin('activities', 'activities.id', 'groups.activity_id')
+            ->where('users.role_id', Role::CLIENT)
+            ->get();
+    }
 }

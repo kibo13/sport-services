@@ -8,4 +8,5 @@ interface ClientRepositoryInterface
 {
     public function getAll();
     public function getTotalClientsCount();
+    public function getUsersWithActivities();
 }
