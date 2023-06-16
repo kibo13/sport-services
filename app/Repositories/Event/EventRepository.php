@@ -15,6 +15,30 @@ class EventRepository implements EventRepositoryInterface
         return Event::query();
     }
 
+    public function getAll($from = null, $till = null)
+    {
+        $query = $this->createQuery();
+
+        if ($from && $till) {
+            $query->whereBetween('start', [$from, $till]);
+        }
+
+        return $query
+            ->orderBy('start')
+            ->get();
+    }
+
+    public function getTotalEventsCount($from = null, $till = null): int
+    {
+        $query = $this->createQuery();
+
+        if ($from && $till) {
+            $query->whereBetween('start', [$from, $till]);
+        }
+
+        return $query->count();
+    }
+
     public function getEventsByActivity(int $activityId, $from, $till)
     {
         return $this->createQuery()
