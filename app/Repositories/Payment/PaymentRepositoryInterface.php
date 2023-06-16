@@ -6,7 +6,8 @@ namespace App\Repositories\Payment;
 
 interface PaymentRepositoryInterface
 {
-    public function getTotalAmount();
+    public function getAll($from = null, $till = null);
+    public function getTotalAmount($from = null, $till = null);
     public function getPreviousMonthAmount();
     public function getCurrentMonthAmount();
     public function getPaymentsByActivity(int $activityId, $from, $till);

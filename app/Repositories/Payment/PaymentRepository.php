@@ -16,9 +16,28 @@ class PaymentRepository implements PaymentRepositoryInterface
         return Payment::query();
     }
 
-    public function getTotalAmount()
+    public function getAll($from = null, $till = null)
     {
-        return $this->createQuery()->sum('amount');
+        $query = $this->createQuery();
+
+        if ($from && $till) {
+            $query->whereBetween('paid_at', [$from, $till]);
+        }
+
+        return $query
+            ->orderBy('paid_at')
+            ->get();
+    }
+
+    public function getTotalAmount($from = null, $till = null)
+    {
+        $query = $this->createQuery();
+
+        if ($from && $till) {
+            $query->whereBetween('paid_at', [$from, $till]);
+        }
+
+        return $query->sum('amount');
     }
 
     public function getPreviousMonthAmount()
