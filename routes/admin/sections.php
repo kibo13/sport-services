@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\RuleController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\StatisticController;
+use App\Http\Controllers\Admin\TimetableController;
 use App\Http\Controllers\Admin\TrainerController;
 
 use Illuminate\Support\Facades\Route;
@@ -43,6 +44,15 @@ Route::prefix('services')->as('services.')->group(function () {
     Route::middleware('permission:service_full')->group(function () {
         Route::get('/{service}/edit', [ServiceController::class, 'edit'])->name('edit');
         Route::match(['put', 'patch'], '/{service}', [ServiceController::class, 'update'])->name('update');
+    });
+});
+
+Route::prefix('timetables')->as('timetables.')->group(function () {
+    Route::middleware('permission:timetable_read')->group(function () {
+        Route::get('/', [TimetableController::class, 'index'])->name('index');
+    });
+    Route::middleware('permission:timetable_full')->group(function () {
+        //
     });
 });
 

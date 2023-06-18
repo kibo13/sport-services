@@ -69,6 +69,16 @@
             </a>
         </li>
         @endif
+        @if(is_access('timetable_read'))
+        <li class="sidebar-list__item {{ is_active('timetable*', 'sidebar-list__item--active') }}">
+            <a class="sidebar-list__link" href="{{ route('timetables.index') }}" title="{{ __('_section.timetable') }}">
+                <i class="fa fa-calendar sidebar-list__icon"></i>
+                <span class="sidebar-list__text">
+                    {{ __('_section.timetable') }}
+                </span>
+            </a>
+        </li>
+        @endif
         @if(is_access('group_read'))
         <li class="sidebar-list__item {{ is_active('group*', 'sidebar-list__item--active') }}">
             <a class="sidebar-list__link" href="{{ route('groups.index') }}" title="{{ __('_section.groups') }}">
