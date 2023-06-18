@@ -130,6 +130,29 @@ return [
         ],
     ],
     [
+        'name'       => 'Расписание',
+        'slug'       => 'timetable_read',
+        'is_setting' => 0,
+        'note'       => 'Просмотр',
+        'roles'      => [
+            Role::OWNER,
+            Role::DIRECTOR,
+            Role::ADMIN,
+            Role::INSTRUCTOR,
+            Role::CLIENT,
+        ],
+    ],
+    [
+        'name'       => 'Расписание',
+        'slug'       => 'timetable_full',
+        'is_setting' => 0,
+        'note'       => 'Редактирование',
+        'roles'      => [
+            Role::OWNER,
+            Role::ADMIN,
+        ],
+    ],
+    [
         'name'       => 'Занятия',
         'slug'       => 'lesson_read',
         'is_setting' => 0,
