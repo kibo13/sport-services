@@ -21,6 +21,13 @@
                     </a>
                 </li>
                 @endif
+                @if(auth()->user()->isAdmin())
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('users.create') }}">
+                        Регистрация клиента
+                    </a>
+                </li>
+                @endif
                 @if(is_setting('1'))
                 <li class="nav-item dropdown">
                     <a class="nav-link" href="#" data-toggle="dropdown">

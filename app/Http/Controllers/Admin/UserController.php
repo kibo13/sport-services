@@ -53,6 +53,10 @@ class UserController extends Controller
             $user->permissions()->attach($request->input('permissions'));
         }
 
+        if (auth()->user()->isAdmin()) {
+            return redirect()->route('clients.index');
+        }
+
         return redirect()
             ->route('users.index')
             ->with('success', __('_record.added'));
