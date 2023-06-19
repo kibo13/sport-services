@@ -13,6 +13,7 @@ class Role
     public const INSTRUCTOR = 5;
     public const DOCTOR     = 6;
     public const CLIENT     = 7;
+    public const METHODIST  = 8;
 
     public const NAMES = [
         self::OWNER      => 'Владелец',
@@ -22,6 +23,7 @@ class Role
         self::INSTRUCTOR => 'Инструктор',
         self::DOCTOR     => 'Врач',
         self::CLIENT     => 'Клиент',
+        self::METHODIST  => 'Инструктор-методист',
     ];
 
     public const SLUGS = [
@@ -32,5 +34,6 @@ class Role
         self::INSTRUCTOR => 'instructor',
         self::DOCTOR     => 'doctor',
         self::CLIENT     => 'client',
+        self::METHODIST  => 'methodist',
     ];
 }
