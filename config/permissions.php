@@ -95,6 +95,7 @@ return [
             Role::INSTRUCTOR,
             Role::DOCTOR,
             Role::CLIENT,
+            Role::METHODIST,
         ],
     ],
     [
@@ -140,6 +141,7 @@ return [
             Role::ADMIN,
             Role::INSTRUCTOR,
             Role::CLIENT,
+            Role::METHODIST,
         ],
     ],
     [
@@ -149,7 +151,7 @@ return [
         'note'       => 'Редактирование',
         'roles'      => [
             Role::OWNER,
-            Role::ADMIN,
+            Role::METHODIST,
         ],
     ],
     [
@@ -213,6 +215,27 @@ return [
         'roles'      => [
             Role::OWNER,
             Role::ADMIN,
+        ],
+    ],
+    [
+        'name'       => 'Медицинская анкета',
+        'slug'       => 'medical_read',
+        'is_setting' => 0,
+        'note'       => 'Просмотр',
+        'roles'      => [
+            Role::OWNER,
+            Role::DIRECTOR,
+            Role::DOCTOR
+        ],
+    ],
+    [
+        'name'       => 'Медицинская анкета',
+        'slug'       => 'medical_full',
+        'is_setting' => 0,
+        'note'       => 'Редактирование',
+        'roles'      => [
+            Role::OWNER,
+            Role::DOCTOR,
         ],
     ],
     [
