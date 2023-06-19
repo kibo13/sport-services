@@ -75,6 +75,11 @@
                             <a class="bk-btn-action bk-btn-action--edit btn btn-warning"
                                href="{{ route('clients.edit', $client) }}"
                                title="{{ __('_action.edit') }}" ></a>
+                            @if(is_access('medical_read'))
+                            <a class="bk-btn-action bk-btn-action--medical btn btn-primary"
+                               href="{{ route('clients.medical.card.edit', ['client' => $client, 'medicalCard' => $client->medical_card]) }}"
+                               title="{{ __('_field.medical_card') }}" ></a>
+                            @endif
                         </div>
                     </td>
                     @endif

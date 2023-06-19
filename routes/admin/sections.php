@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\GroupController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\CardController;
+use App\Http\Controllers\Admin\MedicalCardController;
 use App\Http\Controllers\Admin\OptionController;
 use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\Admin\ProfileController;
@@ -99,6 +100,12 @@ Route::prefix('clients')->group(function () {
         Route::post('/', [ClientController::class, 'store'])->name('payments.clients.store');
         Route::get('/{client}/edit', [ClientController::class, 'edit'])->name('clients.edit');
         Route::match(['put', 'patch'], '/{client}', [ClientController::class, 'update'])->name('clients.update');
+    });
+    Route::middleware('permission:medical_read')->group(function () {
+        Route::get('/{client}/medical-card/{medicalCard}', [MedicalCardController::class, 'edit'])->name('clients.medical.card.edit');
+    });
+    Route::middleware('permission:medical_full')->group(function () {
+        Route::match(['put', 'patch'], '/medical-card/{medicalCard}', [MedicalCardController::class, 'update'])->name('clients.medical.card.update');
     });
 });
 

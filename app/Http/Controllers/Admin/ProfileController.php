@@ -18,7 +18,7 @@ class ProfileController extends Controller
     {
         $user = auth()->user();
 
-        return view('admin.pages.profile.form', compact('user'));
+        return view('admin.pages.profile.index', compact('user'));
     }
 
     public function update(UpdateProfileRequest $request, User $user): RedirectResponse

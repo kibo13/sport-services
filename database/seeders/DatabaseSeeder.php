@@ -8,6 +8,7 @@ use Database\Factories\ClientFactory;
 use Database\Factories\DirectorFactory;
 use Database\Factories\DoctorFactory;
 use Database\Factories\EventFactory;
+use Database\Factories\MethodistFactory;
 use Database\Factories\PaymasterFactory;
 use Database\Factories\PaymentFactory;
 use Database\Factories\TrainerFactory;
@@ -40,6 +41,7 @@ class DatabaseSeeder extends Seeder
         // factories
         AdminFactory::new()->count(1)->create();
         DirectorFactory::new()->count(1)->create();
+        MethodistFactory::new()->count(1)->create();
         DoctorFactory::new()->count(2)->create();
         PaymasterFactory::new()->count(2)->create();
         TrainerFactory::new()->count(6)->create();
