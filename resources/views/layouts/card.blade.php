@@ -38,13 +38,11 @@
             position: absolute;
             top: 5px;
             right: 20px;
-            width: 130px;
-            height: 160px;
-            line-height: 140px;
-            vertical-align: middle;
-            text-align: center;
-            font-size: 12px;
-            border: 1px solid gray;
+            width: 150px;
+        }
+        .card-photo img {
+            width: 100%;
+            object-fit: cover;
         }
     </style>
 @endsection
@@ -65,7 +63,11 @@
                 <li class="card-info__text">{{ format_date_for_display($card->end) }}</li>
             </ul>
             <div class="card-photo">
-                Место для фото
+                @if($card->client->photo)
+                <img src="data:image/jpeg;base64,{{ base64_encode(file_get_contents(public_path('storage/' . $card->client->photo))) }}" alt="">
+                @else
+                <img src="data:image/jpeg;base64,{{ base64_encode(file_get_contents(public_path('assets/icons/anonymous.svg'))) }}" alt="">
+                @endif
             </div>
         </div>
     </div>
