@@ -29,7 +29,7 @@ class ClientRepository implements ClientRepositoryInterface
             ->count();
     }
 
-    public function getUsersWithActivities()
+    public function getClientsWithActivities()
     {
         return $this->createQuery()
             ->select([
@@ -37,12 +37,12 @@ class ClientRepository implements ClientRepositoryInterface
                 'users.age',
                 'users.phone',
                 'users.address',
-                'activities.name AS activity',
+                'activities.name as activity',
             ])
-            ->leftJoin('places', 'places.client_id', 'users.id')
-            ->leftJoin('groups', 'groups.id', 'places.group_id')
-            ->leftJoin('activities', 'activities.id', 'groups.activity_id')
-            ->where('users.role_id', Role::CLIENT)
+            ->join('cards', 'cards.client_id', 'users.id')
+            ->join('activities', 'activities.id', 'cards.activity_id')
+            ->where('cards.is_active', true)
+            ->distinct()
             ->get();
     }
 }

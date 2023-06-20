@@ -28,7 +28,7 @@ class ReportController extends Controller
         $currentDay = $currentNow->format('d.m.Y');
         $director = $userRepository->getDirector();
         $filename = "Отчет по клиентам на $currentDay года.docx";
-        $clients = $clientRepository->getUsersWithActivities();
+        $clients = $clientRepository->getClientsWithActivities();
         $totalClientsCount = $clientRepository->getTotalClientsCount();
         $word = new TemplateProcessor('templates/clients.docx');
 
