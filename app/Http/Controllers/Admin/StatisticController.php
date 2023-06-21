@@ -55,7 +55,7 @@ class StatisticController extends Controller
         ]);
     }
 
-    protected function initializeActivityData($activities, $labels): array
+    private function initializeActivityData($activities, $labels): array
     {
         $activityData = [];
 
@@ -66,7 +66,7 @@ class StatisticController extends Controller
         return $activityData;
     }
 
-    protected function updateActivityData(&$activityData, $items)
+    private function updateActivityData(&$activityData, $items)
     {
         foreach ($items as $item) {
             if (array_key_exists($item->period, $activityData)) {
@@ -75,7 +75,7 @@ class StatisticController extends Controller
         }
     }
 
-    protected function createChart($labels, $activityData): MasterChart
+    private function createChart($labels, $activityData): MasterChart
     {
         $chart = new MasterChart;
         $chart->labels($labels);
