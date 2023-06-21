@@ -12,6 +12,16 @@
         @foreach($activities as $activity)
         @foreach($cards as $card)
         @if ($card->activity_id == $activity->id)
+        <div class="my-2 bk-callout">
+            <ul>
+                <li class="font-weight-bold">
+                    Ваш абонемент действителен до <span class="text-primary">{{ format_date_for_display($card->end) }}</span> г.
+                </li>
+                <li class="font-weight-bold">
+                    Срок действия абонемента истекает через <span class="{{ $card->getRemainingDays() < 10 ? 'text-danger' : 'text-success' }}">{{ $card->getRemainingDays() }}</span> дн.
+                </li>
+            </ul>
+        </div>
         <table class="dataTables table table-bordered table-responsive">
             <tbody>
                 <tr class="font-weight-bold">

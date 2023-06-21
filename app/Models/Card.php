@@ -3,6 +3,7 @@
 namespace App\Models;
 
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -77,6 +78,14 @@ class Card extends Model
     public function getRemainingLessonsCount(): int
     {
         return $this->lessons()->where('is_attended', false)->count();
+    }
+
+    public function getRemainingDays(): int
+    {
+        $today = Carbon::today();
+        $dateEnd = Carbon::parse($this->end);
+
+        return $today->diffInDays($dateEnd, false);
     }
 
     public function isCardActive(): bool
