@@ -4,8 +4,8 @@ namespace Database\Seeders;
 
 
 use App\Enums\Role;
-use App\Models\PermissionUser;
 use App\Models\User;
+use App\Traits\PermissionSyncTrait;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Hash;
 
 class OwnerSeeder extends Seeder
 {
+    use PermissionSyncTrait;
+
     /**
      * Run the database seeds.
      *
@@ -25,6 +27,7 @@ class OwnerSeeder extends Seeder
             $this->syncPermissionsForUser($user);
         }
     }
+
 
     /**
      * Create a user with the role of owner.
@@ -41,25 +44,5 @@ class OwnerSeeder extends Seeder
             'email'      => 'BaimenVip@mail.ru',
             'password'   => Hash::make('secret'),
         ]);
-    }
-
-    /**
-     * Sync permissions for a user based on their role.
-     *
-     * @param  User  $user
-     * @return void
-     */
-    private function syncPermissionsForUser(User $user)
-    {
-        $permissions = config('permissions');
-
-        foreach ($permissions as $permission_id => $permission) {
-            if (in_array($user['role_id'], $permission['roles'])) {
-                PermissionUser::query()->updateOrCreate([
-                    'permission_id' => ++$permission_id,
-                    'user_id' => $user['id']
-                ]);
-            }
-        }
     }
 }

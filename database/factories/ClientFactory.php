@@ -8,9 +8,9 @@ use App\Enums\Service\ServiceType;
 use App\Models\Benefit;
 use App\Models\Card;
 use App\Models\Payment;
-use App\Models\PermissionUser;
 use App\Models\Service;
 use App\Models\User;
+use App\Traits\PermissionSyncTrait;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Model;
@@ -21,6 +21,8 @@ use Illuminate\Support\Str;
 
 class ClientFactory extends Factory
 {
+    use PermissionSyncTrait;
+
     /**
      * Define the model's default state.
      *
@@ -109,26 +111,6 @@ class ClientFactory extends Factory
             $payment = $this->createPayment($user, $service);
             $this->createCard($service, $payment);
         });
-    }
-
-    /**
-     * Sync permissions for a user based on their role.
-     *
-     * @param  User  $user
-     * @return void
-     */
-    private function syncPermissionsForUser(User $user)
-    {
-        $permissions = config('permissions');
-
-        foreach ($permissions as $permission_id => $permission) {
-            if (in_array($user['role_id'], $permission['roles'])) {
-                PermissionUser::query()->updateOrCreate([
-                    'permission_id' => ++$permission_id,
-                    'user_id' => $user['id']
-                ]);
-            }
-        }
     }
 
     /**
