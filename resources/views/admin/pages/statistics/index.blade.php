@@ -42,11 +42,31 @@
             <label class="bk-tabs__label" for="tab-2">
                 {{ __('_section.events') }}
             </label>
+            <input class="bk-tabs__input bk-tab-3"
+                   id="tab-3"
+                   type="radio"
+                   name="tab">
+            <label class="bk-tabs__label" for="tab-3">
+                {{ __('_section.visits') }}
+            </label>
+            <input class="bk-tabs__input bk-tab-4"
+                   id="tab-4"
+                   type="radio"
+                   name="tab">
+            <label class="bk-tabs__label" for="tab-4">
+                {{ __('_section.trainers') }}
+            </label>
             <div class="bk-tabs__content bk-tab-content-1">
                 @include('admin.pages.statistics.tabs.payments')
             </div>
             <div class="bk-tabs__content bk-tab-content-2">
                 @include('admin.pages.statistics.tabs.events')
+            </div>
+            <div class="bk-tabs__content bk-tab-content-3">
+                @include('admin.pages.statistics.tabs.lessons')
+            </div>
+            <div class="bk-tabs__content bk-tab-content-4">
+                @include('admin.pages.statistics.tabs.trainers')
             </div>
         </div>
     </section>
