@@ -16,7 +16,19 @@ class Place extends Model
         'client_id',
         'number',
         'is_busy',
+        'busy_at',
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::saving(function ($place) {
+            if ($place->is_busy && is_null($place->busy_at)) {
+                $place->busy_at = date('Y-m-d');
+            }
+        });
+    }
 
     public function group(): BelongsTo
     {
