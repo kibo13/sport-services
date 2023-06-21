@@ -27,6 +27,7 @@ class CreatePlacesTable extends Migration
                 ->cascadeOnDelete();
             $table->smallInteger('number');
             $table->boolean('is_busy')->default(false);
+            $table->date('busy_at')->nullable();
             $table->timestamps();
         });
     }
