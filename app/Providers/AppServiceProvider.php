@@ -5,6 +5,8 @@ namespace App\Providers;
 
 use App\Repositories\Activity\ActivityRepository;
 use App\Repositories\Activity\ActivityRepositoryInterface;
+use App\Repositories\Card\CardLessonRepository;
+use App\Repositories\Card\CardLessonRepositoryInterface;
 use App\Repositories\Card\CardRepository;
 use App\Repositories\Card\CardRepositoryInterface;
 use App\Repositories\Client\ClientRepository;
@@ -40,6 +42,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(PaymentRepositoryInterface::class, PaymentRepository::class);
         $this->app->bind(EventRepositoryInterface::class, EventRepository::class);
         $this->app->bind(CardRepositoryInterface::class, CardRepository::class);
+        $this->app->bind(CardLessonRepositoryInterface::class, CardLessonRepository::class);
         $this->app->bind(OrderRepositoryInterface::class, OrderRepository::class);
     }
 
