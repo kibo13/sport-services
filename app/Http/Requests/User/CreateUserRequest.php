@@ -38,7 +38,7 @@ class CreateUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'role_id'    => 'nullable',
+            'role_id'    => 'required',
             'name'       => 'required',
             'surname'    => 'required',
             'patronymic' => 'nullable',

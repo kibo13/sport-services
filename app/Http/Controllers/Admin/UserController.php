@@ -36,6 +36,14 @@ class UserController extends Controller
     public function create()
     {
         $roles = Role::query()->where('is_hidden', false)->get();
+
+        if (auth()->user()->isAdmin()) {
+            $roles = Role::query()
+                ->where('slug', 'client')
+                ->where('is_hidden', false)
+                ->get();
+        }
+
         $permissions = Permission::all();
 
         return view('admin.pages.users.form', [

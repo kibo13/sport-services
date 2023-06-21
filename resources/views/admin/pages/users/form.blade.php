@@ -80,7 +80,6 @@
                     </small>
                     @enderror
                 </div>
-                @if(auth()->user()->isOwner())
                 <div class="bk-form__field">
                     <label class="bk-form__label" for="role">
                         Роль
@@ -96,7 +95,6 @@
                         @endforeach
                     </select>
                 </div>
-                @endif
                 <div class="bk-form__field">
                     <label class="bk-form__label">
                         Права
