@@ -1,8 +1,8 @@
 const userForm = document.getElementById('user-form')
 
 if (userForm) {
-    const roles = {
-        'admin': [
+    const rolePermissions = {
+        admin: [
             '.service_read',
             '.card_read',
             '.timetable_read',
@@ -12,7 +12,7 @@ if (userForm) {
             '.trainer_read', '.trainer_full',
             '.report_read'
         ],
-        'director': [
+        director: [
             '.benefit_read',
             '.pay_read',
             '.specialization_read',
@@ -28,30 +28,30 @@ if (userForm) {
             '.report_read',
             '.stat_read'
         ],
-        'paymaster': [
+        paymaster: [
             '.benefit_read',
             '.pay_read', '.pay_full',
             '.service_read', '.service_full',
             '.card_read', '.card_full',
             '.option_read', '.option_full'
         ],
-        'instructor': [
+        instructor: [
             '.service_read',
             '.timetable_read',
             '.group_read',
             '.event_read', '.event_full'
         ],
-        'doctor': [
+        doctor: [
             '.service_read',
             '.client_read',
             '.medical_read', '.medical_full',
             '.trainer_read'
         ],
-        'methodist': [
+        methodist: [
             '.service_read',
             '.timetable_read', '.timetable_full'
         ],
-        'client': [
+        client: [
             '.service_read',
             '.timetable_read',
             '.lesson_read',
@@ -59,20 +59,13 @@ if (userForm) {
         ]
     }
 
-    userForm.addEventListener('change', function (event) {
-        const roleSelect = event.target
-        const slug = roleSelect.options[roleSelect.selectedIndex].dataset.slug
+    $('#role').on('change', function(event) {
+        let slug = $(this).find(':selected').data('slug')
+        const permissions = rolePermissions[slug]
 
-        const checkboxes = userForm.getElementsByClassName('bk-form__checkbox')
-        Array.from(checkboxes).forEach(function (checkbox) {
-            checkbox.checked = false
-        })
-
-        if (roles.hasOwnProperty(slug)) {
-            roles[slug].forEach( role => {
-                const elements = userForm.querySelectorAll(role)
-                Array.from(elements).forEach( element => element.checked = true)
-            })
+        if (permissions) {
+            $('.bk-form__checkbox').prop('checked', false)
+            permissions.forEach(permission => $(permission).prop('checked', true))
         }
     })
 }
