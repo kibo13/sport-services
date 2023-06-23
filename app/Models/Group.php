@@ -17,6 +17,7 @@ class Group extends Model
         'name',
         'activity_id',
         'trainer_id',
+        'workload',
         'color',
     ];
 
@@ -60,5 +61,10 @@ class Group extends Model
     public function places(): HasMany
     {
         return $this->hasMany(Place::class);
+    }
+
+    public function options(): HasMany
+    {
+        return $this->hasMany(TimetableOption::class);
     }
 }
