@@ -132,6 +132,7 @@ class ReportController extends Controller
         $table->addCell()->addText('Вид <w:br/>соревнований', $fontText);
         $table->addCell()->addText('Название', $fontText);
         $table->addCell()->addText('Дата', $fontText);
+        $table->addCell()->addText('Время', $fontText);
         $table->addCell()->addText('Ф.И.О. <w:br/>инструктора', $fontText);
         $table->addCell()->addText('Место <w:br/>соревнований', $fontText);
 
@@ -141,6 +142,7 @@ class ReportController extends Controller
             $table->addCell()->addText($event->activity->name);
             $table->addCell()->addText($event->title);
             $table->addCell()->addText(format_date_for_display($event->start));
+            $table->addCell()->addText($event->init);
             $table->addCell()->addText($event->trainer->full_name);
             $table->addCell()->addText($event->place);
         }
