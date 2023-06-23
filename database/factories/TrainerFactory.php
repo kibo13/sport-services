@@ -119,6 +119,7 @@ class TrainerFactory extends Factory
             'name' => 'Группа ' . $activityId . $trainerId,
             'activity_id' => $activityId,
             'trainer_id' => $trainerId,
+            'workload' => 12,
             'color' => generate_color(),
         ]);
     }
