@@ -17,6 +17,7 @@ class Group extends Model
         'name',
         'activity_id',
         'trainer_id',
+        'color',
     ];
 
     protected $dates = [
@@ -26,6 +27,10 @@ class Group extends Model
     protected static function boot()
     {
         parent::boot();
+
+        static::creating(function ($group) {
+            $group->limit = 12;
+        });
 
         static::created(function ($group) {
             $group->initializePlaces();
