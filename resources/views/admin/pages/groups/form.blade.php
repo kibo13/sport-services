@@ -59,11 +59,25 @@
                     </select>
                 </div>
                 <div class="bk-form__field">
+                    <label class="bk-form__label" for="workload">
+                        {{ __('_field.hours_per_month') }}
+                    </label>
+                    <input class="bk-form__input bk-max-w-100"
+                           id="workload"
+                           type="number"
+                           name="workload"
+                           min="1"
+                           max="100"
+                           step="1"
+                           value="{{ isset($group) ? $group->workload : null }}"
+                           required/>
+                </div>
+                <div class="bk-form__field">
                     <label class="bk-form__label" for="color">
                         {{ __('_field.color') }}
                     </label>
                     <input class="bk-form__input w-100"
-                           id="name"
+                           id="color"
                            type="color"
                            name="color"
                            value="{{ isset($group) ? $group->color : null }}"/>
