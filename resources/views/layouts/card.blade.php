@@ -34,6 +34,16 @@
             font-size: 12px;
             color: gray;
         }
+        .card-info__sign {
+            margin-bottom: 10px;
+            padding-left: 150px;
+            text-align: center;
+            font-size: 9px;
+        }
+        .card-info__line {
+            width: 310px;
+            border-bottom: 1px solid gray;
+        }
         .card-photo {
             position: absolute;
             top: 5px;
@@ -61,6 +71,21 @@
                 <li class="card-info__text">{{ format_phone_number_for_display($card->client->phone) }}</li>
                 <li class="card-info__tip">Дейсвителен по</li>
                 <li class="card-info__text">{{ format_date_for_display($card->end) }}</li>
+                <li class="card-info__tip">
+                    Кассир
+                    <div class="card-info__line"></div>
+                </li>
+                <li class="card-info__sign">(подпись)</li>
+                <li class="card-info__tip">
+                    Администратор
+                    <div class="card-info__line"></div>
+                </li>
+                <li class="card-info__sign">(подпись)</li>
+                <li class="card-info__tip">
+                    Инструктор
+                    <div class="card-info__line"></div>
+                </li>
+                <li class="card-info__sign">(подпись)</li>
             </ul>
             <div class="card-photo">
                 @if($card->client->photo)
