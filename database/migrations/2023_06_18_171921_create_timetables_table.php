@@ -16,8 +16,8 @@ class CreateTimetablesTable extends Migration
         Schema::create('timetables', function (Blueprint $table) {
             $table->id();
             $table->string('code');
-            $table->foreignId('group_id')->constrained('groups')->cascadeOnUpdate();
-            $table->foreignId('trainer_id')->constrained('users')->cascadeOnUpdate();
+            $table->foreignId('group_id')->nullable(false)->constrained('groups')->cascadeOnUpdate();
+            $table->foreignId('trainer_id')->nullable(true)->constrained('users')->cascadeOnUpdate();
             $table->dateTime('start');
             $table->dateTime('end');
             $table->boolean('is_replace')->nullable();
