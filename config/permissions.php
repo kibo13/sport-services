@@ -290,6 +290,7 @@ return [
         'roles'      => [
             Role::OWNER,
             Role::PAYMASTER,
+            Role::METHODIST,
         ],
     ],
     [
