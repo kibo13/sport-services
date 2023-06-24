@@ -19,6 +19,15 @@ class TimetableOptionRepository implements TimetableOptionRepositoryInterface
         return $this->createQuery()->get();
     }
 
+    public function getTotalLessonsForGroups(array $groupIds)
+    {
+        return $this->createQuery()
+            ->selectRaw('SUM(duration) as lessons')
+            ->whereIn('group_id', $groupIds)
+            ->first()
+            ->lessons;
+    }
+
     public function getTimetableOptionByDayAndGroup(int $groupId, int $dayOfWeek)
     {
         return $this->createQuery()
