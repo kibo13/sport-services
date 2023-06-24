@@ -67,4 +67,22 @@ class Group extends Model
     {
         return $this->hasMany(TimetableOption::class);
     }
+
+    public function getTotalHours()
+    {
+        $totalHours = 0;
+
+        foreach ($this->options as $option) {
+            $totalHours += $option->duration;
+        }
+
+        return $totalHours;
+    }
+
+    public function getOptionByDayOfWeek($dayOfWeek)
+    {
+        // Возвращаем первый элемент коллекции `options`,
+        // который удовлетворяет условию `day_of_week = $dayOfWeek`
+        return $this->options->firstWhere('day_of_week', $dayOfWeek);
+    }
 }
