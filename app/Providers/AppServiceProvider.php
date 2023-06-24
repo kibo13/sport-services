@@ -21,6 +21,8 @@ use App\Repositories\Payment\PaymentRepository;
 use App\Repositories\Payment\PaymentRepositoryInterface;
 use App\Repositories\Timetable\TimetableOptionRepository;
 use App\Repositories\Timetable\TimetableOptionRepositoryInterface;
+use App\Repositories\Timetable\TimetableRepository;
+use App\Repositories\Timetable\TimetableRepositoryInterface;
 use App\Repositories\Trainer\TrainerRepository;
 use App\Repositories\Trainer\TrainerRepositoryInterface;
 use App\Repositories\User\UserRepository;
@@ -45,6 +47,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(EventRepositoryInterface::class, EventRepository::class);
         $this->app->bind(CardRepositoryInterface::class, CardRepository::class);
         $this->app->bind(CardLessonRepositoryInterface::class, CardLessonRepository::class);
+        $this->app->bind(TimetableRepositoryInterface::class, TimetableRepository::class);
         $this->app->bind(TimetableOptionRepositoryInterface::class, TimetableOptionRepository::class);
         $this->app->bind(OrderRepositoryInterface::class, OrderRepository::class);
     }
