@@ -17,6 +17,7 @@ class GroupRepository implements GroupRepositoryInterface
     public function getAll()
     {
         return $this->createQuery()
+            ->orderBy('activity_id')
             ->get();
     }
 
