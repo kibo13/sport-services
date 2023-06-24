@@ -6,6 +6,7 @@ return [
     'attendance'            => 'Посещаемость',
     'benefits'              => 'Льготники',
     'cabinet'               => 'Личный кабинет',
+    'calendar'              => 'Календарь',
     'cards'                 => 'Карточки',
     'catalog'               => 'Справочник',
     'categories'            => 'Категории групп',
