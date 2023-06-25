@@ -138,6 +138,11 @@ class User extends Authenticatable
         return $this->role_id === RoleEnum::METHODIST;
     }
 
+    public function isTrainer(): bool
+    {
+        return $this->role_id === RoleEnum::INSTRUCTOR;
+    }
+
     public function isClient(): bool
     {
         return $this->role_id === RoleEnum::CLIENT;
