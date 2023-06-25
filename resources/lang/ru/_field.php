@@ -61,6 +61,8 @@ return [
     'position' => 'Должность',
     'price' => 'Цена',
     'respiratory_system' => 'Дыхательная система',
+    'replacement_reason' => 'Причина замены',
+    'replacement_trainer' => 'Подменяющий тренер',
     'report' => 'Отчет',
     'reports' => 'Отчеты',
     'service' => 'Услуга',

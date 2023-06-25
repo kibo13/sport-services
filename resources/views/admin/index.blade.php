@@ -39,5 +39,6 @@
     @include('components.modals.delete')
     @include('components.modals.option')
     @include('components.modals.place')
+    @include('components.modals.timetable')
     @yield('scripts')
 @endsection

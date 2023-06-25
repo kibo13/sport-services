@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\RuleController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\StatisticController;
 use App\Http\Controllers\Admin\TimetableController;
+use App\Http\Controllers\Admin\TimetableOptionController;
 use App\Http\Controllers\Admin\TrainerController;
 
 use Illuminate\Support\Facades\Route;
@@ -48,12 +49,15 @@ Route::prefix('services')->as('services.')->group(function () {
     });
 });
 
-Route::prefix('timetables')->as('timetables.')->group(function () {
+Route::prefix('timetable')->as('timetable.')->group(function () {
     Route::middleware('permission:timetable_read')->group(function () {
         Route::get('/', [TimetableController::class, 'index'])->name('index');
     });
     Route::middleware('permission:timetable_full')->group(function () {
-        //
+        Route::post('/replace-trainer', [TimetableController::class, 'replaceTrainer'])->name('replace.trainer');
+        Route::post('/generate', [TimetableController::class, 'generate'])->name('generate');
+        Route::post('/update-or-create', [TimetableOptionController::class, 'updateOrCreate'])->name('update.or.create');
+        Route::delete('/{timetableOption}', [TimetableOptionController::class, 'destroy'])->name('destroy');
     });
 });
 

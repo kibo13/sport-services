@@ -13,6 +13,8 @@ class Timetable extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
+        'code',
+        'activity_id',
         'group_id',
         'trainer_id',
         'start',
@@ -24,6 +26,11 @@ class Timetable extends Model
     protected $dates = [
         'deleted_at'
     ];
+
+    public function activity(): BelongsTo
+    {
+        return $this->belongsTo(Activity::class);
+    }
 
     public function group(): BelongsTo
     {
