@@ -35,8 +35,9 @@
             </div>
         </div>
     </div>
-    @include('components.modals.delete')
     @include('components.modals.client')
+    @include('components.modals.delete')
+    @include('components.modals.option')
     @include('components.modals.place')
     @yield('scripts')
 @endsection

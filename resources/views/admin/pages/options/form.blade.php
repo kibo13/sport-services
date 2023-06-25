@@ -5,7 +5,7 @@
 @section('content-admin')
     <section id="option-form">
         <h3>{{ __('_section.settings') }}</h3>
-        @if(session()->has('success') || session()->has('warning'))
+
         @foreach(['success', 'warning'] as $alert)
         @if(session()->has($alert))
         <div class="my-2 alert alert-{{ $alert }}" role="alert">
@@ -13,31 +13,37 @@
         </div>
         @endif
         @endforeach
-        @endif
-        <div class="bk-form">
-            <div class="bk-form__wrapper">
-                @foreach($options as $option)
-                <div class="bk-form__field">
-                    <label class="bk-form__label">
-                        {{ $option->comment }}
-                    </label>
-                    <form class="d-flex bk-gap-5" action="{{ route('options.update', $option) }}" method="POST">
-                        @csrf
-                        @method('PUT')
-                        <input type="hidden" name="section" value="{{ $option->section }}">
-                        <input type="number"
-                               class="form-control bk-max-w-250"
-                               name="value"
-                               min="1"
-                               step="1"
-                               value="{{ $option->value ?? null }}">
-                        <button class="btn btn-outline-success">
-                            {{ __('_action.save') }}
-                        </button>
-                    </form>
-                </div>
-                @endforeach
+
+        <div class="bk-tabs">
+            @if(auth()->user()->isOwner() || auth()->user()->isMethodist())
+            <input class="bk-tabs__input bk-tab-1"
+                   id="tab-1"
+                   type="radio"
+                   name="tab"
+                   checked>
+            <label class="bk-tabs__label" for="tab-1">
+                {{ __('_section.timetable') }}
+            </label>
+            @endif
+            @if(auth()->user()->isOwner() || auth()->user()->isPaymaster())
+            <input class="bk-tabs__input bk-tab-2"
+                   id="tab-2"
+                   type="radio"
+                   name="tab">
+            <label class="bk-tabs__label" for="tab-2">
+                {{ __('_section.payments') }}
+            </label>
+            @endif
+            @if(auth()->user()->isOwner() || auth()->user()->isMethodist())
+            <div class="bk-tabs__content bk-tab-content-1">
+                @include('admin.pages.options.tabs.timetable')
             </div>
+            @endif
+            @if(auth()->user()->isOwner() || auth()->user()->isPaymaster())
+            <div class="bk-tabs__content bk-tab-content-2">
+                @include('admin.pages.options.tabs.payments')
+            </div>
+            @endif
         </div>
     </section>
 @endsection

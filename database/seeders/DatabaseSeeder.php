@@ -48,5 +48,11 @@ class DatabaseSeeder extends Seeder
         ClientFactory::new()->count(30)->create();
         PaymentFactory::new()->count(500)->create();
         EventFactory::new()->count(500)->create();
+
+        // seeders
+        $this->call([
+            TestSeeder::class,
+            TimetableOptionSeeder::class,
+        ]);
     }
 }
