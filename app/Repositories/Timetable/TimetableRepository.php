@@ -5,6 +5,7 @@ namespace App\Repositories\Timetable;
 
 
 use App\Models\Timetable;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\DB;
 
@@ -20,9 +21,9 @@ class TimetableRepository implements TimetableRepositoryInterface
         return $this->createQuery()->get();
     }
 
-    public function getAllLessons()
+    public function getAllLessons(User $user)
     {
-        return $this->createQuery()
+        $query = $this->createQuery()
             ->join('activities', 'activities.id', 'timetables.activity_id')
             ->join('groups', 'groups.id', 'timetables.group_id')
             ->join('users', 'users.id', 'timetables.trainer_id')
@@ -39,8 +40,20 @@ class TimetableRepository implements TimetableRepositoryInterface
                 'timetables.trainer_id',
                 'timetables.is_replace',
                 'timetables.note',
-            ])
-            ->get();
+            ]);
+
+        if ($user->isTrainer()) {
+            $query
+                ->where('timetables.trainer_id', $user->id)
+                ->orWhere('timetables.is_replace', $user->id);
+        }
+
+        if ($user->isClient()) {
+            $groupIds = $user->places->pluck('group.id')->unique();
+            $query->whereIn('timetables.group_id', $groupIds);
+        }
+
+        return $query->get();
     }
 
     public function getLessonsByGroupAndDate(array $groupIds, $month, $year)
