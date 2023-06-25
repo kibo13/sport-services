@@ -16,11 +16,12 @@ class CreateTimetablesTable extends Migration
         Schema::create('timetables', function (Blueprint $table) {
             $table->id();
             $table->string('code');
+            $table->foreignId('activity_id')->nullable(false)->constrained('activities')->cascadeOnUpdate();
             $table->foreignId('group_id')->nullable(false)->constrained('groups')->cascadeOnUpdate();
             $table->foreignId('trainer_id')->nullable(true)->constrained('users')->cascadeOnUpdate();
             $table->dateTime('start');
             $table->dateTime('end');
-            $table->boolean('is_replace')->nullable();
+            $table->integer('is_replace')->nullable();
             $table->text('note')->nullable();
             $table->softDeletes();
             $table->timestamps();
