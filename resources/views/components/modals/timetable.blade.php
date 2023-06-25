@@ -23,6 +23,7 @@
                     <label class="m-0 font-weight-bold">{{ __('_field.trainer') }}</label>
                     <input class="form-control form-control-sm" type="text" data-field="trainer" readonly>
                 </div>
+                @if(auth()->user()->isOwner() || auth()->user()->isMethodist())
                 <div class="mb-2 d-flex flex-column">
                     <label class="m-0 font-weight-bold">
                         {{ __('_field.replacement_trainer') }}
@@ -44,7 +45,9 @@
                               name="note"
                               required></textarea>
                 </div>
+                @endif
             </div>
+            @if(auth()->user()->isOwner() || auth()->user()->isMethodist())
             <div class="bk-modal-footer">
                 <button class="btn btn-sm btn-success"
                         type="submit"
@@ -57,6 +60,7 @@
                     {{ __('_action.cancel') }}
                 </button>
             </div>
+            @endif
         </form>
     </div>
 </div>
