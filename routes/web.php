@@ -28,4 +28,7 @@ Route::middleware('auth')->group(function () {
 
     // Подключаем файл маршрутов catalog.php
     include_once __DIR__ . '/admin/catalog.php';
+
+    // Подключаем файл маршрутов api.php
+    include_once __DIR__ . '/admin/api.php';
 });
