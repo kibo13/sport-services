@@ -82,6 +82,11 @@
                 </li>
                 <li class="card-info__sign">(подпись)</li>
                 <li class="card-info__tip">
+                    Врач
+                    <div class="card-info__line"></div>
+                </li>
+                <li class="card-info__sign">(подпись)</li>
+                <li class="card-info__tip">
                     Инструктор
                     <div class="card-info__line"></div>
                 </li>
