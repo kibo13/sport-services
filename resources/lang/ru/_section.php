@@ -2,6 +2,7 @@
 
 return [
     'admin'                 => 'Админ-панель',
+    'amounts'               => 'Суммы',
     'applications'          => 'Заявки',
     'attendance'            => 'Посещаемость',
     'benefits'              => 'Льготники',
