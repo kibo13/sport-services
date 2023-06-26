@@ -40,21 +40,24 @@ class StatisticController extends Controller
 
     public function index(Request $request)
     {
-        $from = $request->input('from', Carbon::now()->subYear()->endOfMonth()->format('Y-m-d'));
-        $till = $request->input('till', Carbon::now()->endOfMonth()->format('Y-m-d'));
+        $from = $request->input('from', '2022-06-01');
+        $till = $request->input('till', '2023-07-01');
         $labels = ChartService::generateLabels($from, $till);
         $activities = $this->activityRepository->getAll();
         $trainers = $this->trainerRepository->getAll();
+        $activityAmounts = $this->initializeData($activities, $labels);
         $activityPayments = $this->initializeData($activities, $labels);
         $activityEvents = $this->initializeData($activities, $labels);
         $activityLessons = $this->initializeData($activities, $labels);
         $trainerClients = $this->initializeData($trainers, $labels);
 
         foreach ($activities as $activity) {
+            $amounts = $this->paymentRepository->getAmountsByActivity($activity->id, $from, $till);
             $payments = $this->paymentRepository->getPaymentsByActivity($activity->id, $from, $till);
             $events = $this->eventRepository->getEventsByActivity($activity->id, $from, $till);
             $lessons = $this->cardLessonRepository->getLessonsByActivity($activity->id, $from, $till);
 
+            $this->updateData($activityAmounts[$activity->id], $amounts);
             $this->updateData($activityPayments[$activity->id], $payments);
             $this->updateData($activityEvents[$activity->id], $events);
             $this->updateData($activityLessons[$activity->id], $lessons);
@@ -66,12 +69,14 @@ class StatisticController extends Controller
             $this->updateData($trainerClients[$trainer->id], $clients);
         }
 
+        $amountChart = $this->createActivityChart($labels, $activityAmounts);
         $paymentChart = $this->createActivityChart($labels, $activityPayments);
         $eventChart = $this->createActivityChart($labels, $activityEvents);
         $lessonChart = $this->createActivityChart($labels, $activityLessons);
         $trainerChart = $this->createTrainerChart($labels, $trainerClients);
 
         return view('admin.pages.statistics.index', [
+            'amountChart' => $amountChart,
             'paymentChart' => $paymentChart,
             'eventChart' => $eventChart,
             'lessonChart' => $lessonChart,
