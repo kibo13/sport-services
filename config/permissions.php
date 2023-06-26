@@ -24,6 +24,27 @@ return [
         ],
     ],
     [
+        'name'       => 'Методики',
+        'slug'       => 'method_read',
+        'is_setting' => 1,
+        'note'       => 'Просмотр',
+        'roles'      => [
+            Role::OWNER,
+            Role::INSTRUCTOR,
+            Role::METHODIST,
+        ],
+    ],
+    [
+        'name'       => 'Методики',
+        'slug'       => 'method_full',
+        'is_setting' => 1,
+        'note'       => 'Редактирование',
+        'roles'      => [
+            Role::OWNER,
+            Role::METHODIST,
+        ],
+    ],
+    [
         'name'       => 'Платежи',
         'slug'       => 'pay_read',
         'is_setting' => 0,
