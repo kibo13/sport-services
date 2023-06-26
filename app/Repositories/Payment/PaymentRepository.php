@@ -60,6 +60,19 @@ class PaymentRepository implements PaymentRepositoryInterface
             ->sum('amount');
     }
 
+    public function getAmountsByActivity(int $activityId, $from, $till)
+    {
+        return $this->createQuery()
+            ->select([
+                DB::raw('DATE_FORMAT(paid_at, \'%m.%Y\') AS period'),
+                DB::raw('SUM(amount) AS count')
+            ])
+            ->where('activity_id', $activityId)
+            ->whereBetween('paid_at', [$from, $till])
+            ->groupBy('period')
+            ->get();
+    }
+
     public function getPaymentsByActivity(int $activityId, $from, $till)
     {
         return $this->createQuery()
