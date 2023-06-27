@@ -17,6 +17,7 @@ return [
     'client' => 'Клиент',
     'color' => 'Цвет',
     'comment' => 'Комментарий',
+    'content' => 'Содержание',
     'date' => 'Дата',
     'description' => 'Описание',
     'discount' => 'Скидка',
