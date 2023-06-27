@@ -39,6 +39,11 @@
                             {{ __('_section.benefits') }}
                         </a>
                         @endif
+                        @if(is_access('method_read'))
+                        <a class="dropdown-item" href="{{ route('methods.index') }}">
+                            {{ __('_section.methods') }}
+                        </a>
+                        @endif
                         @if(is_access('education_read'))
                         <a class="dropdown-item" href="{{ route('educations.index') }}">
                             {{ __('_section.educations') }}

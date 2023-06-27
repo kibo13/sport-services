@@ -3,6 +3,7 @@
 
 use App\Http\Controllers\Admin\BenefitController;
 use App\Http\Controllers\Admin\EducationController;
+use App\Http\Controllers\Admin\MethodController;
 use App\Http\Controllers\Admin\SpecializationController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,6 +19,20 @@ Route::prefix('catalog')->group(function () {
             Route::get('/{benefit}/edit', [BenefitController::class, 'edit'])->name('edit');
             Route::match(['put', 'patch'], '/{benefit}', [BenefitController::class, 'update'])->name('update');
             Route::delete('/{benefit}', [BenefitController::class, 'destroy'])->name('destroy');
+        });
+    });
+
+    // Методики
+    Route::prefix('methods')->as('methods.')->group(function () {
+        Route::middleware('permission:method_read')->group(function () {
+            Route::get('/', [MethodController::class, 'index'])->name('index');
+        });
+        Route::middleware('permission:method_full')->group(function () {
+            Route::get('/create', [MethodController::class, 'create'])->name('create');
+            Route::post('/', [MethodController::class, 'store'])->name('store');
+            Route::get('/{method}/edit', [MethodController::class, 'edit'])->name('edit');
+            Route::match(['put', 'patch'], '/{method}', [MethodController::class, 'update'])->name('update');
+            Route::delete('/{method}', [MethodController::class, 'destroy'])->name('destroy');
         });
     });
 
