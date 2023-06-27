@@ -64,7 +64,7 @@ class User extends Authenticatable
         });
 
         static::created(function ($user) {
-            if ($user->isClient()) {
+            if ($user->role_id == RoleEnum::CLIENT) {
                 MedicalCard::query()->create(['client_id' => $user->id]);
             }
         });
