@@ -95,7 +95,7 @@ class ReportController extends Controller
             $table->addCell()->addText($payment->service->name);
             $table->addCell()->addText(format_date_for_display($payment->paid_at));
             $table->addCell()->addText($payment->card ? $payment->card->id : '');
-            $table->addCell()->addText(format_money_for_display($payment->amount, 0));
+            $table->addCell()->addText($payment->amount);
         }
 
         $word->setValues([
