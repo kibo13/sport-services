@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Event;
+use App\Models\EventResult;
 use App\Models\Specialization;
+use App\Repositories\Client\ClientRepositoryInterface;
 use App\Repositories\Trainer\TrainerRepositoryInterface;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -67,5 +69,24 @@ class EventController extends Controller
         return redirect()
             ->route('events.index')
             ->with('success', __('_record.deleted'));
+    }
+
+    public function getResult(EventResult $result, ClientRepositoryInterface $clientRepository)
+    {
+        $clients = $clientRepository->getAll();
+
+        return view('admin.pages.events.result', [
+            'result' => $result,
+            'clients' => $clients,
+        ]);
+    }
+
+    public function setResult(Request $request, EventResult $result): RedirectResponse
+    {
+        $result->update($request->all());
+
+        return redirect()
+            ->route('events.index')
+            ->with('success', __('_record.updated'));
     }
 }

@@ -134,6 +134,8 @@ Route::prefix('events')->as('events.')->group(function () {
         Route::get('/{event}/edit', [EventController::class, 'edit'])->name('edit');
         Route::match(['put', 'patch'], '/{event}', [EventController::class, 'update'])->name('update');
         Route::delete('/{event}', [EventController::class, 'destroy'])->name('destroy');
+        Route::get('/{result}/result', [EventController::class, 'getResult'])->name('result');
+        Route::post('/{result}/set', [EventController::class, 'setResult'])->name('result.set');
     });
 });
 
