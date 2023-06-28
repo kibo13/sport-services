@@ -8,17 +8,23 @@ use App\Models\Event;
 use App\Models\EventResult;
 use App\Models\Specialization;
 use App\Repositories\Client\ClientRepositoryInterface;
+use App\Repositories\Event\EventRepositoryInterface;
 use App\Repositories\Trainer\TrainerRepositoryInterface;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
 {
-    public function index()
+    public function index(EventRepositoryInterface $eventRepository)
     {
         $events = Event::all();
 
-        return view('admin.pages.events.index', compact('events'));
+        return view('admin.pages.events.index', [
+            'events' => $events,
+            'totalWins' => $eventRepository->getTotalWins(),
+            'previousYearWins' => $eventRepository->getPreviousYearWins(),
+            'currentYearWins' => $eventRepository->getCurrentYearWins()
+        ]);
     }
 
     public function create(TrainerRepositoryInterface $trainerRepository)

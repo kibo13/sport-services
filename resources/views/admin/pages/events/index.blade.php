@@ -14,6 +14,23 @@
         </div>
         @endif
 
+        <div class="my-2 bk-callout">
+            <ul>
+                <li>
+                    <span class="font-weight-bold">Кол-во побед за предыдущий год:</span>
+                    <span class="text-primary">{{ $previousYearWins }}</span>
+                </li>
+                <li>
+                    <span class="font-weight-bold">Кол-во побед за текущий год:</span>
+                    <span class="text-primary">{{ $currentYearWins }}</span>
+                </li>
+                <li>
+                    <span class="font-weight-bold">Кол-во побед за весь период:</span>
+                    <span class="text-primary">{{ $totalWins }}</span>
+                </li>
+            </ul>
+        </div>
+
         @if(session()->has('success'))
         <div class="my-2 alert alert-success" role="alert">
             {{ session()->get('success') }}
