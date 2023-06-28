@@ -18,11 +18,13 @@
             <option value="js-report-clients">Отчет по клиентам</option>
             <option value="js-report-groups">Отчет по группам</option>
             <option value="js-report-events">Отчет по соревнованиям</option>
+            <option value="js-report-results">Отчет по результативности участников соревнований</option>
         </select>
 
         @include('admin.pages.reports.form.payments')
         @include('admin.pages.reports.form.clients')
         @include('admin.pages.reports.form.groups')
         @include('admin.pages.reports.form.events')
+        @include('admin.pages.reports.form.results')
     </section>
 @endsection

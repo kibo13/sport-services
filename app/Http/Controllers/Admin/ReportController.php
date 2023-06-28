@@ -202,4 +202,56 @@ class ReportController extends Controller
 
         return response()->download($filename)->deleteFileAfterSend(true);
     }
+
+    public function results(Request $request, UserRepositoryInterface $userRepository, EventRepositoryInterface $eventRepository): BinaryFileResponse
+    {
+        $from = $request->input('from');
+        $till = $request->input('till');
+        $currentNow = Carbon::now()->addHours(6);
+        $currentYear = $currentNow->format('Y');
+        $director = $userRepository->getDirector();
+        $filename = 'Отчет по результативности участников соревнований с ' . format_date_for_display($from) . 'г. по ' . format_date_for_display($till) . 'г.docx';
+        $events = $eventRepository->getAll($from, $till);
+        $totalEventsCount = $eventRepository->getTotalEventsCount($from, $till);
+        $word = new TemplateProcessor('templates/results.docx');
+
+        $table = new Table(['borderColor' => '000000', 'borderSize' => 6]);
+        $fontText = ['bold' => true];
+
+        $table->addRow();
+        $table->addCell()->addText('Событие', $fontText);
+        $table->addCell()->addText('Вид соревнования', $fontText);
+        $table->addCell()->addText('Дата', $fontText);
+        $table->addCell()->addText('Победители', $fontText);
+
+        foreach ($events as $event) {
+            $table->addRow();
+            $table->addCell()->addText($event->title);
+            $table->addCell()->addText($event->activity->name);
+            $table->addCell()->addText(format_date_for_display($event->start));
+
+            $winners = '';
+
+            foreach ($event->results as $result) {
+                $position = $result->position;
+                $champion = $result->client->short_name;
+                $winners .= "{$position} место: {$champion} <w:br/>";
+            }
+
+            $table->addCell()->addText($winners);
+        }
+
+        $word->setValues([
+            'director' => $director->short_name,
+            'current_year' => $currentYear,
+            'from' => format_date_for_display($from),
+            'till' => format_date_for_display($till),
+            'total_events' => $totalEventsCount,
+        ]);
+
+        $word->setComplexBlock('table', $table);
+        $word->saveAs($filename);
+
+        return response()->download($filename)->deleteFileAfterSend(true);
+    }
 }

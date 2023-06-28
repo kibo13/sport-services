@@ -152,6 +152,7 @@ Route::prefix('reports')->as('reports.')->group(function () {
         Route::get('/clients', [ReportController::class, 'clients'])->name('clients');
         Route::get('/groups', [ReportController::class, 'groups'])->name('groups');
         Route::get('/events', [ReportController::class, 'events'])->name('events');
+        Route::get('/results', [ReportController::class, 'results'])->name('results');
         Route::get('/payments', [ReportController::class, 'payments'])->name('payments');
     });
 });
