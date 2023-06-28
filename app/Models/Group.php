@@ -63,6 +63,11 @@ class Group extends Model
         return $this->hasMany(Place::class);
     }
 
+    public function getBusyPlaces(): HasMany
+    {
+        return $this->places()->where('is_busy', true);
+    }
+
     public function options(): HasMany
     {
         return $this->hasMany(TimetableOption::class);
