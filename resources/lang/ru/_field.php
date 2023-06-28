@@ -61,6 +61,7 @@ return [
     'places' => 'Места',
     'position' => 'Должность',
     'price' => 'Цена',
+    'result' => 'Результат',
     'respiratory_system' => 'Дыхательная система',
     'replacement_reason' => 'Причина замены',
     'replacement_trainer' => 'Подменяющий тренер',
