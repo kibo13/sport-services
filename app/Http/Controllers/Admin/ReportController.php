@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Repositories\Client\ClientRepositoryInterface;
 use App\Repositories\Event\EventRepositoryInterface;
+use App\Repositories\Group\GroupRepositoryInterface;
 use App\Repositories\Payment\PaymentRepositoryInterface;
 use App\Repositories\User\UserRepositoryInterface;
 use Carbon\Carbon;
@@ -51,6 +52,47 @@ class ReportController extends Controller
             $table->addCell()->addText(format_phone_number_for_display($client->phone));
             $table->addCell()->addText($client->address);
             $table->addCell()->addText($client->activity);
+        }
+
+        $word->setValues([
+            'director' => $director->short_name,
+            'current_year' => $currentYear,
+            'total_clients' => "$totalClientsCount чел.",
+        ]);
+
+        $word->setComplexBlock('table', $table);
+        $word->saveAs($filename);
+
+        return response()->download($filename)->deleteFileAfterSend(true);
+    }
+
+    public function groups(UserRepositoryInterface $userRepository, GroupRepositoryInterface $groupRepository, ClientRepositoryInterface $clientRepository): BinaryFileResponse
+    {
+        $currentNow = Carbon::now()->addHours(6);
+        $currentYear = $currentNow->format('Y');
+        $currentDay = $currentNow->format('d.m.Y');
+        $director = $userRepository->getDirector();
+        $filename = "Отчет по группам на $currentDay года.docx";
+        $groups = $groupRepository->getAll();
+        $totalClientsCount = $clientRepository->getTotalClientPlaceCount();
+        $word = new TemplateProcessor('templates/groups.docx');
+        $table = new Table(['borderColor' => '000000', 'borderSize' => 6]);
+        $fontText = ['bold' => true];
+
+        $table->addRow();
+        $table->addCell()->addText('№ <w:br/>п/п', $fontText);
+        $table->addCell()->addText('Группа', $fontText);
+        $table->addCell()->addText('Кол-во человек <w:br/>в группе', $fontText);
+        $table->addCell()->addText('Кол-во занятий <w:br/>в неделю', $fontText);
+        $table->addCell()->addText('Вид занятия', $fontText);
+
+        foreach ($groups as $index => $group) {
+            $table->addRow();
+            $table->addCell()->addText(++$index);
+            $table->addCell()->addText($group->name);
+            $table->addCell()->addText($group->getBusyPlaces->count());
+            $table->addCell()->addText($group->workload / 4);
+            $table->addCell()->addText($group->activity->name);
         }
 
         $word->setValues([

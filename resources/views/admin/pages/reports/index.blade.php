@@ -16,11 +16,13 @@
             <option disabled hidden selected>Выберите отчет</option>
             <option value="js-report-payments">Отчет по финансам</option>
             <option value="js-report-clients">Отчет по клиентам</option>
+            <option value="js-report-groups">Отчет по группам</option>
             <option value="js-report-events">Отчет по соревнованиям</option>
         </select>
 
         @include('admin.pages.reports.form.payments')
         @include('admin.pages.reports.form.clients')
+        @include('admin.pages.reports.form.groups')
         @include('admin.pages.reports.form.events')
     </section>
 @endsection
