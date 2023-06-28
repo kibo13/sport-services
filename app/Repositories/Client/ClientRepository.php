@@ -29,6 +29,13 @@ class ClientRepository implements ClientRepositoryInterface
             ->count();
     }
 
+    public function getTotalClientPlaceCount(): int
+    {
+        return $this->createQuery()
+            ->join('places', 'places.client_id', 'users.id')
+            ->count();
+    }
+
     public function getClientsWithActivities()
     {
         return $this->createQuery()
