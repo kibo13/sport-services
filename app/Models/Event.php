@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Event extends Model
@@ -36,6 +37,20 @@ class Event extends Model
             $event->activity_id = $event->specialization_id;
             $event->end = $event->start;
         });
+
+        static::created(function ($event) {
+            $event->initializeEventResults();
+        });
+    }
+
+    protected function initializeEventResults()
+    {
+        for ($position = 1; $position <= 3; $position++) {
+            EventResult::query()->create([
+                'event_id' => $this->id,
+                'position' => $position,
+            ]);
+        }
     }
 
     public function activity(): BelongsTo
@@ -51,5 +66,10 @@ class Event extends Model
     public function trainer(): BelongsTo
     {
         return $this->belongsTo(User::class, 'trainer_id');
+    }
+
+    public function results(): HasMany
+    {
+        return $this->hasMany(EventResult::class);
     }
 }
