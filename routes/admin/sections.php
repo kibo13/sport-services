@@ -76,6 +76,7 @@ Route::prefix('cards')->as('cards.')->group(function () {
     Route::middleware('permission:card_read')->group(function () {
         Route::get('/', [CardController::class, 'index'])->name('index');
         Route::get('/{card}/generate', [CardController::class, 'generate'])->name('generate');
+        Route::get('/{card}/payback', [CardController::class, 'payback'])->name('payback');
     });
 });
 

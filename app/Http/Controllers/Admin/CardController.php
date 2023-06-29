@@ -27,4 +27,12 @@ class CardController extends Controller
 
         return PdfService::generate($html, 'card');
     }
+
+    public function payback(Card $card)
+    {
+        $card->payment->update(['type' => 'expense']);
+        $html = view('layouts.payback', compact('card'))->render();
+
+        return PdfService::generate($html, 'payback');
+    }
 }

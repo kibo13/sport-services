@@ -48,6 +48,7 @@
                 <tr>
                     <th>#</th>
                     <th class="w-00 bk-min-w-100">{{ __('_field.num') }}</th>
+                    <th class="w-00 bk-min-w-100">{{ __('_field.type') }}</th>
                     <th class="w-25 bk-min-w-200">{{ __('_field.activity') }}</th>
                     <th class="w-25 bk-min-w-250">{{ __('_field.service') }}</th>
                     <th class="w-25 bk-min-w-150">{{ __('_field.amount') }}</th>
@@ -60,6 +61,9 @@
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $payment->id }}</td>
+                    <td class="{{ $payment->type === 'income' ? 'text-success' : 'text-danger' }}">
+                        {{ $payment->type === 'income' ? __('_field.income') : __('_field.expense') }}
+                    </td>
                     <td>{{ $payment->activity->name }}</td>
                     <td>
                         <ul>

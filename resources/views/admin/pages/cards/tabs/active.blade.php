@@ -35,6 +35,13 @@
                        href="{{ route('cards.generate', $card) }}"
                        target="_blank"
                        title="{{ __('_field.card') }}"></a>
+                    @if(is_access('pay_full') && now()->diffInDays($card->payment->paid_at) <= 14 && $card->payment->isIncome())
+                    <a class="bk-btn-action bk-btn-action--bill btn btn-warning"
+                       href="{{ route('cards.payback', $card) }}"
+                       download
+                       onclick="location.reload();"
+                       title="{{ __('_field.payback') }}"></a>
+                    @endif
                 </div>
             </td>
         </tr>
