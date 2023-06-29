@@ -14,10 +14,12 @@ class Payment extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
+        'type',
         'activity_id',
         'service_id',
         'client_id',
         'amount',
+        'returned_at',
     ];
 
     protected $dates = [
@@ -31,6 +33,12 @@ class Payment extends Model
         static::creating(function ($payment) {
             if (! $payment->paid_at) {
                 $payment->paid_at = date('Y-m-d');
+            }
+        });
+
+        static::saving(function ($payment) {
+            if ($payment->type === 'expense') {
+                $payment->returned_at = date('Y-m-d');
             }
         });
     }
@@ -53,5 +61,10 @@ class Payment extends Model
     public function client(): BelongsTo
     {
         return $this->belongsTo(User::class, 'client_id');
+    }
+
+    public function isIncome(): bool
+    {
+        return $this->type === 'income';
     }
 }
