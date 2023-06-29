@@ -18,7 +18,8 @@ class PaymentRepository implements PaymentRepositoryInterface
 
     public function getAll($from = null, $till = null)
     {
-        $query = $this->createQuery();
+        $query = $this->createQuery()
+            ->where('type', 'income');
 
         if ($from && $till) {
             $query->whereBetween('paid_at', [$from, $till]);
@@ -31,7 +32,8 @@ class PaymentRepository implements PaymentRepositoryInterface
 
     public function getTotalAmount($from = null, $till = null)
     {
-        $query = $this->createQuery();
+        $query = $this->createQuery()
+            ->where('type', 'income');
 
         if ($from && $till) {
             $query->whereBetween('paid_at', [$from, $till]);
@@ -45,6 +47,7 @@ class PaymentRepository implements PaymentRepositoryInterface
         $previousMonth = Carbon::now()->subMonth();
 
         return $this->createQuery()
+            ->where('type', 'income')
             ->whereYear('paid_at', $previousMonth->year)
             ->whereMonth('paid_at', $previousMonth->month)
             ->sum('amount');
@@ -55,6 +58,7 @@ class PaymentRepository implements PaymentRepositoryInterface
         $currentMonth = Carbon::now();
 
         return $this->createQuery()
+            ->where('type', 'income')
             ->whereYear('paid_at', $currentMonth->year)
             ->whereMonth('paid_at', $currentMonth->month)
             ->sum('amount');
@@ -67,6 +71,7 @@ class PaymentRepository implements PaymentRepositoryInterface
                 DB::raw('DATE_FORMAT(paid_at, \'%m.%Y\') AS period'),
                 DB::raw('SUM(amount) AS count')
             ])
+            ->where('type', 'income')
             ->where('activity_id', $activityId)
             ->whereBetween('paid_at', [$from, $till])
             ->groupBy('period')
@@ -80,6 +85,7 @@ class PaymentRepository implements PaymentRepositoryInterface
                 DB::raw('DATE_FORMAT(paid_at, \'%m.%Y\') AS period'),
                 DB::raw('COUNT(id) AS count')
             ])
+            ->where('type', 'income')
             ->where('activity_id', $activityId)
             ->whereBetween('paid_at', [$from, $till])
             ->groupBy('period')
